@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendrives y Almacenamiento | Zapato Kiosco - Velocidad y Seguridad</title>
+    <!-- Fuente e Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="Pendrives USB 3.0, 3.1, tipo C, alta velocidad y gran capacidad. Las mejores marcas: Kingston, SanDisk, Samsung, y más. Encuentra tu memoria ideal.">
+    <link rel="icon" type="image/png" href="../assets/img/logos/favicon.png">
+    <!-- Rutas corregidas -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pendrive.css">
+</head>
+<body>
+<!-- TOPBAR -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Envíos a todo el país</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Garantía oficial</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-lock"></i>
+            <span>Compra segura</span>
+        </div>
+    </div>
+</section>
+<!-- HEADER -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-top-container">
+            <div class="header-left">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar productos, marcas y más...">
+                    <button class="search-btn">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="../mi-cuenta/carrito.html" class="header-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart-count" id="headerCartCount">0</div>
+                </a>
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-item">
+                <i class="fa-solid fa-bars"></i>
+                <span>Todas las categorías</span>
+            </div>
+            <a href="../index.html" class="nav-item">Inicio</a>
+            <a href="ofertas.html" class="nav-item">Ofertas</a>
+            <a href="novedades.html" class="nav-item">Novedades</a>
+            <a href="mas-vendidos.html" class="nav-item">Más vendidos</a>
+            <a href="contacto.html" class="nav-item">Contacto</a>
+        </div>
+    </nav>
+</header>
+<main>
+    <!-- BANNER -->
+    <section class="hero-banner">
+        <div class="hero-banner-container fade-slideshow">
+            <div class="fade-slide active">
+                <img src="../assets/img/banners/banner-pendrive-usb3.png" alt="Pendrives USB 3.0 y 3.1" class="fade-image">
+            </div>
+            <div class="fade-slide">
+                <img src="../assets/img/banners/banner-pendrive-tipoc.png" alt="Memorias USB Tipo C" class="fade-image">
+            </div>
+            <div class="fade-slide">
+                <img src="../assets/img/banners/banner-pendrive-capacidad.png" alt="Gran capacidad 64GB - 1TB" class="fade-image">
+            </div>
+        </div>
+    </section>
+    <!-- CONTENIDO PRINCIPAL: FILTROS + PRODUCTOS -->
+    <section class="main-content">
+        <div class="content-container">
+            
+            <aside class="filters-sidebar">
+                <div class="filters-header">
+                    <h2 class="filters-title">
+                        <i class="fa-solid fa-filter"></i> Filtrar
+                    </h2>
+                    <button class="filters-clear">Limpiar todo</button>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Capacidad</h3>
+                    <label class="filter-option"><input type="checkbox"><span>16 GB</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>32 GB</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>64 GB</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>128 GB</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>256 GB</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>512 GB o más</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Velocidad / Versión</h3>
+                    <label class="filter-option"><input type="checkbox"><span>USB 2.0 (Estándar)</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>USB 3.0 / 3.1 (Alta)</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>USB 3.2 / Gen 2 (Muy Alta)</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Tipo C / OTG</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Diseño y Resistencia</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Metálico / Resistente</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Plástico / Económico</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Minusdelgado / Compacto</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Con tapa / Giratorio</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Impermeable / Antigolpe</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Rango de Precio</h3>
+                    <label class="filter-option"><input type="radio" name="precio-pendrive" checked><span>Todos</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-pendrive"><span>Hasta $ 8.000</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-pendrive"><span>$8.000 - $20.000</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-pendrive"><span>$20.000 - $50.000</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-pendrive"><span>Más de $ 50.000</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Marcas</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Kingston</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>SanDisk</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Samsung</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Transcend</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Lexar</span></label>
+                </div>
+            </aside>
+            
+            <!-- LISTA DE PRODUCTOS -->
+            <div class="products-section">
+                <div class="products-header">
+                    <div class="products-info">
+                        <h2 class="products-title">Memorias USB y Almacenamiento Portátil</h2>
+                        <span class="products-count" id="contador-productos">Mostrando productos...</span>
+                    </div>
+                    <div class="order-selector">
+                        <label for="ordenar">Ordenar por:</label>
+                        <select id="ordenar" class="select-style">
+                            <option value="recientes">Más nuevos</option>
+                            <option value="vendidos">Más vendidos</option>
+                            <option value="menor">Menor precio</option>
+                            <option value="mayor">Mayor precio</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- CONTENEDOR DE PRODUCTOS - CARGADOS DESDE LA BASE DE DATOS -->
+                <div class="products-grid">
+                    <!-- Los productos aparecerán aquí automáticamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SECCIONES INFERIORES -->
+    <section class="brands-section">
+        <div class="brands-container">
+            <h2 class="brands-title">Marcas Líderes en Tecnología</h2>
+            <div class="brands-grid">
+                <div class="brand-item">Kingston</div>
+                <div class="brand-item">SanDisk</div>
+                <div class="brand-item">Samsung</div>
+                <div class="brand-item">Transcend</div>
+                <div class="brand-item">Lexar</div>
+                <div class="brand-item">Crucial</div>
+            </div>
+        </div>
+    </section>
+    <section class="benefits-section">
+        <div class="benefits-container">
+            <div class="benefit-item">
+                <i class="fa-solid fa-bolt benefit-icon"></i>
+                <div class="benefit-text">
+                    <h3>Alta Velocidad</h3>
+                    <p>Transfiere archivos en segundos</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-credit-card benefit-icon"></i>
+                <div class="benefit-text">
+                    <h3>Hasta 12 Cuotas</h3>
+                    <p>Todas las tarjetas</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-shield-halved benefit-icon"></i>
+                <div class="benefit-text">
+                    <h3>Seguridad Total</h3>
+                    <p>Tus datos siempre protegidos</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-headset benefit-icon"></i>
+                <div class="benefit-text">
+                    <h3>Asesoramiento</h3>
+                    <p>Elegí la capacidad ideal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <div class="footer-container">
+        <p class="footer-text">© 2026 Zapato Kiosco | Todos los derechos reservados | Tecnología que te conecta.</p>
+    </div>
+</footer>
+<!-- Scripts -->
+<script src="../js/funciones-globales.js" defer></script>
+<script src="../js/cargar-productos.js" defer></script>
+</body>
+</html>

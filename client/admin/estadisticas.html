@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas | Kiosco Zapato</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/estadisticas.css">
+</head>
+<body>
+
+<div class="admin-layout">
+    <!-- Menú lateral -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <div class="logo-admin">
+                <img src="../assets/img/logos/logo-zapato.png" alt="Logo Kiosco Zapato">
+                <span>KIOSCO ZAPATO</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="productos.html" class="menu-item">
+                <i class="fa-solid fa-box"></i>
+                <span>Productos</span>
+            </a>
+            <a href="pedidos.html" class="menu-item">
+                <i class="fa-solid fa-shopping-cart"></i>
+                <span>Pedidos</span>
+            </a>
+            <a href="facturacion.html" class="menu-item">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span>Facturación</span>
+            </a>
+            <a href="estadisticas.html" class="menu-item active">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Estadísticas</span>
+            </a>
+            <a href="../index.html" class="menu-item salir">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Volver a la tienda</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="admin-main">
+        <header class="admin-top">
+            <div class="bienvenida">
+                <h2>Estadísticas de Venta y Clientes</h2>
+                <p>Análisis de rendimiento - Comercio Multirubro</p>
+            </div>
+            <div class="acciones-top">
+                <select id="selector-periodo" class="selector-periodo" aria-label="Período de estadísticas">
+                    <option value="7" selected>Últimos 7 días</option>
+                    <option value="30">Últimos 30 días</option>
+                    <option value="90">Últimos 3 meses</option>
+                    <option value="365">Este año</option>
+                </select>
+            </div>
+        </header>
+
+        <div class="stats-grid">
+
+            <!-- Resumen de Actividad -->
+            <div class="stat-card">
+                <div class="card-header">
+                    <h3>Resumen de Actividad</h3>
+                </div>
+                <div class="card-content">
+                    <div class="numero-principal">
+                        <span id="ventas-totales">$ 0</span>
+                        <p>Ventas totales en el periodo</p>
+                    </div>
+                    <div class="indicador-crecimiento neutro">
+                        <span id="crecimiento">—</span>
+                        <p>vs periodo anterior</p>
+                    </div>
+                    <div class="datos-adicionales">
+                        <p><strong id="pedidos-periodo">0</strong> pedidos completados</p>
+                        <p><strong id="productos-cat">0</strong> productos en catálogo</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ventas por Categoría -->
+            <div class="stat-card">
+                <div class="card-header">
+                    <h3>Ventas por Categoría</h3>
+                </div>
+                <div class="card-content" id="contenedor-categorias">
+                    <p style="color:#888; text-align:center; padding:1rem;">Cargando datos...</p>
+                </div>
+            </div>
+
+            <!-- Horarios más activos -->
+            <div class="stat-card">
+                <div class="card-header">
+                    <h3>Horarios con más ventas</h3>
+                </div>
+                <div class="card-content">
+                    <p class="texto-resumen" id="resumen-horarios">Analizando actividad...</p>
+                    <div class="grafico-barras-horas" id="grafico-horas">
+                        <div class="hora-col"><div class="barra" style="height:10%"></div><span>8a</span></div>
+                        <div class="hora-col"><div class="barra" style="height:25%"></div><span>10a</span></div>
+                        <div class="hora-col"><div class="barra" style="height:90%"></div><span>12p</span></div>
+                        <div class="hora-col"><div class="barra" style="height:100%"></div><span>2p</span></div>
+                        <div class="hora-col"><div class="barra" style="height:65%"></div><span>4p</span></div>
+                        <div class="hora-col"><div class="barra" style="height:40%"></div><span>6p</span></div>
+                        <div class="hora-col"><div class="barra" style="height:15%"></div><span>8p</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Productos más vendidos -->
+            <div class="stat-card">
+                <div class="card-header">
+                    <h3>Productos Más Vendidos</h3>
+                </div>
+                <div class="card-content" id="contenedor-top-productos">
+                    <p style="color:#888; text-align:center; padding:1rem;">Cargando...</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<script src="js/estadisticas.js"></script>
+</body>
+</html>

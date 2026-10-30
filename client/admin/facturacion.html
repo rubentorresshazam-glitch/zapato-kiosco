@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturación | Kiosco Zapato</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- ✅ ORDEN CORRECTO: Primero admin.css, luego el exclusivo -->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/facturacion.css">
+</head>
+<body>
+
+<div class="admin-layout">
+    <!-- Menú lateral -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <div class="logo-admin">
+                <img src="../assets/img/logos/logo-zapato.png" alt="Logo Kiosco Zapato">
+                <span>KIOSCO ZAPATO</span>
+            </div>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="productos.html" class="menu-item">
+                <i class="fa-solid fa-box"></i>
+                <span>Productos</span>
+            </a>
+            <a href="pedidos.html" class="menu-item">
+                <i class="fa-solid fa-shopping-cart"></i>
+                <span>Pedidos</span>
+            </a>
+            <a href="facturacion.html" class="menu-item active">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span>Facturación</span>
+            </a>
+            <a href="estadisticas.html" class="menu-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Estadísticas</span>
+            </a>
+            <a href="../index.html" class="menu-item salir">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Volver a la tienda</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Contenido principal ✅ Clase específica para aislar estilos -->
+    <main class="admin-main facturacion-main">
+        <div class="facturacion-contenedor">
+            <header class="facturacion-encabezado-pagina">
+                <div class="bienvenida">
+                    <h2>Generación de Facturas</h2>
+                    <p>Creá, visualizá e imprimí tus comprobantes de venta</p>
+                </div>
+                <div class="acciones-top">
+                    <button class="btn btn-primario" onclick="imprimirFactura()">
+                        <i class="fa-solid fa-print"></i> Imprimir / Guardar PDF
+                    </button>
+                </div>
+            </header>
+
+            <!-- Área de la factura -->
+            <section class="bloque-factura" id="comprobante">
+                <!-- Encabezado de la factura -->
+                <div class="factura-encabezado">
+                    <div class="datos-empresa">
+                        <h2>KIOSCO ZAPATO</h2>
+                        <p>Dirección: Calle Principal 123, Avellaneda</p>
+                        <p>Localidad: Río Negro, Argentina</p>
+                        <p>Teléfono: +54 294 4123456</p>
+                        <p>Email: contacto@kioscozapato.com.ar</p>
+                        <p>CUIT: 20-12345678-9</p>
+                    </div>
+                    <div class="datos-factura">
+                        <h3>FACTURA</h3>
+                        <p><strong>N°:</strong> <span id="nroFactura">---</span></p>
+                        <p><strong>Fecha:</strong> <span id="fechaFactura">---</span></p>
+                        <p><strong>Condición:</strong> Contado</p>
+                    </div>
+                </div>
+
+                <!-- Datos del cliente -->
+                <div class="datos-cliente">
+                    <h4>Datos del Cliente</h4>
+                    <p><strong>Nombre:</strong> <span id="clienteNombre">---</span></p>
+                    <p><strong>DNI/CUIT:</strong> <span id="clienteDocumento">---</span></p>
+                    <p><strong>Dirección:</strong> <span id="clienteDireccion">---</span></p>
+                    <p><strong>Teléfono:</strong> <span id="clienteTelefono">---</span></p>
+                </div>
+
+                <!-- Tabla de productos -->
+                <div class="tabla-factura">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cant.</th>
+                                <th>Descripción del Producto</th>
+                                <th>Precio Unitario</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaProductosFactura">
+                            <tr>
+                                <td colspan="4" class="texto-centro">Cargando datos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Totales -->
+                <div class="totales-factura">
+                    <div class="fila-total">
+                        <span>Subtotal:</span>
+                        <span id="subtotalFactura">$ 0,00</span>
+                    </div>
+                    <div class="fila-total">
+                        <span>IVA (21%):</span>
+                        <span id="ivaFactura">$ 0,00</span>
+                    </div>
+                    <div class="fila-total final">
+                        <span>TOTAL A PAGAR:</span>
+                        <span id="totalFactura">$ 0,00</span>
+                    </div>
+                </div>
+
+                <!-- Pie de factura -->
+                <div class="pie-factura">
+                    <p>Gracias por su compra. Esta factura es válida como comprobante fiscal.</p>
+                    <p>Ante cualquier duda, comuníquese al teléfono o correo indicado arriba.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<script src="js/admin.js"></script>
+<script src="js/facturacion.js"></script>
+</body>
+</html>

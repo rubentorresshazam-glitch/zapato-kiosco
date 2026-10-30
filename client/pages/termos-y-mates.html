@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos y Mates | Zapato Kiosco - La esencia del mate</title>
+    <!-- Fuentes e Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="Los mejores termos, mates, bombillas y accesorios para el mate. Calidad, tradición y estilo argentino.">
+    <link rel="icon" type="image/png" href="../assets/img/logos/favicon.png">
+    <!-- Rutas corregidas para cargar estilos -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/termos-y-mates.css">
+</head>
+<body>
+<!-- TOPBAR -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Envíos a todo el país</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Garantía oficial</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-lock"></i>
+            <span>Compra segura</span>
+        </div>
+    </div>
+</section>
+<!-- HEADER -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-top-container">
+            <div class="header-left">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar productos, marcas y más...">
+                    <button class="search-btn">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="../mi-cuenta/carrito.html" class="header-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart-count" id="headerCartCount">0</div>
+                </a>
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-item">
+                <i class="fa-solid fa-bars"></i>
+                <span>Todas las categorías</span>
+            </div>
+            <a href="../index.html" class="nav-item">Inicio</a>
+            <a href="ofertas.html" class="nav-item">Ofertas</a>
+            <a href="novedades.html" class="nav-item">Novedades</a>
+            <a href="mas-vendidos.html" class="nav-item">Más vendidos</a>
+            <a href="contacto.html" class="nav-item">Contacto</a>
+        </div>
+    </nav>
+</header>
+    <main>
+        <!-- BANNER PRINCIPAL -->
+        <section class="hero-banner">
+            <div class="hero-banner-container">
+                <div class="banner-content">
+                    <h1>El verdadero sabor de la tradición</h1>
+                    <p>Mates, termos y todo lo necesario para compartir un buen momento, al estilo de siempre</p>
+                </div>
+            </div>
+        </section>
+        <!-- CONTENIDO PRINCIPAL -->
+        <section class="main-content">
+            <div class="content-container">
+                
+                <!-- FILTROS -->
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h2 class="filters-title">
+                            <i class="fa-solid fa-filter"></i> Filtrar
+                        </h2>
+                        <button class="filters-clear">Limpiar todo</button>
+                    </div>
+                    <div class="filter-group">
+                        <h3 class="filter-subtitle">Tipo de producto</h3>
+                        <label class="filter-option"><input type="checkbox"><span>Mates de calabaza</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>Mates de madera</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>Mates de cuero</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>Termos</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>Bombillas</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>Juegos completos</span></label>
+                    </div>
+                    <div class="filter-group">
+                        <h3 class="filter-subtitle">Material</h3>
+                        <label class="filter-option"><input type="checkbox"><span>Calabaza natural</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>Madera de algarrobo</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>Cuero vacuno</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>Acero inoxidable</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>Plástico resistente</span></label>
+                    </div>
+                    <div class="filter-group">
+                        <h3 class="filter-subtitle">Capacidad</h3>
+                        <label class="filter-option"><input type="checkbox"><span>500 ml</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>1 litro</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>1.2 litros</span></label>
+                        <label class="filter-option"><input type="checkbox"><span>Más de 1.5 litros</span></label>
+                    </div>
+                    <div class="filter-group">
+                        <h3 class="filter-subtitle">Rango de precio</h3>
+                        <label class="filter-option"><input type="radio" name="precio-mate" checked><span>Todos</span></label>
+                        <label class="filter-option"><input type="radio" name="precio-mate"><span>Hasta $15.000</span></label>
+                        <label class="filter-option"><input type="radio" name="precio-mate"><span>$15.000 - $35.000</span></label>
+                        <label class="filter-option"><input type="radio" name="precio-mate"><span>Más de $35.000</span></label>
+                    </div>
+                </aside>
+                <!-- LISTA DE PRODUCTOS -->
+                <div class="products-section">
+                    <div class="products-header">
+                        <div class="products-info">
+                            <h2>Termos y Mates</h2>
+                            <span class="products-count" id="contador-productos">Mostrando productos...</span>
+                        </div>
+                        <div class="order-selector">
+                            <label for="ordenar">Ordenar por:</label>
+                            <select id="ordenar" class="select-style">
+                                <option value="recientes">Más nuevos</option>
+                                <option value="vendidos">Más elegidos</option>
+                                <option value="menor">Menor precio</option>
+                                <option value="mayor">Mayor precio</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- CONTENEDOR DE PRODUCTOS - CARGADOS DESDE LA BASE DE DATOS -->
+                    <div class="products-grid">
+                        <!-- Los productos aparecerán aquí automáticamente -->
+                    </div>
+                    
+                    <!-- SECCIÓN TRADICIÓN -->
+                    <div class="tradition-section">
+                        <h3>El mate, más que una bebida</h3>
+                        <p>En Argentina el mate es encuentro, es amistad y es costumbre. Desde hace generaciones nos acompaña en la mañana, en el trabajo y en cada charla. Aquí encontrás piezas hechas con respeto por la tradición, combinando lo artesanal con la calidad de hoy.</p>
+                    </div>
+                    <!-- MARCAS -->
+                    <section class="brands-section">
+                        <div class="brands-container">
+                            <h2 class="brands-title">Las marcas que confían en la tradición</h2>
+                            <div class="brands-grid">
+                                <div class="brand-item">Stanley</div>
+                                <div class="brand-item">Termolar</div>
+                                <div class="brand-item">Imperial</div>
+                                <div class="brand-item">Artesanos del Norte</div>
+                                <div class="brand-item">Matear</div>
+                                <div class="brand-item">Quebracho</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">© 2026 Zapato Kiosco | El lugar para compartir buenos momentos y buena yerba</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts - sin cambiar nada de los tuyos -->
+    <script src="../js/funciones-globales.js" defer></script>
+    <script src="../js/cargar-productos.js" defer></script>
+</body>
+</html>

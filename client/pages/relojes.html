@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relojes | Zapato Kiosco - Estilo y precisión en cada momento</title>
+    <!-- Fuentes e Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="Relojes analógicos, digitales, deportivos y de pulsera. Diseños para todos los gustos, resistentes, precisos y con excelente relación calidad-precio.">
+    <link rel="icon" type="image/png" href="../assets/img/logos/favicon.png">
+    <!-- Rutas corregidas -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/relojes.css">
+</head>
+<body>
+<!-- TOPBAR -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Envíos a todo el país</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Garantía oficial</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-lock"></i>
+            <span>Compra segura</span>
+        </div>
+    </div>
+</section>
+<!-- HEADER -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-top-container">
+            <div class="header-left">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar productos, marcas y más...">
+                    <button class="search-btn">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="../mi-cuenta/carrito.html" class="header-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart-count" id="headerCartCount">0</div>
+                </a>
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-item">
+                <i class="fa-solid fa-bars"></i>
+                <span>Todas las categorías</span>
+            </div>
+            <a href="../index.html" class="nav-item">Inicio</a>
+            <a href="ofertas.html" class="nav-item">Ofertas</a>
+            <a href="novedades.html" class="nav-item">Novedades</a>
+            <a href="mas-vendidos.html" class="nav-item">Más vendidos</a>
+            <a href="contacto.html" class="nav-item">Contacto</a>
+        </div>
+    </nav>
+</header>
+<main>
+    <!-- BANNER PRINCIPAL -->
+    <section class="hero-banner">
+        <div class="hero-banner-container">
+            <div class="banner-content">
+                <h1>Relojes para cada momento</h1>
+                <p>Encontrá el modelo ideal para vos: relojes analógicos clásicos, digitales deportivos, resistentes al agua y de excelente durabilidad. Diseños para todos los estilos y presupuestos.</p>
+            </div>
+        </div>
+    </section>
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="main-content">
+        <div class="content-container">
+            
+            <!-- FILTROS -->
+            <aside class="filters-sidebar">
+                <div class="filters-header">
+                    <h2 class="filters-title">
+                        <i class="fa-solid fa-filter"></i> Filtrar
+                    </h2>
+                    <button class="filters-clear">Limpiar todo</button>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Tipo de reloj</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Analógico</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Digital</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Analógico-Digital</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Deportivo</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Clásico / Formal</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Para niños</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Material de la correa</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Silicona / Goma</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Metal / Acero</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Cuero / Cuero sintético</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Nylon / Tela</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Resistencia</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Resistente al agua</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Sumergible hasta 50m</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Resistente a golpes</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Cristal endurecido</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Funciones</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Alarma</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Cronómetro</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Luz nocturna</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Calendario</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Fecha y día</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Rango de precio</h3>
+                    <label class="filter-option"><input type="radio" name="precio-relojes" checked><span>Todos</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-relojes"><span>Hasta $3.000</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-relojes"><span>$3.000 - $8.000</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-relojes"><span>Más de $8.000</span></label>
+                </div>
+            </aside>
+            
+            <!-- LISTA DE PRODUCTOS -->
+            <div class="products-section">
+                <div class="products-header">
+                    <div class="products-info">
+                        <h2>Relojes</h2>
+                        <span class="products-count" id="contador-productos">Mostrando productos...</span>
+                    </div>
+                    <div class="order-selector">
+                        <label for="ordenar">Ordenar por:</label>
+                        <select id="ordenar" class="select-style">
+                            <option value="recientes">Más nuevos</option>
+                            <option value="vendidos">Más vendidos</option>
+                            <option value="menor">Menor precio</option>
+                            <option value="mayor">Mayor precio</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- CONTENEDOR DE PRODUCTOS - CARGADOS DESDE LA BASE DE DATOS -->
+                <div class="products-grid">
+                    <!-- Los productos aparecerán aquí automáticamente -->
+                </div>
+                
+                <!-- SECCIÓN INFORMATIVA -->
+                <div class="info-section">
+                    <h3>Precisión y estilo en cada detalle</h3>
+                    <p>Todos nuestros relojes cuentan con mecanismos de cuarzo confiables para garantizar la hora exacta. Seleccionamos materiales resistentes para que te acompañen mucho tiempo, con diseños que se adaptan a tu personalidad y necesidades en cualquier momento del día.</p>
+                </div>
+                <!-- MARCAS -->
+                <section class="brands-section">
+                    <div class="brands-container">
+                        <h2 class="brands-title">Marcas de confianza</h2>
+                        <div class="brands-grid">
+                            <div class="brand-item">Casio</div>
+                            <div class="brand-item">Q&Q</div>
+                            <div class="brand-item">Timex</div>
+                            <div class="brand-item">Citizen</div>
+                            <div class="brand-item">Skmei</div>
+                            <div class="brand-item">Curren</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <p class="footer-text">© 2026 Zapato Kiosco | Para mayor duración, evitá golpes fuertes y revisá periódicamente el estado de la batería.</p>
+    </div>
+</footer>
+<!-- Scripts -->
+<script src="../js/funciones-globales.js" defer></script>
+<script src="../js/cargar-productos.js" defer></script>
+</body>
+</html>

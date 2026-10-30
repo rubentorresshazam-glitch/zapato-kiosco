@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Confirmada | Zapato Kiosco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Rutas CORRECTAS desde mi-cuenta -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/checkout.css">
+</head>
+<body>
+    <!-- 🟡 BARRA SUPERIOR -->
+    <section class="topbar">
+        <div class="topbar-container">
+            <div class="topbar-item"><i class="fa-solid fa-truck-fast"></i> Envíos a todo el país</div>
+            <div class="topbar-item"><i class="fa-solid fa-shield-halved"></i> Garantía oficial</div>
+            <div class="topbar-item"><i class="fa-solid fa-lock"></i> Compra segura</div>
+        </div>
+    </section>
+
+    <!-- ⚫ ENCABEZADO -->
+    <header class="header header-simple">
+        <div class="header-top">
+            <div class="header-top-container">
+                <div class="header-left">
+                    <a href="../index.html" class="logo-link">
+                        <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="checkout-container">
+            <div class="confirmacion-compra contenido-centrado">
+                <div class="icono-exito">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <h1>¡Tu compra fue confirmada!</h1>
+                <p class="mensaje-principal">Gracias por elegirnos. Enviamos todos los detalles al correo que registraste.</p>
+
+                <!-- Datos del pedido -->
+                <div class="datos-pedido">
+                    <h3>Pedido N°: <span id="pedido_numero"></span></h3>
+                    <p><strong>Fecha:</strong> <span id="pedido_fecha"></span></p>
+                    <p><strong>Método de pago:</strong> <span id="pedido_metodo"></span></p>
+                    <p><strong>Total abonado:</strong> <span id="pedido_total"></span></p>
+                </div>
+
+                <!-- Resumen del envío -->
+                <div class="info-envio">
+                    <h4>Datos de entrega</h4>
+                    <p id="pedido_direccion"></p>
+                    <p><strong>Costo de envío:</strong> <span id="pedido_costo_envio"></span></p>
+                    <p><strong>Estado:</strong> <span id="pedido_estado">Pendiente de pago</span></p>
+                </div>
+
+                <!-- Botones -->
+                <div class="btn-group">
+                    <a href="../index.html" class="btn-volver">Volver a la tienda</a>
+                    <a href="perfil.html#pedidos" class="btn-siguiente">Ver mis pedidos</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>© 2026 Zapato Kiosco | Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Ruta CORRECTA -->
+    <script src="../js/confirmacion.js" defer></script>
+</body>
+</html>

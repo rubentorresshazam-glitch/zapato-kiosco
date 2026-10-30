@@ -1,0 +1,285 @@
+/* ==========================================
+   📄 DETALLE DE PRODUCTO - Adaptado a Zapato Kiosco
+========================================== */
+
+/* Migas de pan */
+.miga-de-pan {
+    padding: 1rem 0;
+    font-size: 14px;
+    color: var(--color-gray-text);
+}
+.miga-de-pan a {
+    color: var(--auto-primary);
+    text-decoration: none;
+}
+.miga-de-pan a:hover {
+    text-decoration: underline;
+    color: var(--auto-dark);
+}
+
+/* Contenedor principal */
+.detalle-contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding: 2rem 0;
+}
+
+/* Columna de imágenes */
+.columna-imagenes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.imagen-principal {
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 450px;
+    background: linear-gradient(135deg, #F8FAFC 0%, var(--auto-light) 100%);
+    box-shadow: var(--shadow-sm);
+}
+.imagen-principal img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.miniaturas {
+    display: flex;
+    gap: 0.8rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+.miniaturas img {
+    width: 70px;
+    height: 70px;
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    padding: 4px;
+    cursor: pointer;
+    object-fit: cover;
+    transition: var(--transition);
+}
+.miniaturas img:hover {
+    border-color: var(--auto-medium);
+}
+.miniaturas img.activa {
+    border-color: var(--auto-primary);
+    box-shadow: 0 0 0 2px rgba(177, 39, 39, 0.2);
+}
+
+/* Columna de información */
+.columna-info h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--auto-dark);
+    line-height: 1.3;
+}
+.precio-block {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+.precio-antes {
+    font-size: 18px;
+    color: var(--color-gray-medium);
+    text-decoration: line-through;
+}
+.precio-actual {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--auto-primary);
+    margin: 0;
+}
+.descuento {
+    background: linear-gradient(135deg, #00a650, #00c05c);
+    color: white;
+    padding: 4px 10px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 600;
+}
+.disponibilidad {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 16px;
+    color: #00a650;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+.disponibilidad.sin-stock {
+    color: #d63030;
+}
+
+/* Descripción */
+.descripcion-producto {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--auto-medium);
+}
+.descripcion-producto h3 {
+    font-size: 18px;
+    color: var(--auto-dark);
+    margin-bottom: 1rem;
+}
+.descripcion-producto p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-gray-text);
+}
+
+/* Cantidad */
+.bloque-cantidad {
+    margin-bottom: 2rem;
+}
+.bloque-cantidad label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    color: var(--auto-dark);
+}
+.selector-cantidad {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--auto-medium);
+    border-radius: var(--radius);
+    width: fit-content;
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+}
+.selector-cantidad button {
+    background: var(--auto-light);
+    border: none;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--auto-dark);
+}
+.selector-cantidad button:hover {
+    background: var(--auto-medium);
+}
+.selector-cantidad button:first-child {
+    border-radius: var(--radius) 0 0 var(--radius);
+}
+.selector-cantidad button:last-child {
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+.selector-cantidad input {
+    width: 60px;
+    height: 40px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--auto-dark);
+    background: transparent;
+}
+.selector-cantidad input:focus {
+    outline: none;
+}
+
+/* Botones */
+.bloque-botones {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+.btn-agregar-carrito {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--color-yellow), #FFE044);
+    color: var(--color-black);
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+.btn-agregar-carrito:hover {
+    background: linear-gradient(135deg, #FFE044, var(--color-yellow));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 204, 0, 0.35);
+}
+.btn-comprar-ahora {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--auto-primary), var(--auto-secondary));
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+.btn-comprar-ahora:hover {
+    background: linear-gradient(135deg, var(--auto-dark), var(--auto-primary));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(177, 39, 39, 0.25);
+}
+
+/* Envío */
+.bloque-envio {
+    background: var(--auto-light);
+    padding: 1.2rem;
+    border-radius: var(--radius-lg);
+    border: var(--border-subtle);
+}
+.bloque-envio h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 16px;
+    color: var(--auto-dark);
+    font-weight: 600;
+}
+.bloque-envio p {
+    margin: 0.5rem 0;
+    font-size: 14px;
+    color: var(--color-gray-text);
+}
+.bloque-envio i {
+    color: var(--auto-primary);
+    margin-right: 6px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .detalle-contenedor {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .imagen-principal {
+        height: 350px;
+    }
+}
+@media (max-width: 576px) {
+    .imagen-principal {
+        height: 280px;
+    }
+    .bloque-botones {
+        flex-direction: column;
+    }
+    .btn-agregar-carrito,
+    .btn-comprar-ahora {
+        width: 100%;
+    }
+    .columna-info h1 {
+        font-size: 22px;
+    }
+    .precio-actual {
+        font-size: 28px;
+    }
+}

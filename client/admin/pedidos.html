@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos | Kiosco Zapato</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/pedidos.css">
+</head>
+<body>
+
+<div class="admin-layout">
+    <!-- Menú lateral -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <div class="logo-admin">
+                <img src="../assets/img/logos/logo-zapato.png" alt="Logo Kiosco Zapato">
+                <span>KIOSCO ZAPATO</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="productos.html" class="menu-item">
+                <i class="fa-solid fa-box"></i>
+                <span>Productos</span>
+            </a>
+            <a href="pedidos.html" class="menu-item active">
+                <i class="fa-solid fa-shopping-cart"></i>
+                <span>Pedidos</span>
+            </a>
+            <a href="facturacion.html" class="menu-item">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span>Facturación</span>
+            </a>
+            <a href="estadisticas.html" class="menu-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Estadísticas</span>
+            </a>
+            <a href="../index.html" class="menu-item salir">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Volver a la tienda</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="admin-main">
+        <div class="pedidos-contenedor">
+            <h1>Gestión de Pedidos</h1>
+
+            <!-- Barra de filtros -->
+            <div class="barra-herramientas">
+                <div class="busqueda">
+                    <input type="text" id="buscadorPedido" placeholder="🔍 Buscar por N° pedido, cliente o teléfono...">
+                </div>
+                <div class="filtros-estado">
+                    <select id="filtroEstado">
+                        <option value="todos">Todos los estados</option>
+                        <option value="recibido">Pendientes</option>
+                        <option value="confirmado">Confirmados</option>
+                        <option value="enviado">Enviados</option>
+                        <option value="entregado">Entregados</option>
+                        <option value="cancelado">Cancelados</option>
+                    </select>
+                </div>
+                <button class="btn-primario" onclick="cargarPedidos()">
+                    <i class="fa-solid fa-sync"></i> Actualizar
+                </button>
+            </div>
+
+            <!-- Resumen rápido -->
+            <div class="resumen-pedidos">
+                <div class="tarjeta-resumen">
+                    <span class="etiqueta">Pendientes</span>
+                    <span class="valor naranja" id="cantPendientes">0</span>
+                </div>
+                <div class="tarjeta-resumen">
+                    <span class="etiqueta">Confirmados</span>
+                    <span class="valor azul" id="cantConfirmados">0</span>
+                </div>
+                <div class="tarjeta-resumen">
+                    <span class="etiqueta">Entregados</span>
+                    <span class="valor verde" id="cantEntregados">0</span>
+                </div>
+                <div class="tarjeta-resumen">
+                    <span class="etiqueta">Total del día</span>
+                    <span class="valor" id="totalDia">$ 0</span>
+                </div>
+            </div>
+
+            <!-- Tabla de pedidos -->
+            <div class="contenedor-tabla">
+                <table class="tabla-pedidos">
+                    <thead>
+                        <tr>
+                            <th>N° Pedido</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Contacto</th>
+                            <th>Dirección</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaPedidos">
+                        <tr>
+                            <td colspan="8" style="text-align:center; padding:2rem; color:#888;">
+                                Cargando pedidos...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Modal detalle de pedido -->
+<div class="modal" id="modalDetalle">
+    <div class="modal-contenido">
+        <div class="modal-cabecera">
+            <h3>Detalle del Pedido #<span id="nroPedidoModal"></span></h3>
+            <button class="btn-cerrar" onclick="cerrarModal()">&times;</button>
+        </div>
+        <div class="modal-cuerpo" id="detallePedidoModal"></div>
+        <div class="modal-pie">
+            <button class="btn-secundario" onclick="cerrarModal()">Cerrar</button>
+            <button class="btn-primario" id="btnGenerarFactura">Generar Factura</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/pedidos.js"></script>
+</body>
+</html>

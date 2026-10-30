@@ -1,0 +1,102 @@
+/* ==========================================
+   📝 ESTILOS PÁGINA DE REGISTRO
+========================================== */
+
+.registro-container {
+    max-width: 500px;
+    margin: 50px auto 80px;
+    padding: 35px;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-silver);
+}
+
+.registro-titulo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--color-black);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-yellow);
+}
+
+.form-grupo {
+    margin-bottom: 22px;
+}
+
+.form-grupo label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-black);
+    font-size: 14px;
+}
+
+.form-grupo input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-gray-medium);
+    border-radius: var(--radius);
+    font-size: 14px;
+    color: var(--color-gray-dark);
+    transition: var(--transition);
+    background-color: var(--color-white);
+}
+
+.form-grupo input:focus {
+    outline: none;
+    border-color: var(--color-yellow);
+    box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.2);
+}
+
+.form-grupo input::placeholder {
+    color: var(--color-silver);
+}
+
+.btn-registrar {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--color-black);
+    color: var(--color-yellow);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 10px;
+}
+
+.btn-registrar:hover {
+    background-color: var(--color-yellow);
+    color: var(--color-black);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.enlace-login {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.enlace-login a {
+    color: var(--color-blue);
+    font-weight: 600;
+}
+
+.enlace-login a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .registro-container {
+        margin: 30px 15px 60px;
+        padding: 25px;
+    }
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahumerios | Zapato Kiosco - Aromas que transforman tu espacio</title>
+    <!-- Fuentes e Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="Sahumerios de las mejores marcas, variedad de aromas y presentaciones. Crea ambientes de paz, armonía y bienestar en tu hogar.">
+    <link rel="icon" type="image/png" href="../assets/img/logos/favicon.png">
+    <!-- Rutas corregidas -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/sahumerios.css">
+</head>
+<body>
+<!-- TOPBAR -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Envíos a todo el país</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Garantía oficial</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-lock"></i>
+            <span>Compra segura</span>
+        </div>
+    </div>
+</section>
+<!-- HEADER -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-top-container">
+            <div class="header-left">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar productos, marcas y más...">
+                    <button class="search-btn">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="../mi-cuenta/carrito.html" class="header-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart-count" id="headerCartCount">0</div>
+                </a>
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-item">
+                <i class="fa-solid fa-bars"></i>
+                <span>Todas las categorías</span>
+            </div>
+            <a href="../index.html" class="nav-item">Inicio</a>
+            <a href="ofertas.html" class="nav-item">Ofertas</a>
+            <a href="novedades.html" class="nav-item">Novedades</a>
+            <a href="mas-vendidos.html" class="nav-item">Más vendidos</a>
+            <a href="contacto.html" class="nav-item">Contacto</a>
+        </div>
+    </nav>
+</header>
+<main>
+    <!-- BANNER PRINCIPAL -->
+    <section class="hero-banner">
+        <div class="hero-banner-container">
+            <div class="banner-content">
+                <h1>Aromas que transforman tus espacios</h1>
+                <p>Descubrí nuestra selección de sahumerios de alta calidad. Fragancias naturales, duraderas y pensadas para crear ambientes de paz, armonía y bienestar en cada rincón de tu hogar.</p>
+            </div>
+        </div>
+    </section>
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="main-content">
+        <div class="content-container">
+            
+            <!-- FILTROS -->
+            <aside class="filters-sidebar">
+                <div class="filters-header">
+                    <h2 class="filters-title">
+                        <i class="fa-solid fa-filter"></i> Filtrar
+                    </h2>
+                    <button class="filters-clear">Limpiar todo</button>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Tipo de sahumerio</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Varillas tradicionales</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Conos</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Polvos y resinas</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Carbón vegetal</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Esencias líquidas</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Aroma principal</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Sándalo</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Lavanda</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Canela</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Jazmín</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Mirra e Incienso</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Rosas</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Cítricos</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Propósito</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Relajación y descanso</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Limpieza energética</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Armonía y paz</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Concentración</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Ambiente agradable</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Marcas destacadas</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Flor de Loto</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Namaste</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Shanti</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Green Tree</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Masala</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Rango de precio</h3>
+                    <label class="filter-option"><input type="radio" name="precio-aroma" checked><span>Todos</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-aroma"><span>Hasta $1.500</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-aroma"><span>$1.500 - $3.500</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-aroma"><span>Más de $3.500</span></label>
+                </div>
+            </aside>
+            
+            <!-- LISTA DE PRODUCTOS -->
+            <div class="products-section">
+                <div class="products-header">
+                    <div class="products-info">
+                        <h2>Sahumerios</h2>
+                        <span class="products-count" id="contador-productos">Mostrando productos...</span>
+                    </div>
+                    <div class="order-selector">
+                        <label for="ordenar">Ordenar por:</label>
+                        <select id="ordenar" class="select-style">
+                            <option value="recientes">Más nuevos</option>
+                            <option value="vendidos">Más vendidos</option>
+                            <option value="menor">Menor precio</option>
+                            <option value="mayor">Mayor precio</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- CONTENEDOR DE PRODUCTOS - CARGADOS DESDE LA BASE DE DATOS -->
+                <div class="products-grid">
+                    <!-- Los productos aparecerán aquí automáticamente -->
+                </div>
+                
+                <!-- SECCIÓN INFORMATIVA -->
+                <div class="info-section">
+                    <h3>El poder de los aromas</h3>
+                    <p>Los sahumerios son una forma milenaria de transformar la energía de los ambientes. Elegí el aroma adecuado según lo que necesites: relajación, concentración, limpieza o simplemente para disfrutar de un hogar con un olor agradable y natural. Todos nuestros productos están elaborados con ingredientes de primera calidad.</p>
+                </div>
+                <!-- MARCAS -->
+                <section class="brands-section">
+                    <div class="brands-container">
+                        <h2 class="brands-title">Marcas de confianza</h2>
+                        <div class="brands-grid">
+                            <div class="brand-item">Flor de Loto</div>
+                            <div class="brand-item">Namaste</div>
+                            <div class="brand-item">Shanti</div>
+                            <div class="brand-item">Green Tree</div>
+                            <div class="brand-item">Satya</div>
+                            <div class="brand-item">Masala</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <p class="footer-text">© 2026 Zapato Kiosco | Recordá usar los sahumerios con precaución, en lugares ventilados y lejos de materiales inflamables.</p>
+    </div>
+</footer>
+<!-- Scripts -->
+<script src="../js/funciones-globales.js" defer></script>
+<script src="../js/cargar-productos.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra | Zapato Kiosco</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/checkout.css">
+</head>
+<body>
+
+    <section class="topbar">
+        <div class="topbar-container">
+            <div class="topbar-item"><i class="fa-solid fa-truck-fast"></i> Envíos a todo el país</div>
+            <div class="topbar-item"><i class="fa-solid fa-shield-halved"></i> Compra segura</div>
+            <div class="topbar-item"><i class="fa-solid fa-lock"></i> Datos protegidos</div>
+        </div>
+    </section>
+
+    <header class="header header-simple">
+        <div class="header-top">
+            <div class="header-top-container">
+                <div class="header-left">
+                    <a href="../index.html" class="logo-link">
+                        <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
+                    </a>
+                </div>
+                <div class="header-right">
+                    <a href="carrito.html" class="header-btn">
+                        <i class="fa-solid fa-arrow-left"></i> Volver al carrito
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="checkout-container">
+
+            <!-- PANTALLA DE CARGA -->
+            <div class="checkout-screen active" id="pantalla-carga">
+                <div class="contenido-centrado">
+                    <div class="spinner"></div>
+                    <h2>Preparando tu compra</h2>
+                    <p>Un momento...</p>
+                </div>
+            </div>
+
+            <!-- PASO 1: DATOS DE ENTREGA -->
+            <div class="checkout-screen" id="paso-datos">
+                <h2>📦 Datos de entrega</h2>
+                <p class="subtitulo">Completá tus datos para coordinar la entrega</p>
+
+                <form id="form-envio" class="formulario-datos">
+                    <div class="form-group">
+                        <label for="comprador_nombre">Nombre y Apellido *</label>
+                        <input type="text" id="comprador_nombre" required placeholder="Ej: Juan Pérez">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comprador_telefono">Teléfono / WhatsApp *</label>
+                        <input type="tel" id="comprador_telefono" required placeholder="Ej: 294 123 4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="envio_direccion">Dirección completa *</label>
+                        <input type="text" id="envio_direccion" required placeholder="Calle, número, barrio, localidad, provincia">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comprador_email">Correo electrónico</label>
+                        <input type="email" id="comprador_email" placeholder="tu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observaciones">Indicaciones o comentarios</label>
+                        <textarea id="observaciones" rows="3" placeholder="Dejarnos una puerta, horario de entrega, etc."></textarea>
+                    </div>
+
+                    <hr>
+
+                    <!-- RESUMEN DE COMPRA -->
+                    <h3>📋 Resumen de tu compra</h3>
+                    <div id="lista-resumen"></div>
+                    
+                    <hr>
+                    
+                    <div class="fila-total total-final">
+                        <strong>Total a pagar:</strong>
+                        <strong id="res-total">$ 0</strong>
+                    </div>
+
+                    <hr>
+
+                    <!-- MÉTODO DE PAGO — SOLO MERCADO PAGO -->
+                    <h3>💳 Método de pago</h3>
+                    <div class="metodo-pago-unico">
+                        <label class="opcion-pago activa">
+                            <i class="fa-brands fa-cc-mercado-pago"></i>
+                            <span>Mercado Pago</span>
+                            <small>Tarjeta, débito, efectivo o billetera</small>
+                        </label>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="carrito.html" class="btn-volver">
+                            <i class="fa-solid fa-chevron-left"></i> Volver al carrito
+                        </a>
+                        <button type="submit" class="btn-finalizar">
+                            <i class="fa-brands fa-cc-mercado-pago"></i> Pagar con Mercado Pago
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Zapato Kiosco - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="../js/checkout.js" defer></script>
+</body>
+</html>

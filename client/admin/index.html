@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | Kiosco Zapato</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="admin-layout">
+    <!-- Menú lateral -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <div class="logo-admin">
+                <img src="../assets/img/logos/logo-zapato.png" alt="Logo Kiosco Zapato">
+                <span>KIOSCO ZAPATO</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="productos.html" class="menu-item">
+                <i class="fa-solid fa-box"></i>
+                <span>Productos</span>
+            </a>
+            <a href="pedidos.html" class="menu-item">
+                <i class="fa-solid fa-shopping-cart"></i>
+                <span>Pedidos</span>
+            </a>
+            <a href="facturacion.html" class="menu-item">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span>Facturación</span>
+            </a>
+            <a href="estadisticas.html" class="menu-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Estadísticas</span>
+            </a>
+            <a href="../index.html" class="menu-item salir">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Volver a la tienda</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="admin-main">
+        <header class="admin-top">
+            <div class="bienvenida-principal">
+                <h1 class="saludo-destacado">¡HOLA! 👋</h1>
+                <p class="subtitulo-bienvenida">Todo listo para gestionar <strong>tu E-commerce</strong></p>
+            </div>
+            <div class="acciones-top">
+                <a href="pedidos.html" class="btn-notif">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="badge" id="contador-pedidos">0</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Tarjetas con datos reales -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="card-header">
+                    <h3>Ventas del Día</h3>
+                    <i class="fa-solid fa-dollar-sign" style="color: var(--amarillo-principal); font-size: 1.2rem;"></i>
+                </div>
+                <div class="card-content">
+                    <span class="numero-principal" id="ventas-dia">$ 0</span>
+                    <span class="indicador-crecimiento neutro">Sin datos aún</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="card-header">
+                    <h3>Pedidos Recibidos</h3>
+                    <i class="fa-solid fa-shopping-bag" style="color: var(--amarillo-principal); font-size: 1.2rem;"></i>
+                </div>
+                <div class="card-content">
+                    <span class="numero-principal" id="pedidos-total">0</span>
+                    <span class="indicador-crecimiento neutro">Total registrados</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="card-header">
+                    <h3>Productos Activos</h3>
+                    <i class="fa-solid fa-box-open" style="color: var(--amarillo-principal); font-size: 1.2rem;"></i>
+                </div>
+                <div class="card-content">
+                    <span class="numero-principal" id="productos-activos">0</span>
+                    <span class="indicador-crecimiento neutro">En catálogo</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="card-header">
+                    <h3>Pedidos Pendientes</h3>
+                    <i class="fa-solid fa-clock" style="color: var(--amarillo-principal); font-size: 1.2rem;"></i>
+                </div>
+                <div class="card-content">
+                    <span class="numero-principal" id="pedidos-pendientes">0</span>
+                    <span class="indicador-crecimiento neutro">A confirmar</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Últimos pedidos reales -->
+        <div class="stat-card" style="margin-top: 1.5rem;">
+            <div class="card-header">
+                <h3>Últimos Pedidos Realizados</h3>
+                <a href="pedidos.html" class="ver-todos">Ver todos →</a>
+            </div>
+            <div class="card-content">
+                <table class="tabla-pedidos">
+                    <thead>
+                        <tr>
+                            <th>N° Pedido</th>
+                            <th>Cliente</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-ultimos-pedidos">
+                        <!-- Se llena desde JS -->
+                        <tr>
+                            <td colspan="6" style="text-align:center; padding:2rem; color:#888;">
+                                Cargando datos...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

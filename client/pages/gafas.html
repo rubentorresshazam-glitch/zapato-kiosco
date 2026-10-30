@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gafas y Lentes | Zapato Kiosco - Estilo y Protección Visual</title>
+    <!-- Fuentes e Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <meta name="description" content="Gafas de sol, lentes oftálmicos, deportivos y accesorios. La mejor variedad en diseños modernos, protección UV y calidad garantizada.">
+    <link rel="icon" type="image/png" href="../assets/img/logos/favicon.png">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/gafas.css">
+</head>
+<body>
+<!-- TOPBAR -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Envíos a todo el país</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Garantía oficial</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-lock"></i>
+            <span>Compra segura</span>
+        </div>
+    </div>
+</section>
+<!-- HEADER -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-top-container">
+            <div class="header-left">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar productos, marcas y más...">
+                    <button class="search-btn">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="../mi-cuenta/carrito.html" class="header-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart-count" id="headerCartCount">0</div>
+                </a>
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-item">
+                <i class="fa-solid fa-bars"></i>
+                <span>Todas las categorías</span>
+            </div>
+            <a href="../index.html" class="nav-item">Inicio</a>
+            <a href="ofertas.html" class="nav-item">Ofertas</a>
+            <a href="novedades.html" class="nav-item">Novedades</a>
+            <a href="mas-vendidos.html" class="nav-item">Más vendidos</a>
+            <a href="contacto.html" class="nav-item">Contacto</a>
+        </div>
+    </nav>
+</header>
+<main>
+    <!-- BANNER PRINCIPAL -->
+    <section class="hero-banner">
+        <div class="hero-banner-container fade-slideshow">
+            <div class="fade-slide active">
+                <img src="../assets/img/banners/banner-gafas-sol.png" alt="Gafas de sol modernas" class="fade-image">
+            </div>
+            <div class="fade-slide">
+                <img src="../assets/img/banners/banner-gafas-graduadas.png" alt="Lentes oftálmicos y graduados" class="fade-image">
+            </div>
+            <div class="fade-slide">
+                <img src="../assets/img/banners/banner-gafas-deportivas.png" alt="Gafas deportivas y protección" class="fade-image">
+            </div>
+        </div>
+    </section>
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="main-content">
+        <div class="content-container">
+            
+            <!-- FILTROS -->
+            <aside class="filters-sidebar">
+                <div class="filters-header">
+                    <h2 class="filters-title">
+                        <i class="fa-solid fa-filter"></i> Filtrar
+                    </h2>
+                    <button class="filters-clear">Limpiar todo</button>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Tipo de Lente</h3>
+                    <label class="filter-option"><input type="checkbox"> <span>Gafas de Sol</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Lentes Graduados</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Gafas Deportivas</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Lentes de Lectura</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Protección Computadora</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Accesorios (estuches, paños)</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Forma de Armazón</h3>
+                    <label class="filter-option"><input type="checkbox"> <span>Redondas / Vintage</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Cuadradas / Modernas</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Aviador / Clásicas</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Cat-Eye / Elegantes</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Sin montura / Minimalistas</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Ovaladas / Universales</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Material</h3>
+                    <label class="filter-option"><input type="checkbox"> <span>Metálico / Acero</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Acetato / Plástico</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Titanio / Ultraliviano</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Madera / Natural</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Protección</h3>
+                    <label class="filter-option"><input type="checkbox"> <span>UV400 (Máxima)</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Polarizadas</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Antirreflejantes</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Filtro Luz Azul</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Rango de Precio</h3>
+                    <label class="filter-option"><input type="radio" name="precio-gafas" checked> <span>Todos</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-gafas"> <span>Hasta $ 15.000</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-gafas"> <span>$15.000 - $40.000</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-gafas"> <span>$40.000 - $80.000</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-gafas"> <span>Más de $ 80.000</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Marcas</h3>
+                    <label class="filter-option"><input type="checkbox"> <span>Ray-Ban</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Oakley</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Vogue</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Polaroid</span></label>
+                    <label class="filter-option"><input type="checkbox"> <span>Arnette</span></label>
+                </div>
+            </aside>
+            
+            <!-- LISTA DE PRODUCTOS -->
+            <div class="products-section">
+                <div class="products-header">
+                    <div class="products-info">
+                        <h2 class="products-title">Gafas, Lentes y Accesorios</h2>
+                        <span class="products-count" id="contador-productos">Mostrando productos...</span>
+                    </div>
+                    <div class="order-selector">
+                        <label for="ordenar">Ordenar por:</label>
+                        <select id="ordenar" class="select-style">
+                            <option value="recientes">Más nuevos</option>
+                            <option value="vendidos">Más vendidos</option>
+                            <option value="menor">Menor precio</option>
+                            <option value="mayor">Mayor precio</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- CONTENEDOR DE PRODUCTOS - CARGADOS DESDE LA BASE DE DATOS -->
+                <div class="products-grid">
+                    <!-- Los productos aparecerán aquí automáticamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SECCIONES INFERIORES -->
+    <section class="brands-section">
+        <div class="brands-container">
+            <h2 class="brands-title">Marcas Destacadas</h2>
+            <div class="brands-grid">
+                <div class="brand-item">Ray-Ban</div>
+                <div class="brand-item">Oakley</div>
+                <div class="brand-item">Vogue</div>
+                <div class="brand-item">Polaroid</div>
+                <div class="brand-item">Arnette</div>
+                <div class="brand-item">Carrera</div>
+            </div>
+        </div>
+    </section>
+    <section class="benefits-section">
+        <div class="benefits-container">
+            <div class="benefit-item">
+                <i class="fa-solid fa-sun benefit-icon"></i>
+                <div class="benefit-text">
+                    <h3>Protección Total</h3>
+                    <span>UV400 certificado</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-credit-card benefit-icon"></i>
+                <div class="benefit-text">
+                    <h3>Hasta 12 Cuotas</h3>
+                    <span>Todas las tarjetas</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-shield-halved benefit-icon"></i>
+                <div class="benefit-text">
+                    <h3>Materiales Premium</h3>
+                    <span>Durabilidad y confort</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-headset benefit-icon"></i>
+                <div class="benefit-text">
+                    <h3>Asesoramiento</h3>
+                    <span>Encontrá tu estilo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <div class="footer-container">
+        <p class="footer-text">© 2026 Zapato Kiosco | Todos los derechos reservados | Protección visual y estilo para cada momento.</p>
+    </div>
+</footer>
+<!-- Scripts -->
+<script src="../js/funciones-globales.js" defer></script>
+<script src="../js/cargar-productos.js" defer></script>
+</body>
+</html>

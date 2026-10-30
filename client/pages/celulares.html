@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celulares y Smartphones | Zapato Kiosco - Tecnología</title>
+    <!-- Fuentes e Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="Los mejores celulares y smartphones de las marcas líderes. Alta gama, gama media y entrada. Envíos a todo el país y garantía oficial.">
+    <link rel="icon" type="image/png" href="../assets/img/logos/favicon.png">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/celulares.css">
+    <style>
+        /* ===== CORRECCIÓN ESTRUCTURA HEADER ===== */
+        .header-top-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid !important;
+            grid-template-columns: auto 1fr auto !important;
+            align-items: center !important;
+            gap: 20px !important;
+        }
+
+        /* Logo a la izquierda - tamaño controlado */
+        .header-left {
+            display: flex !important;
+            justify-content: flex-start !important;
+        }
+        .logo-img {
+            width: 130px !important;
+            height: auto !important;
+            max-width: 100% !important;
+        }
+
+        /* Centro: buscador ocupando el espacio disponible */
+        .header-center {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            gap: 15px !important;
+        }
+        .search-bar {
+            position: relative;
+            width: 100% !important;
+            max-width: 380px !important;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 14px;
+            outline: none;
+        }
+        .search-input::placeholder { color: rgba(255,255,255,0.6); }
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.6);
+        }
+        .search-btn { display: none; } /* Ocultamos botón redundante */
+
+        /* Derecha: carrito + menú */
+        .header-right {
+            display: flex !important;
+            justify-content: flex-end !important;
+            align-items: center !important;
+            gap: 15px !important;
+        }
+        .cart-btn, .menu-btn {
+            color: white !important;
+            font-size: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #FFCC00;
+            color: black;
+            font-size: 10px;
+            font-weight: bold;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ===== RESPONSIVE - MÓVIL ===== */
+        @media (max-width: 768px) {
+            .header-top-container {
+                grid-template-columns: auto 1fr auto !important;
+                gap: 10px !important;
+            }
+            .logo-img { width: 100px !important; }
+            .search-bar { max-width: 180px !important; }
+            .header-center { gap: 10px !important; }
+        }
+        @media (max-width: 480px) {
+            .search-input { padding: 8px 10px 8px 32px; font-size: 13px; }
+            .search-icon { left: 10px; }
+        }
+    </style>
+</head>
+<body>
+<!-- TOPBAR -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Envíos a todo el país</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Garantía oficial</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-lock"></i>
+            <span>Compra segura</span>
+        </div>
+    </div>
+</section>
+
+<!-- HEADER ESTRUCTURA CORREGIDA -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-top-container">
+            <!-- IZQUIERDA: Logo -->
+            <div class="header-left">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
+                </a>
+            </div>
+
+            <!-- CENTRO: Buscador -->
+            <div class="header-center">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Buscar productos, marcas y más...">
+                </div>
+                <a href="../mi-cuenta/carrito.html" class="header-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart-count" id="headerCartCount">0</div>
+                </a>
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-item">
+                <i class="fa-solid fa-bars"></i>
+                <span>Todas las categorías</span>
+            </div>
+            <a href="../index.html" class="nav-item">Inicio</a>
+            <a href="ofertas.html" class="nav-item">Ofertas</a>
+            <a href="novedades.html" class="nav-item">Novedades</a>
+            <a href="mas-vendidos.html" class="nav-item">Más vendidos</a>
+            <a href="celulares.html" class="nav-item active">Celulares</a>
+            <a href="contacto.html" class="nav-item">Contacto</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- BANNER PRINCIPAL -->
+    <section class="hero-banner">
+        <div class="hero-banner-container">
+            <div class="banner-content">
+                <h1>Celulares y Smartphones</h1>
+                <p>Descubrí la última tecnología en dispositivos móviles. Alta gama, gama media y entrada de las marcas líderes. Envíos a todo el país y garantía oficial.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="main-content">
+        <div class="content-container">
+            
+            <!-- FILTROS -->
+            <aside class="filters-sidebar">
+                <div class="filters-header">
+                    <h2 class="filters-title">
+                        <i class="fa-solid fa-sliders"></i> Filtrar por
+                    </h2>
+                    <button class="filters-clear">Limpiar todo</button>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Gama de Producto</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Gama Alta</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Gama Media</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Gama de Entrada</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Smartphones Gaming</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Marcas</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Samsung</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Motorola</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Xiaomi</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Apple</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Oppo</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Realme</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Rango de Precio</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Hasta $ 100.000</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>$100.000 - $300.000</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>$300.000 - $600.000</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Más de $ 600.000</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Almacenamiento</h3>
+                    <label class="filter-option"><input type="checkbox"><span>64 GB</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>128 GB</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>256 GB</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>512 GB o más</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Conectividad</h3>
+                    <label class="filter-option"><input type="checkbox"><span>5G</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>4G / LTE</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Dual SIM</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Disponibilidad</h3>
+                    <label class="filter-option"><input type="checkbox"><span>En stock</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Reservar</span></label>
+                </div>
+            </aside>
+            
+            <!-- LISTA DE PRODUCTOS -->
+            <div class="products-section">
+                <div class="products-header">
+                    <div class="products-info">
+                        <h2 class="products-title">Celulares y Smartphones</h2>
+                        <span class="products-count" id="contador-productos">Cargando productos...</span>
+                    </div>
+                    <div class="order-selector">
+                        <label for="ordenar">Ordenar por:</label>
+                        <select id="ordenar" class="select-style">
+                            <option value="recientes">Más recientes</option>
+                            <option value="vendidos">Más vendidos</option>
+                            <option value="menor">Menor precio</option>
+                            <option value="mayor">Mayor precio</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="products-grid" id="contenedor-productos">
+                    <!-- Los productos aparecerán aquí automáticamente -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- SECCIÓN INFORMATIVA -->
+        <div class="info-section">
+            <h3>Tecnología que te conecta</h3>
+            <p>Encontrá el celular ideal para vos: desde dispositivos accesibles hasta la más alta tecnología. Todos con garantía oficial, envíos rápidos a todo el país y la seguridad de comprar como invitado en Zapato Kiosco.</p>
+        </div>
+        
+        <!-- MARCAS -->
+        <section class="brands-section">
+            <div class="brands-container">
+                <h2 class="brands-title">Marcas Destacadas</h2>
+                <div class="brands-grid">
+                    <div class="brand-item">Samsung</div>
+                    <div class="brand-item">Motorola</div>
+                    <div class="brand-item">Xiaomi</div>
+                    <div class="brand-item">Apple</div>
+                    <div class="brand-item">Oppo</div>
+                    <div class="brand-item">Realme</div>
+                </div>
+            </div>
+        </section>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-container">
+        <p class="footer-text">© 2026 Zapato Kiosco | Compra como invitado, sin cuentas</p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../js/funciones-globales.js" defer></script>
+<script src="../js/cargar-productos.js" defer></script>
+</body>
+</html>

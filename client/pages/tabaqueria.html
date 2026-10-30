@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabaquería | Zapato Kiosco - Artículos para fumadores</title>
+    <!-- Fuentes e Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="Papel para armar, filtros, encendedores, pipas, tabaco y todos los artículos de tabaquería que buscás.">
+    <link rel="icon" type="image/png" href="../assets/img/logos/favicon.png">
+    <!-- Rutas corregidas -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tabaqueria.css">
+</head>
+<body>
+<!-- TOPBAR -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Envíos a todo el país</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Garantía oficial</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-lock"></i>
+            <span>Compra segura</span>
+        </div>
+    </div>
+</section>
+<!-- HEADER -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-top-container">
+            <div class="header-left">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar productos, marcas y más...">
+                    <button class="search-btn">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="../mi-cuenta/carrito.html" class="header-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart-count" id="headerCartCount">0</div>
+                </a>
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-item">
+                <i class="fa-solid fa-bars"></i>
+                <span>Todas las categorías</span>
+            </div>
+            <a href="../index.html" class="nav-item">Inicio</a>
+            <a href="ofertas.html" class="nav-item">Ofertas</a>
+            <a href="novedades.html" class="nav-item">Novedades</a>
+            <a href="mas-vendidos.html" class="nav-item">Más vendidos</a>
+            <a href="contacto.html" class="nav-item">Contacto</a>
+        </div>
+    </nav>
+</header>
+<main>
+    <!-- BANNER PRINCIPAL -->
+    <section class="hero-banner">
+        <div class="hero-banner-container">
+            <div class="banner-content">
+                <h1>Artículos de tabaquería de primera calidad</h1>
+                <p>Papel para armar, filtros, encendedores, pipas, tabaco y todos los accesorios que necesitás en un solo lugar</p>
+            </div>
+        </div>
+    </section>
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="main-content">
+        <div class="content-container">
+            
+            <!-- FILTROS -->
+            <aside class="filters-sidebar">
+                <div class="filters-header">
+                    <h2 class="filters-title">
+                        <i class="fa-solid fa-filter"></i> Filtrar
+                    </h2>
+                    <button class="filters-clear">Limpiar todo</button>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Tipo de producto</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Papel para armar</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Filtros</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Encendedores y mecheros</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Pipas y boquillas</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Tabaco y mezclas</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Accesorios para armar</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Estuches y portacigarrillos</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Marcas más buscadas</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Raw</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Jass</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Smoking</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Bic</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Actitabaco</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Medida</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Estándar 70mm</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Largo 110mm</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Extra fino</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Ancho especial</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Rango de precio</h3>
+                    <label class="filter-option"><input type="radio" name="precio-tabaco" checked><span>Todos</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-tabaco"><span>Hasta $2.000</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-tabaco"><span>$2.000 - $6.000</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-tabaco"><span>Más de $6.000</span></label>
+                </div>
+            </aside>
+            
+            <!-- LISTA DE PRODUCTOS -->
+            <div class="products-section">
+                <div class="products-header">
+                    <div class="products-info">
+                        <h2>Artículos de Tabaquería</h2>
+                        <span class="products-count" id="contador-productos">Mostrando productos...</span>
+                    </div>
+                    <div class="order-selector">
+                        <label for="ordenar">Ordenar por:</label>
+                        <select id="ordenar" class="select-style">
+                            <option value="recientes">Más nuevos</option>
+                            <option value="vendidos">Más vendidos</option>
+                            <option value="menor">Menor precio</option>
+                            <option value="mayor">Mayor precio</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- CONTENEDOR DE PRODUCTOS - CARGADOS DESDE LA BASE DE DATOS -->
+                <div class="products-grid">
+                    <!-- Los productos aparecerán aquí automáticamente -->
+                </div>
+                
+                <!-- SECCIÓN INFORMATIVA -->
+                <div class="info-section">
+                    <h3>Variedad y calidad garantizada</h3>
+                    <p>Encontrá todas las marcas y artículos de tabaquería más elegidos. Trabajamos con productos originales y de primera calidad para que tengas la mejor experiencia, siempre al mejor precio y con la confianza de tu kiosco de siempre.</p>
+                </div>
+                <!-- MARCAS -->
+                <section class="brands-section">
+                    <div class="brands-container">
+                        <h2 class="brands-title">Marcas que confían en nosotros</h2>
+                        <div class="brands-grid">
+                            <div class="brand-item">Raw</div>
+                            <div class="brand-item">Smoking</div>
+                            <div class="brand-item">Jass</div>
+                            <div class="brand-item">Bic</div>
+                            <div class="brand-item">Actitabaco</div>
+                            <div class="brand-item">OCB</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <div class="footer-container">
+        <p class="footer-text">© 2026 Zapato Kiosco | Recordá: El consumo de tabaco es perjudicial para la salud. Prohibida su venta a menores de 18 años.</p>
+    </div>
+</footer>
+<!-- Scripts -->
+<script src="../js/funciones-globales.js" defer></script>
+<script src="../js/cargar-productos.js" defer></script>
+</body>
+</html> 

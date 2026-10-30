@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cables y Cargadores | Zapato Kiosco - Conexión segura y rápida</title>
+    <!-- Fuentes e Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="Cables de datos, carga rápida y adaptadores para todos tus dispositivos. Calidad resistente, compatibilidad garantizada y precios accesibles.">
+    <link rel="icon" type="image/png" href="../assets/img/logos/favicon.png">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cables.css">
+</head>
+<body>
+<!-- TOPBAR -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Envíos a todo el país</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Garantía oficial</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-lock"></i>
+            <span>Compra segura</span>
+        </div>
+    </div>
+</section>
+<!-- HEADER -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-top-container">
+            <div class="header-left">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img logo-big">
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Buscar productos, marcas y más...">
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="carrito.html" class="header-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart-count" id="headerCartCount">0</div>
+                </a>
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-item">
+                <i class="fa-solid fa-bars"></i>
+                <span>Todas las categorías</span>
+            </div>
+            <a href="../index.html" class="nav-item">Inicio</a>
+            <a href="ofertas.html" class="nav-item">Ofertas</a>
+            <a href="novedades.html" class="nav-item">Novedades</a>
+            <a href="mas-vendidos.html" class="nav-item">Más vendidos</a>
+            <a href="cables.html" class="nav-item active">Cables</a>
+            <a href="contacto.html" class="nav-item">Contacto</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- BANNER PRINCIPAL -->
+    <section class="hero-banner">
+        <div class="hero-banner-container">
+            <div class="banner-content">
+                <h1>Cables y Cargadores</h1>
+                <p>Encontrá la conexión que necesitás: cables de carga rápida, transferencia de datos, adaptadores y cargadores para todos los dispositivos. Fabricados con materiales resistentes para un uso duradero y seguro.</p>
+            </div>
+        </div>
+    </section>
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="main-content">
+        <div class="content-container">
+            
+            <!-- FILTROS -->
+            <aside class="filters-sidebar">
+                <div class="filters-header">
+                    <h2 class="filters-title">
+                        <i class="fa-solid fa-filter"></i> Filtrar
+                    </h2>
+                    <button class="filters-clear">Limpiar todo</button>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Tipo de conector</h3>
+                    <label class="filter-option"><input type="checkbox"><span>USB-C</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Micro USB</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Lightning</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>USB-A</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Adaptadores</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Multipuerto</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Función principal</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Carga rápida</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Transferencia de datos</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Ambas funciones</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Para auto</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Para pared</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Longitud</h3>
+                    <label class="filter-option"><input type="checkbox"><span>0,5 m</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>1 m</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>1,5 m</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>2 m o más</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Características</h3>
+                    <label class="filter-option"><input type="checkbox"><span>Reforzados</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Trenzados</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Protección contra sobrecarga</span></label>
+                    <label class="filter-option"><input type="checkbox"><span>Compatibilidad universal</span></label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-subtitle">Rango de precio</h3>
+                    <label class="filter-option"><input type="radio" name="precio-cables" checked><span>Todos</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-cables"><span>Hasta $1.000</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-cables"><span>$1.000 - $2.500</span></label>
+                    <label class="filter-option"><input type="radio" name="precio-cables"><span>Más de $2.500</span></label>
+                </div>
+            </aside>
+            
+            <!-- LISTA DE PRODUCTOS - CARGADOS DESDE BASE DE DATOS -->
+            <div class="products-section">
+                <div class="products-header">
+                    <div class="products-info">
+                        <h2>Cables y Cargadores</h2>
+                        <span class="products-count" id="contador-productos">Cargando productos...</span>
+                    </div>
+                    <div class="order-selector">
+                        <label for="ordenar">Ordenar por:</label>
+                        <select id="ordenar" class="select-style">
+                            <option value="recientes">Más nuevos</option>
+                            <option value="vendidos">Más vendidos</option>
+                            <option value="menor">Menor precio</option>
+                            <option value="mayor">Mayor precio</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- SOLO ESTE CONTENEDOR SE LLENARÁ DESDE LA BASE DE DATOS -->
+                <div class="products-grid" id="contenedor-productos">
+                    <!-- Los productos aparecerán aquí automáticamente desde la base de datos -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- SECCIÓN INFORMATIVA -->
+        <div class="info-section">
+            <h3>Conectividad segura y duradera</h3>
+            <p>Contamos con cables y cargadores diseñados para ofrecer un rendimiento estable y proteger tus equipos. Todos nuestros productos cumplen con estándares de seguridad para evitar daños por sobrecarga, y están fabricados para resistir el uso diario durante mucho tiempo.</p>
+        </div>
+        
+        <!-- MARCAS -->
+        <section class="brands-section">
+            <div class="brands-container">
+                <h2 class="brands-title">Marcas de confianza</h2>
+                <div class="brands-grid">
+                    <div class="brand-item">Samsung</div>
+                    <div class="brand-item">Xiaomi</div>
+                    <div class="brand-item">Belkin</div>
+                    <div class="brand-item">Baseus</div>
+                    <div class="brand-item">Anker</div>
+                    <div class="brand-item">Remax</div>
+                </div>
+            </div>
+        </section>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-container">
+        <p class="footer-text">© 2026 Zapato Kiosco | Utilizá siempre accesorios compatibles para proteger tus dispositivos y garantizar una carga segura.</p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../js/carrito.js" defer></script>
+<script src="../js/cargar-productos.js" defer></script>
+</body>
+</html>

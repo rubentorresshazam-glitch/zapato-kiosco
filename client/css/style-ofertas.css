@@ -1,0 +1,254 @@
+/* ==================================================
+   ESTILOS EXCLUSIVOS PARA LA PÁGINA DE OFERTAS
+   ✅ No afecta al resto del sitio
+   ✅ Se complementa con tu style.css original
+================================================== */
+
+/* ---------- CONTENEDORES BANNER ---------- */
+.banner-superior,
+.banner-inferior {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto 50px;
+    padding: 0 30px;
+}
+
+.banner-contenido {
+    width: 100%;
+    border-radius: 24px;
+    padding: 35px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    color: #fff;
+}
+
+/* Banner superior con gradiente llamativo */
+.banner-superior .banner-contenido {
+    background: linear-gradient(135deg, #f7c600 0%, #ffdd33 50%, #ffb700 100%);
+    border: 2px solid #ffd900;
+}
+
+.banner-superior h3 {
+    font-size: 32px;
+    font-weight: 900;
+    color: #0b0b0b;
+    margin-bottom: 8px;
+}
+
+.banner-superior p {
+    font-size: 17px;
+    color: #222;
+    font-weight: 500;
+    max-width: 500px;
+}
+
+/* Banner inferior con otro tono */
+.banner-inferior .banner-contenido {
+    background: linear-gradient(135deg, #0b0b0b 0%, #222222 50%, #1a1a1a 100%);
+    border: 2px solid #f7c600;
+    flex-direction: row-reverse;
+}
+
+.banner-inferior h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f7c600;
+    margin-bottom: 8px;
+}
+
+.banner-inferior p {
+    font-size: 16px;
+    color: #eee;
+    max-width: 450px;
+}
+
+/* Botones de los banners */
+.banner-btn {
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.banner-superior .banner-btn {
+    background: #0b0b0b;
+    color: #f7c600;
+}
+
+.banner-superior .banner-btn:hover {
+    background: #111;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(247, 198, 0, 0.4);
+}
+
+.banner-inferior .banner-btn {
+    background: #f7c600;
+    color: #0b0b0b;
+}
+
+.banner-inferior .banner-btn:hover {
+    background: #ffd900;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(247, 198, 0, 0.3);
+}
+
+/* ---------- GRID DE OFERTAS: 3 POR FILA ---------- */
+.oferta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    margin-bottom: 50px;
+}
+
+/* ---------- TARJETAS CON MÁS COLOR Y ANIMACIONES ---------- */
+.oferta-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 2px solid transparent;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: entradaTarjeta 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(25px);
+}
+
+/* Animación de aparición escalonada */
+.oferta-card:nth-child(1) { animation-delay: 0.1s; }
+.oferta-card:nth-child(2) { animation-delay: 0.2s; }
+.oferta-card:nth-child(3) { animation-delay: 0.3s; }
+.oferta-card:nth-child(4) { animation-delay: 0.4s; }
+.oferta-card:nth-child(5) { animation-delay: 0.5s; }
+.oferta-card:nth-child(6) { animation-delay: 0.6s; }
+.oferta-card:nth-child(7) { animation-delay: 0.7s; }
+.oferta-card:nth-child(8) { animation-delay: 0.8s; }
+.oferta-card:nth-child(9) { animation-delay: 0.9s; }
+
+@keyframes entradaTarjeta {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efecto al pasar el mouse */
+.oferta-card:hover {
+    border-color: #f7c600;
+    box-shadow: 0 15px 35px rgba(247, 198, 0, 0.25);
+    transform: translateY(-10px) scale(1.02);
+}
+
+/* Fondo sutil de color en la tarjeta */
+.oferta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(247, 198, 0, 0.05) 0%, transparent 60%);
+    z-index: 0;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+}
+
+.oferta-card:hover::before {
+    opacity: 1;
+}
+
+/* Imagen con animación */
+.oferta-card .product-image {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(180deg, #fffdf5 0%, #fef9e8 100%);
+    transition: all 0.4s ease;
+}
+
+.oferta-card:hover .product-image img {
+    transform: scale(1.12) rotate(1deg);
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
+}
+
+/* Insignia de oferta más llamativa */
+.oferta-card .product-badge {
+    background: linear-gradient(135deg, #ff3c00 0%, #ff7000 100%);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(255, 60, 0, 0.35);
+    border-radius: 10px;
+    animation: latido 2.5s infinite alternate;
+}
+
+@keyframes latido {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+}
+
+/* Precio con más color */
+.oferta-card .price-current {
+    color: #0b0b0b;
+    text-shadow: 0 1px 2px rgba(247, 198, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.oferta-card:hover .price-current {
+    color: #d4a800;
+    transform: scale(1.05);
+}
+
+.oferta-card .product-installment {
+    background: rgba(0, 166, 80, 0.12);
+    border-left: 3px solid #00a650;
+    padding-left: 12px;
+    border-radius: 6px;
+}
+
+/* Botón con animación */
+.oferta-card .product-btn {
+    background: linear-gradient(135deg, #f7c600 0%, #ffd900 100%);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.oferta-card:hover .product-btn {
+    background: linear-gradient(135deg, #ffb700 0%, #f7c600 100%);
+    box-shadow: 0 8px 20px rgba(247, 198, 0, 0.4);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1100px) {
+    .oferta-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .banner-contenido {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+    }
+    .banner-superior h3,
+    .banner-inferior h3 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 650px) {
+    .oferta-grid {
+        grid-template-columns: 1fr;
+    }
+    .banner-contenido {
+        padding: 20px;
+    }
+}

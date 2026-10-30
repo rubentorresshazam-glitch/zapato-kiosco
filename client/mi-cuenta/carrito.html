@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras | Zapato Kiosco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/carrito.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Envíos a todo el país</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Compra segura</span>
+        </div>
+    </div>
+</section>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-top-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/img/logos/logo-zapato.png" alt="Zapato Kiosco" class="logo-img">
+            </a>
+            <h1>Tu Carrito</h1>
+        </div>
+    </div>
+</header>
+
+<main class="main-content">
+    <div class="carrito-contenedor">
+        
+        <!-- Lista de productos -->
+        <div class="carrito-lista" id="carrito-lista">
+            <!-- Se llena desde JS -->
+        </div>
+
+        <!-- Resumen -->
+        <div class="carrito-resumen">
+            <h3>Resumen del pedido</h3>
+            <div class="fila-resumen">
+                <span>Subtotal</span>
+                <span id="subtotal">$0</span>
+            </div>
+            <div class="fila-resumen total">
+                <strong>Total</strong>
+                <strong id="total">$0</strong>
+            </div>
+            <button id="btn-pagar" class="btn-pagar">
+                <i class="fa-solid fa-lock"></i> Ir a pagar
+            </button>
+            <a href="../index.html" class="btn-seguir">
+                <i class="fa-solid fa-arrow-left"></i> Seguir comprando
+            </a>
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 Zapato Kiosco - Todos los derechos reservados</p>
+</footer>
+
+<script src="../js/carrito.js"></script>
+</body>
+</html>

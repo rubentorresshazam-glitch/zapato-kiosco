@@ -1,0 +1,438 @@
+/* ======================================
+   ADMIN.CSS - KIOSCO ZAPATO
+   Paleta: Premium Futurista Amarillo
+   ✅ Unificado con estadísticas, saludo destacado
+====================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* 🎨 Paleta oficial */
+    --negro-principal: #0D0D0F;
+    --gris-oscuro: #1A1B1F;
+    --gris-tarjetas: #2B2E35;
+    --gris-medio: #4A4F58;
+    --blanco-texto: #F5F5F7;
+
+    --amarillo-principal: #FFC61A;
+    --amarillo-glow: #FFD94A;
+    --amarillo-intenso: #FFB800;
+    --amarillo-claro: #FFE98A;
+
+    --verde-disponible: #71D66A;
+    --verde-oscuro: #4CAF50;
+    --rojo-alerta: #FF4D4D;
+
+    /* ✨ Efectos premium */
+    --glow-suave: 0 0 8px #FFC61A, 0 0 20px rgba(255,198,26,.4);
+    --glow-fuerte: 0 0 12px #FFC61A, 0 0 30px rgba(255,198,26,.5);
+    --radio: 12px;
+    --transicion: all 0.25s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background: linear-gradient(180deg, #0D0D0F 0%, #15161A 45%, #1B1D22 100%);
+    color: var(--blanco-texto);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ======================================
+   ESTRUCTURA GENERAL
+====================================== */
+.admin-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ======================================
+   MENÚ LATERAL
+====================================== */
+.admin-sidebar {
+    background-color: var(--negro-principal);
+    border-right: 1px solid var(--gris-tarjetas);
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.sidebar-header {
+    text-align: center;
+    padding: 0 1.5rem;
+}
+
+.logo-admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.logo-admin img {
+    width: 140px;
+    height: auto;
+    transition: var(--transicion);
+}
+
+.logo-admin img:hover {
+    filter: drop-shadow(0 0 12px rgba(255, 198, 26, 0.6));
+}
+
+.logo-admin span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--amarillo-principal);
+    letter-spacing: 1px;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    color: #B0B3BC;
+    text-decoration: none;
+    border-radius: var(--radio);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--transicion);
+}
+
+.menu-item:hover {
+    background-color: var(--gris-tarjetas);
+    color: var(--blanco-texto);
+    transform: translateX(4px);
+}
+
+.menu-item.active {
+    background-color: var(--amarillo-principal);
+    color: var(--negro-principal);
+    font-weight: 600;
+    box-shadow: var(--glow-suave);
+}
+
+.menu-item.salir {
+    margin-top: 3rem;
+    color: var(--rojo-alerta);
+}
+
+.menu-item.salir:hover {
+    background-color: rgba(255, 77, 77, 0.15);
+    color: #FF8080;
+    transform: translateX(4px);
+}
+
+/* ======================================
+   ÁREA DE CONTENIDO PRINCIPAL
+====================================== */
+.admin-main {
+    padding: 2.5rem;
+    overflow-y: auto;
+    background: transparent;
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/* ======================================
+   ✅ SALUDO DESTACADO - ¡HOLA GASTON!
+====================================== */
+.admin-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--gris-tarjetas);
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.bienvenida-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.saludo-destacado {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--amarillo-principal);
+    text-shadow: 0 0 10px rgba(255, 198, 26, 0.4);
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.subtitulo-bienvenida {
+    font-size: 1.1rem;
+    color: #B0B3BC;
+    margin: 0;
+}
+
+.subtitulo-bienvenida strong {
+    color: var(--blanco-texto);
+    font-weight: 600;
+}
+
+.btn-notif {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gris-tarjetas);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blanco-texto);
+    font-size: 20px;
+    text-decoration: none;
+    border: 1px solid var(--gris-medio);
+    transition: var(--transicion);
+    flex-shrink: 0;
+}
+
+.btn-notif:hover {
+    border-color: var(--amarillo-principal);
+    box-shadow: var(--glow-suave);
+    transform: scale(1.05);
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--rojo-alerta);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    border: 2px solid var(--negro-principal);
+}
+
+/* ======================================
+   ✅ SISTEMA DE TARJETAS UNIFICADO (igual a estadísticas)
+====================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+}
+
+.stat-card {
+    background: var(--gris-tarjetas);
+    border: 1px solid var(--gris-medio);
+    border-radius: var(--radio);
+    padding: 1.5rem;
+    transition: var(--transicion);
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-card:hover {
+    border-color: var(--amarillo-principal);
+    box-shadow: 0 0 15px rgba(255, 198, 26, 0.15);
+    transform: translateY(-3px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.card-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--blanco-texto);
+    margin: 0;
+}
+
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.numero-principal {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--amarillo-principal);
+    display: block;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.indicador-crecimiento {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.indicador-crecimiento.positivo { color: var(--verde-disponible); }
+.indicador-crecimiento.neutro { color: var(--amarillo-principal); }
+
+/* ======================================
+   TABLA DE ÚLTIMOS PEDIDOS
+====================================== */
+.ver-todos {
+    color: var(--amarillo-principal);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transicion);
+}
+
+.ver-todos:hover {
+    text-shadow: 0 0 6px rgba(255, 198, 26, 0.5);
+    padding-right: 4px;
+}
+
+.tabla-pedidos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.tabla-pedidos th {
+    padding: 0.9rem;
+    background-color: var(--gris-oscuro);
+    color: var(--blanco-texto);
+    font-weight: 500;
+    text-align: left;
+    border-bottom: 2px solid var(--gris-medio);
+}
+
+.tabla-pedidos td {
+    padding: 0.9rem;
+    border-bottom: 1px solid var(--gris-medio);
+    color: #D1D5DB;
+    transition: var(--transicion);
+}
+
+.tabla-pedidos tr:hover td {
+    background-color: rgba(255, 198, 26, 0.05);
+}
+
+.estado {
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.estado.pagado { background: rgba(113, 214, 106, 0.15); color: var(--verde-disponible); }
+.estado.enviado { background: rgba(255, 198, 26, 0.15); color: var(--amarillo-principal); }
+.estado.pendiente { background: rgba(255, 217, 74, 0.15); color: var(--amarillo-claro); }
+
+.btn-ver {
+    background: #3B82F6;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transicion);
+    font-size: 0.85rem;
+}
+
+.btn-ver:hover {
+    background: #2563EB;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+    transform: scale(1.05);
+}
+
+/* ======================================
+   BOTONES COMPARTIDOS
+====================================== */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--radio);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: var(--transicion);
+}
+
+.btn-primario {
+    background-color: var(--amarillo-principal);
+    color: var(--negro-principal);
+    font-weight: 600;
+}
+
+.btn-primario:hover {
+    background-color: var(--amarillo-intenso);
+    box-shadow: var(--glow-fuerte);
+    transform: translateY(-1px);
+}
+
+.btn-secundario {
+    background-color: var(--gris-tarjetas);
+    color: var(--blanco-texto);
+    border: 1px solid var(--gris-medio);
+}
+
+.btn-secundario:hover {
+    background-color: var(--gris-oscuro);
+    border-color: var(--amarillo-principal);
+}
+
+/* ======================================
+   RESPONSIVE
+====================================== */
+@media (max-width: 992px) {
+    .admin-layout { grid-template-columns: 240px 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .saludo-destacado { font-size: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .admin-layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+    .admin-sidebar { flex-direction: row; justify-content: space-between; align-items: center; padding: 1rem; }
+    .sidebar-menu { flex-direction: row; overflow-x: auto; padding: 0.5rem; }
+    .admin-main { padding: 1.5rem; }
+    .saludo-destacado { font-size: 1.7rem; }
+    .logo-admin img { width: 110px; }
+}
+
+/* ======================================
+   EFECTO DE CURSOR DE ESCRITURA
+====================================== */
+.cursor-escribiendo {
+    display: inline-block;
+    color: var(--amarillo-principal);
+    font-weight: 300;
+    animation: parpadeo 0.8s infinite;
+    margin-left: 2px;
+}
+
+@keyframes parpadeo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}

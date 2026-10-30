@@ -1,0 +1,728 @@
+/* ==========================================
+   🎨 VARIABLES - MARCA + ESTILO TABAQUERÍA
+========================================== */
+:root {
+    /* Colores de tu marca */
+    --color-yellow: #FFCC00;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-gray-light: #F8F9FA;
+    --color-gray-medium: #DCDFE6;
+    --color-gray-dark: #2D3033;
+    --color-gray-text: #4B5055;
+
+    /* 🚬 PALETA PARA TABAQUERÍA */
+    --tab-primary: #8B4513;
+    --tab-secondary: #A0522D;
+    --tab-light: #FDF6F0;
+    --tab-medium: #DEB887;
+    --tab-dark: #5C2E0E;
+    --tab-accent: #CD853F;
+
+    /* Sombras y bordes */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 10px rgba(0,0,0,0.12);
+    --shadow-lg: 0 6px 16px rgba(139, 69, 19, 0.15);
+    --shadow-glow: 0 0 12px rgba(160, 82, 45, 0.25);
+
+    --radius: 6px;
+    --radius-lg: 12px;
+    --transition: all 0.25s ease;
+    --border-subtle: 1px solid var(--color-gray-medium);
+}
+
+/* ==========================================
+   🔄 RESET GENERAL
+========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--tab-light);
+    background-image: linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255,255,255,0.4) 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: var(--color-gray-dark);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+/* ==========================================
+   🟡 TOPBAR
+========================================== */
+.topbar {
+    background-color: var(--color-yellow);
+    padding: 8px 0;
+    font-weight: 500;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.topbar-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.topbar-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ==========================================
+   ⚫ HEADER - MISMA ESTRUCTURA
+========================================== */
+.header {
+    background: linear-gradient(180deg, #000000 0%, #08080A 100%);
+    padding: 15px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 10;
+    border-bottom: 2px solid var(--tab-primary);
+}
+
+.header-top-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+/* BUSCADOR */
+.header-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid var(--tab-medium);
+    border-radius: 25px;
+    background-color: rgba(255,255,255,0.08);
+    color: var(--color-white);
+    font-size: 14px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.search-input::placeholder {
+    color: rgba(255,255,255,0.65);
+}
+
+.search-input:focus {
+    border-color: var(--tab-secondary);
+    box-shadow: 0 0 0 2px rgba(160, 82, 45, 0.2), var(--shadow-glow);
+    background-color: rgba(255,255,255,0.12);
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--tab-secondary);
+    font-size: 16px;
+}
+
+/* LOGO SIN EFECTOS */
+.header-center {
+    text-align: center;
+}
+
+.logo-img.logo-big {
+    width: 290px !important;
+    height: auto;
+    margin: 0 auto;
+    filter: none;
+    transform: none;
+}
+
+.logo-img:hover {
+    transform: none;
+    filter: none;
+}
+
+/* ICONOS */
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 35px;
+    align-items: center;
+}
+
+.header-btn {
+    background: transparent;
+    color: var(--color-white) !important;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 8px 10px;
+    border-radius: 8px;
+    min-width: 60px;
+}
+
+.header-btn i {
+    font-size: 24px;
+    transition: var(--transition);
+}
+
+.header-btn:hover {
+    background-color: rgba(255, 204, 0, 0.15);
+    color: var(--color-yellow);
+    box-shadow: 0 0 12px rgba(255, 204, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.cart-btn {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: linear-gradient(135deg, var(--color-yellow), #FFD633);
+    color: var(--color-black);
+    font-size: 11px;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+    border: 1px solid #fff;
+}
+
+.menu-btn {
+    background: transparent;
+    color: var(--color-white) !important;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.menu-btn:hover {
+    color: var(--color-yellow);
+    background-color: rgba(255, 204, 0, 0.15);
+    transform: scale(1.1);
+}
+
+/* ==========================================
+   🟡 NAVBAR
+========================================== */
+.navbar {
+    background: linear-gradient(90deg, var(--color-yellow) 0%, #FFE044 100%);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 2px solid var(--tab-primary);
+    padding: 8px 0 !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.navbar-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-item {
+    color: var(--color-black);
+    font-weight: 500;
+    font-size: 13px !important;
+    padding: 5px 0 !important;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 6px;
+    padding: 8px 14px !important;
+}
+
+.nav-item:first-child {
+    background: linear-gradient(135deg, var(--color-black), #111122);
+    color: var(--color-yellow);
+    font-weight: 600;
+}
+
+.nav-item:hover:not(:first-child) {
+    background-color: rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+}
+
+.nav-item.active { 
+    background: linear-gradient(135deg, var(--tab-primary), var(--tab-secondary));
+    color: var(--color-white); 
+    font-weight: 600; 
+    box-shadow: 0 0 10px rgba(160, 82, 45, 0.25);
+}
+
+/* ==========================================
+   🚬 BANNER PRINCIPAL
+========================================== */
+.hero-banner {
+    width: 100%;
+    margin: 25px 0 40px;
+    overflow: hidden;
+}
+
+.hero-banner-container {
+    width: 94%;
+    max-width: 1300px;
+    height: 420px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--tab-primary);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../assets/img/banners/banner-tabaqueria.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.banner-content {
+    background-color: rgba(255,255,255,0.9);
+    padding: 28px 40px;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--tab-medium);
+    box-shadow: var(--shadow-md);
+    max-width: 650px;
+}
+
+.banner-content h1 {
+    font-size: 34px;
+    margin-bottom: 12px;
+    color: var(--tab-dark);
+    font-weight: 800;
+}
+
+.banner-content p {
+    font-size: 17px;
+    color: var(--color-gray-text);
+    line-height: 1.7;
+}
+
+@media (max-width: 992px) { 
+    .hero-banner-container { height: 320px; } 
+    .banner-content h1 { font-size: 28px; }
+}
+@media (max-width: 768px) { 
+    .hero-banner-container { height: 260px; width: 96%; } 
+    .banner-content { padding: 20px; }
+    .banner-content h1 { font-size: 22px; }
+    .banner-content p { font-size: 15px; }
+}
+
+/* ==========================================
+   📋 LAYOUT PRINCIPAL
+========================================== */
+.main-content {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 30px;
+}
+
+/* ==========================================
+   🎛️ FILTROS
+========================================== */
+.filters-sidebar {
+    background-color: var(--color-white);
+    padding: 22px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+    border: var(--border-subtle);
+}
+
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--tab-medium);
+}
+
+.filters-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--tab-dark);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.filters-title i {
+    color: var(--tab-primary);
+}
+
+.filters-clear {
+    font-size: 12px;
+    color: var(--tab-primary);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    background: none;
+    border: none;
+}
+
+.filters-clear:hover {
+    text-decoration: underline;
+    color: var(--tab-dark);
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--tab-dark);
+    border-left: 2px solid var(--tab-primary);
+    padding-left: 8px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    cursor: pointer;
+    font-size: 13px;
+    transition: var(--transition);
+    color: var(--color-gray-text);
+    border-radius: 4px;
+    padding: 6px 8px;
+    margin: 0 -8px;
+}
+
+.filter-option:hover {
+    background-color: var(--tab-light);
+    color: var(--tab-dark);
+    padding-left: 12px;
+}
+
+/* ==========================================
+   🚬 TARJETAS DE PRODUCTOS
+========================================== */
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--tab-medium);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.products-info h2 {
+    font-size: 24px;
+    color: var(--tab-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.products-info h2::before {
+    content: "🚬";
+    font-size: 24px;
+}
+
+.products-count {
+    font-size: 13px;
+    color: var(--color-gray-text);
+    margin-left: 8px;
+}
+
+.order-selector {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+}
+
+.select-style {
+    padding: 8px 12px;
+    border: 1px solid var(--tab-medium);
+    border-radius: 8px;
+    background-color: var(--color-white);
+    font-size: 13px;
+    color: var(--tab-dark);
+    transition: var(--transition);
+}
+
+.select-style:focus {
+    outline: none;
+    border-color: var(--tab-primary);
+    box-shadow: 0 0 0 2px rgba(160, 82, 45, 0.2);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    border: var(--border-subtle);
+    position: relative;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--tab-primary), var(--tab-secondary));
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(139, 69, 19, 0.18), var(--shadow-glow);
+    border-color: var(--tab-primary);
+}
+
+.product-img-container {
+    width: 100%;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #F8FAFC 0%, var(--tab-light) 100%);
+    border-bottom: 1px solid var(--tab-medium);
+}
+
+.product-image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.35s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.06);
+}
+
+.product-info {
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--tab-dark);
+    line-height: 1.4;
+}
+
+.product-mini-desc {
+    font-size: 13px;
+    color: var(--color-gray-text);
+    line-height: 1.5;
+}
+
+.product-price {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--tab-primary);
+    margin: 6px 0;
+}
+
+.product-btn-main {
+    width: 100%;
+    background: linear-gradient(135deg, var(--tab-primary), var(--tab-secondary));
+    color: var(--color-white);
+    text-align: center;
+    padding: 11px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 5px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.product-btn-main:hover {
+    background: linear-gradient(135deg, var(--tab-dark), var(--tab-primary));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(139, 69, 19, 0.25);
+}
+
+/* ==========================================
+   🚬 SECCIÓN INFORMACIÓN
+========================================== */
+.info-section {
+    background: var(--color-white);
+    padding: 35px 25px;
+    margin: 40px 0;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--tab-medium);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.info-section h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: var(--tab-dark);
+    font-weight: 700;
+}
+
+.info-section p {
+    max-width: 850px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-gray-text);
+}
+
+/* ==========================================
+   🏷️ MARCAS
+========================================== */
+.brands-section {
+    padding: 45px 0;
+    border-top: 1px solid var(--tab-medium);
+    background-color: var(--color-white);
+}
+
+.brands-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.brands-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--tab-dark);
+    margin-bottom: 25px;
+}
+
+.brands-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.brand-item {
+    background: var(--tab-light);
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid var(--tab-medium);
+    transition: var(--transition);
+    color: var(--tab-dark);
+}
+
+.brand-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--tab-primary);
+}
+
+/* ==========================================
+   📱 RESPONSIVE
+========================================== */
+@media (max-width: 992px) {
+    .header-top-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+    }
+    .header-left, .header-center, .header-right {
+        justify-content: center;
+    }
+    .search-box {
+        max-width: 100%;
+    }
+    .logo-img.logo-big { width: 220px !important; }
+    .content-container { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 576px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .product-img-container { height: 210px; }
+    .header-right { gap: 20px; }
+    .header-btn i { font-size: 22px; }
+    .banner-content h1 { font-size: 20px; }
+}

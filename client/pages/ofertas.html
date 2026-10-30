@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es" class="page-ofertas">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas | Zapato Kiosco</title>
+    <!-- Fuentes e Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="Ofertas exclusivas en Zapato Kiosco. Tecnología, pesca, tabaquería, automotor, camping y más con descuentos increíbles.">
+    <link rel="icon" type="image/png" href="../assets/img/logos/favicon.png">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style-ofertas.css">
+</head>
+<body>
+<!-- TOPBAR -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Envíos a todo el país</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Garantía oficial</span>
+        </div>
+        <div class="topbar-item">
+            <i class="fa-solid fa-lock"></i>
+            <span>Compra segura</span>
+        </div>
+    </div>
+</section>
+<!-- HEADER -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-top-container">
+            <div class="header-left">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar productos, marcas y más...">
+                    <button class="search-btn">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="../mi-cuenta/carrito.html" class="header-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart-count" id="headerCartCount">0</div>
+                </a>
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-item">
+                <i class="fa-solid fa-bars"></i>
+                <span>Todas las categorías</span>
+            </div>
+            <a href="../index.html" class="nav-item">Inicio</a>
+            <a href="ofertas.html" class="nav-item active">Ofertas</a>
+            <a href="novedades.html" class="nav-item">Novedades</a>
+            <a href="mas-vendidos.html" class="nav-item">Más vendidos</a>
+            <a href="contacto.html" class="nav-item">Contacto</a>
+        </div>
+    </nav>
+</header>
+<!-- CONTENIDO PRINCIPAL -->
+<main class="main-content">
+    <section class="featured-offers">
+        <div class="featured-container">
+            <div class="featured-header">
+                <h2>🔥 OFERTAS IMPERDIBLES</h2>
+                <p>Aprovechá descuentos por tiempo limitado en todos los rubros</p>
+            </div>
+            <!-- BANNER SUPERIOR -->
+            <div class="banner-superior">
+                <div class="banner-contenido">
+                    <div>
+                        <h3>¡Hasta un 40% de descuento!</h3>
+                        <p>En tecnología, pesca, camping y mucho más. Stock limitado y envíos a todo el país.</p>
+                    </div>
+                    <a href="#productos" class="banner-btn">Ver ofertas</a>
+                </div>
+            </div>
+            <!-- GRID DE PRODUCTOS EN OFERTA -->
+            <div id="productos" class="products-grid oferta-grid">
+                <!-- Tarjeta 1 -->
+                <article class="product-card oferta-card">
+                    <div class="product-badge">
+                        <span>OFERTA</span>
+                        <span class="discount">-25%</span>
+                    </div>
+                    <a href="producto.html?id=pes-001" class="product-image">
+                        <img src="../assets/img/products/caña-pesca.png" alt="Caña de Pescar 2.70m">
+                    </a>
+                    <div class="product-info">
+                        <a href="producto.html?id=pes-001">
+                            <h3 class="product-title">Caña de Pescar Telescópica 2.70m Fibra de Vidrio</h3>
+                        </a>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="review-count">(78 opiniones)</span>
+                        </div>
+                        <div class="product-price-block">
+                            <span class="price-current">$ 7.490</span>
+                            <span class="price-old">$ 9.990</span>
+                        </div>
+                        <p class="product-installment">en 12 cuotas de $ 624 sin interés</p>
+                        <button class="product-btn" 
+                                onclick="agregarAlCarrito({id: 'pes-001', nombre: 'Caña de Pescar 2.70m', precio: 7490, imagen: '../assets/img/products/caña-pesca.png', cantidad: 1})">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar al carrito</span>
+                        </button>
+                    </div>
+                </article>
+                <!-- Tarjeta 2 -->
+                <article class="product-card oferta-card">
+                    <div class="product-badge">
+                        <span>OFERTA</span>
+                        <span class="discount">-18%</span>
+                    </div>
+                    <a href="producto.html?id=tab-001" class="product-image">
+                        <img src="../assets/img/products/encendedor.png" alt="Encendedor Recargable">
+                    </a>
+                    <div class="product-info">
+                        <a href="producto.html?id=tab-001">
+                            <h3 class="product-title">Encendedor Recargable a Gas Doble Llama</h3>
+                        </a>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span class="review-count">(92 opiniones)</span>
+                        </div>
+                        <div class="product-price-block">
+                            <span class="price-current">$ 1.050</span>
+                            <span class="price-old">$ 1.290</span>
+                        </div>
+                        <p class="product-installment">en 3 cuotas de $ 350 sin interés</p>
+                        <button class="product-btn" 
+                                onclick="agregarAlCarrito({id: 'tab-001', nombre: 'Encendedor Recargable', precio: 1050, imagen: '../assets/img/products/encendedor.png', cantidad: 1})">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar al carrito</span>
+                        </button>
+                    </div>
+                </article>
+                <!-- Tarjeta 3 -->
+                <article class="product-card oferta-card">
+                    <div class="product-badge">
+                        <span>OFERTA</span>
+                        <span class="discount">-30%</span>
+                    </div>
+                    <a href="producto.html?id=tec-001" class="product-image">
+                        <img src="../assets/img/products/auriculares-wireless.png" alt="Auriculares Inalámbricos">
+                    </a>
+                    <div class="product-info">
+                        <a href="producto.html?id=tec-001">
+                            <h3 class="product-title">Auriculares Inalámbricos Bluetooth 5.3 con Micrófono</h3>
+                        </a>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="review-count">(145 opiniones)</span>
+                        </div>
+                        <div class="product-price-block">
+                            <span class="price-current">$ 4.890</span>
+                            <span class="price-old">$ 6.990</span>
+                        </div>
+                        <p class="product-installment">en 6 cuotas de $ 815 sin interés</p>
+                        <button class="product-btn" 
+                                onclick="agregarAlCarrito({id: 'tec-001', nombre: 'Auriculares Inalámbricos', precio: 4890, imagen: '../assets/img/products/auriculares-wireless.png', cantidad: 1})">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar al carrito</span>
+                        </button>
+                    </div>
+                </article>
+                <!-- Tarjeta 4 -->
+                <article class="product-card oferta-card">
+                    <div class="product-badge">
+                        <span>OFERTA</span>
+                        <span class="discount">-22%</span>
+                    </div>
+                    <a href="producto.html?id=aut-001" class="product-image">
+                        <img src="../assets/img/products/limpiaparabrisas.png" alt="Líquido Limpiaparabrisas">
+                    </a>
+                    <div class="product-info">
+                        <a href="producto.html?id=aut-001">
+                            <h3 class="product-title">Líquido Limpiaparabrisas Concentrado 5 Litros</h3>
+                        </a>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span class="review-count">(64 opiniones)</span>
+                        </div>
+                        <div class="product-price-block">
+                            <span class="price-current">$ 1.170</span>
+                            <span class="price-old">$ 1.490</span>
+                        </div>
+                        <p class="product-installment">en 3 cuotas de $ 390 sin interés</p>
+                        <button class="product-btn" 
+                                onclick="agregarAlCarrito({id: 'aut-001', nombre: 'Líquido Limpiaparabrisas 5L', precio: 1170, imagen: '../assets/img/products/limpiaparabrisas.png', cantidad: 1})">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar al carrito</span>
+                        </button>
+                    </div>
+                </article>
+                <!-- Tarjeta 5 -->
+                <article class="product-card oferta-card">
+                    <div class="product-badge">
+                        <span>OFERTA</span>
+                        <span class="discount">-28%</span>
+                    </div>
+                    <a href="producto.html?id=tel-001" class="product-image">
+                        <img src="../assets/img/products/cable-usbc.png" alt="Cable USB-C">
+                    </a>
+                    <div class="product-info">
+                        <a href="producto.html?id=tel-001">
+                            <h3 class="product-title">Cable USB-C Reforzado 2m Carga Rápida 60W</h3>
+                        </a>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="review-count">(210 opiniones)</span>
+                        </div>
+                        <div class="product-price-block">
+                            <span class="price-current">$ 890</span>
+                            <span class="price-old">$ 1.240</span>
+                        </div>
+                        <p class="product-installment">en 3 cuotas de $ 297 sin interés</p>
+                        <button class="product-btn" 
+                                onclick="agregarAlCarrito({id: 'tel-001', nombre: 'Cable USB-C 2m', precio: 890, imagen: '../assets/img/products/cable-usbc.png', cantidad: 1})">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar al carrito</span>
+                        </button>
+                    </div>
+                </article>
+                <!-- Tarjeta 6 -->
+                <article class="product-card oferta-card">
+                    <div class="product-badge">
+                        <span>OFERTA</span>
+                        <span class="discount">-20%</span>
+                    </div>
+                    <a href="producto.html?id=cam-001" class="product-image">
+                        <img src="../assets/img/products/linterna.png" alt="Linterna Recargable">
+                    </a>
+                    <div class="product-info">
+                        <a href="producto.html?id=cam-001">
+                            <h3 class="product-title">Linterna LED Alta Potencia Recargable con Zoom</h3>
+                        </a>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="review-count">(102 opiniones)</span>
+                        </div>
+                        <div class="product-price-block">
+                            <span class="price-current">$ 3.590</span>
+                            <span class="price-old">$ 4.490</span>
+                        </div>
+                        <p class="product-installment">en 6 cuotas de $ 598 sin interés</p>
+                        <button class="product-btn" 
+                                onclick="agregarAlCarrito({id: 'cam-001', nombre: 'Linterna LED Recargable', precio: 3590, imagen: '../assets/img/products/linterna.png', cantidad: 1})">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar al carrito</span>
+                        </button>
+                    </div>
+                </article>
+                <!-- Tarjeta 7 -->
+                <article class="product-card oferta-card">
+                    <div class="product-badge">
+                        <span>OFERTA</span>
+                        <span class="discount">-24%</span>
+                    </div>
+                    <a href="producto.html?id=pes-002" class="product-image">
+                        <img src="../assets/img/products/carrete-pesca.png" alt="Carrete de Pesca">
+                    </a>
+                    <div class="product-info">
+                        <a href="producto.html?id=pes-002">
+                            <h3 class="product-title">Carrete de Pesca Frontal con 5 Rulemanes</h3>
+                        </a>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span class="review-count">(56 opiniones)</span>
+                        </div>
+                        <div class="product-price-block">
+                            <span class="price-current">$ 5.690</span>
+                            <span class="price-old">$ 7.490</span>
+                        </div>
+                        <p class="product-installment">en 12 cuotas de $ 474 sin interés</p>
+                        <button class="product-btn" 
+                                onclick="agregarAlCarrito({id: 'pes-002', nombre: 'Carrete de Pesca', precio: 5690, imagen: '../assets/img/products/carrete-pesca.png', cantidad: 1})">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar al carrito</span>
+                        </button>
+                    </div>
+                </article>
+                <!-- Tarjeta 8 -->
+                <article class="product-card oferta-card">
+                    <div class="product-badge">
+                        <span>OFERTA</span>
+                        <span class="discount">-15%</span>
+                    </div>
+                    <a href="producto.html?id=tab-002" class="product-image">
+                        <img src="../assets/img/products/filtros.png" alt="Filtros para Armar">
+                    </a>
+                    <div class="product-info">
+                        <a href="producto.html?id=tab-002">
+                            <h3 class="product-title">Filtros para Armar Paquete x 100 Unidades</h3>
+                        </a>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span class="review-count">(88 opiniones)</span>
+                        </div>
+                        <div class="product-price-block">
+                            <span class="price-current">$ 640</span>
+                            <span class="price-old">$ 750</span>
+                        </div>
+                        <p class="product-installment">en 3 cuotas de $ 213 sin interés</p>
+                        <button class="product-btn" 
+                                onclick="agregarAlCarrito({id: 'tab-002', nombre: 'Filtros x 100', precio: 640, imagen: '../assets/img/products/filtros.png', cantidad: 1})">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar al carrito</span>
+                        </button>
+                    </div>
+                </article>
+                <!-- Tarjeta 9 -->
+                <article class="product-card oferta-card">
+                    <div class="product-badge">
+                        <span>OFERTA</span>
+                        <span class="discount">-26%</span>
+                    </div>
+                    <a href="producto.html?id=cam-002" class="product-image">
+                        <img src="../assets/img/products/estufa-gas.png" alt="Estufa a Gas">
+                    </a>
+                    <div class="product-info">
+                        <a href="producto.html?id=cam-002">
+                            <h3 class="product-title">Estufa a Gas Portátil con Protección de Seguridad</h3>
+                        </a>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="review-count">(72 opiniones)</span>
+                        </div>
+                        <div class="product-price-block">
+                            <span class="price-current">$ 6.590</span>
+                            <span class="price-old">$ 8.990</span>
+                        </div>
+                        <p class="product-installment">en 12 cuotas de $ 549 sin interés</p>
+                        <button class="product-btn" 
+                                onclick="agregarAlCarrito({id: 'cam-002', nombre: 'Estufa a Gas Portátil', precio: 6590, imagen: '../assets/img/products/estufa-gas.png', cantidad: 1})">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar al carrito</span>
+                        </button>
+                    </div>
+                </article>
+            </div>
+            <!-- BANNER INFERIOR -->
+            <div class="banner-inferior">
+                <div class="banner-contenido">
+                    <div>
+                        <h3>¡Seguimos sumando ofertas!</h3>
+                        <p>Aprovechá las novedades directamente sin necesidad de cuenta. Volvé a visitar esta sección para no perderte los próximos descuentos.</p>
+                    </div>
+                    <a href="contacto.html" class="banner-btn">Contactanos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- PANEL CARRITO -->
+<div id="panel-carrito">
+    <!-- Contenido dinámico del carrito -->
+</div>
+<!-- CHECKOUT -->
+<div id="checkout">
+    <!-- Contenido del formulario de compra -->
+</div>
+<!-- Scripts -->
+<script src="../js/funciones-globales.js" defer></script>
+<script src="../js/cargar-productos.js" defer></script>
+</body>
+</html>

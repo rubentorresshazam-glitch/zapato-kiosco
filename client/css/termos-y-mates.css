@@ -1,0 +1,800 @@
+/* ==========================================
+   🎨 VARIABLES - MARCA + ESTILO RÚSTICO ARGENTINO
+========================================== */
+:root {
+    /* Colores de tu marca */
+    --color-yellow: #FFCC00;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-gray-light: #F8F5F0;
+    --color-gray-medium: #D9D2C5;
+    --color-gray-dark: #443E37;
+
+    /* 🧉 PALETA RÚSTICA / PAISANA */
+    --mate-olive: #5A6E39;
+    --mate-brown: #8B5A2B;
+    --mate-terra: #A65C32;
+    --mate-beige: #F2E8D9;
+    --mate-wood: #6F4E37;
+    --mate-leaf: #3A5A24;
+    --mate-cream: #FFF8EE;
+
+    /* Sombras y bordes */
+    --shadow-sm: 0 2px 6px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+    --shadow-wood: 0 3px 10px rgba(90, 58, 27, 0.25);
+
+    --radius: 6px;
+    --radius-lg: 14px;
+    --transition: all 0.3s ease;
+    --border-rustic: 2px solid var(--mate-wood);
+}
+
+/* ==========================================
+   🔄 RESET GENERAL
+========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--mate-beige);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9b79c' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    color: var(--color-gray-dark);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--mate-wood);
+}
+
+/* ==========================================
+   🟡 TOPBAR
+========================================== */
+.topbar {
+    background-color: var(--color-yellow);
+    padding: 8px 0;
+    font-weight: 500;
+    font-size: 13px;
+    border-bottom: 2px solid var(--mate-brown);
+}
+
+.topbar-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.topbar-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ==========================================
+   ⚫ HEADER - MISMA ESTRUCTURA QUE ANTES
+========================================== */
+.header {
+    background: linear-gradient(180deg, #2C1E14 0%, #1A120B 100%);
+    padding: 15px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
+    border-bottom: 3px solid var(--mate-brown);
+}
+
+.header-top-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+/* BUSCADOR */
+.header-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 2px solid var(--mate-olive);
+    border-radius: 25px;
+    background-color: rgba(255,255,255,0.9);
+    color: var(--mate-wood);
+    font-size: 14px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.search-input::placeholder {
+    color: var(--mate-brown);
+}
+
+.search-input:focus {
+    border-color: var(--mate-leaf);
+    box-shadow: 0 0 0 3px rgba(90, 110, 57, 0.2);
+    background-color: var(--color-white);
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--mate-olive);
+    font-size: 16px;
+}
+
+/* LOGO SIN EFECTOS */
+.header-center {
+    text-align: center;
+}
+
+.logo-img.logo-big {
+    width: 290px !important;
+    height: auto;
+    margin: 0 auto;
+    filter: none;
+    transform: none;
+}
+
+.logo-img:hover {
+    transform: none;
+    filter: none;
+}
+
+/* ICONOS MÁS GRANDES Y SEPARADOS */
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 35px;
+    align-items: center;
+}
+
+.header-btn {
+    background: transparent;
+    color: var(--color-white) !important;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 8px 10px;
+    border-radius: 8px;
+    min-width: 60px;
+}
+
+.header-btn i {
+    font-size: 24px;
+    transition: var(--transition);
+}
+
+.header-btn:hover {
+    background-color: rgba(255, 204, 0, 0.15);
+    color: var(--color-yellow);
+    box-shadow: 0 0 12px rgba(255, 204, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.cart-btn {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: linear-gradient(135deg, var(--color-yellow), #FFD633);
+    color: var(--color-black);
+    font-size: 11px;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+    border: 1px solid #fff;
+}
+
+.menu-btn {
+    background: transparent;
+    color: var(--color-white) !important;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.menu-btn:hover {
+    color: var(--color-yellow);
+    background-color: rgba(255, 204, 0, 0.15);
+    transform: scale(1.1);
+}
+
+/* ==========================================
+   🟡 NAVBAR
+========================================== */
+.navbar {
+    background: linear-gradient(90deg, var(--color-yellow) 0%, #FFE044 100%);
+    border-top: 2px solid var(--mate-brown);
+    border-bottom: 2px solid var(--mate-brown);
+    padding: 8px 0 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-item {
+    color: var(--color-black);
+    font-weight: 500;
+    font-size: 13px !important;
+    padding: 5px 0 !important;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 6px;
+    padding: 8px 14px !important;
+}
+
+.nav-item:first-child {
+    background: linear-gradient(135deg, var(--mate-brown), var(--mate-wood));
+    color: var(--color-white);
+    font-weight: 600;
+}
+
+.nav-item:hover:not(:first-child) {
+    background-color: rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+}
+
+.nav-item.active { 
+    background: linear-gradient(135deg, var(--mate-olive), var(--mate-leaf));
+    color: var(--color-white); 
+    font-weight: 600; 
+}
+
+/* ==========================================
+   🧉 BANNER PRINCIPAL - ESTILO PAISANO
+========================================== */
+.hero-banner {
+    width: 100%;
+    margin: 25px 0 40px;
+    overflow: hidden;
+}
+
+.hero-banner-container {
+    width: 94%;
+    max-width: 1300px;
+    height: 450px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: var(--radius-lg);
+    border: 4px solid var(--mate-brown);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("../assets/img/banners/banner-mates.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.banner-content {
+    background-color: rgba(255,255,255,0.85);
+    padding: 30px 40px;
+    border-radius: var(--radius);
+    border: 3px solid var(--mate-wood);
+    box-shadow: var(--shadow-md);
+    max-width: 600px;
+}
+
+.banner-content h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+    color: var(--mate-wood);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.banner-content p {
+    font-size: 18px;
+    color: var(--color-gray-dark);
+    font-style: italic;
+}
+
+@media (max-width: 992px) { 
+    .hero-banner-container { height: 350px; } 
+    .banner-content h1 { font-size: 30px; }
+}
+@media (max-width: 768px) { 
+    .hero-banner-container { height: 280px; width: 96%; } 
+    .banner-content { padding: 20px; }
+    .banner-content h1 { font-size: 24px; }
+    .banner-content p { font-size: 15px; }
+}
+
+/* ==========================================
+   📋 LAYOUT PRINCIPAL
+========================================== */
+.main-content {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 35px;
+}
+
+/* ==========================================
+   🎛️ FILTROS - ESTILO RÚSTICO
+========================================== */
+.filters-sidebar {
+    background-color: var(--mate-cream);
+    padding: 25px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-wood);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+    border: var(--border-rustic);
+}
+
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--mate-beige);
+}
+
+.filters-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--mate-wood);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Playfair Display', serif;
+}
+
+.filters-title i {
+    color: var(--mate-olive);
+}
+
+.filters-clear {
+    font-size: 12px;
+    color: var(--mate-terra);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    background: none;
+    border: none;
+}
+
+.filters-clear:hover {
+    text-decoration: underline;
+    color: var(--mate-brown);
+}
+
+.filter-group {
+    margin-bottom: 25px;
+}
+
+.filter-subtitle {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--mate-wood);
+    border-left: 3px solid var(--mate-olive);
+    padding-left: 10px;
+    font-family: 'Playfair Display', serif;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    cursor: pointer;
+    font-size: 14px;
+    transition: var(--transition);
+    color: var(--color-gray-dark);
+    border-radius: 4px;
+    padding: 7px 10px;
+    margin: 0 -10px;
+}
+
+.filter-option:hover {
+    background-color: var(--mate-beige);
+    color: var(--mate-wood);
+    padding-left: 14px;
+}
+
+/* ==========================================
+   🧉 TARJETAS DE PRODUCTOS - TRADICIÓN + MODERNO
+========================================== */
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--mate-beige);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.products-info h2 {
+    font-size: 26px;
+    color: var(--mate-wood);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.products-info h2::before {
+    content: "🧉";
+    font-size: 28px;
+}
+
+.products-count {
+    font-size: 14px;
+    color: var(--color-gray-dark);
+    margin-left: 10px;
+}
+
+.order-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.select-style {
+    padding: 9px 14px;
+    border: 2px solid var(--mate-brown);
+    border-radius: 8px;
+    background-color: var(--mate-cream);
+    font-size: 14px;
+    color: var(--mate-wood);
+    transition: var(--transition);
+}
+
+.select-style:focus {
+    outline: none;
+    border-color: var(--mate-olive);
+    box-shadow: 0 0 0 2px rgba(90, 110, 57, 0.2);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    background: var(--mate-cream);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-wood);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    border: var(--border-rustic);
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(90, 58, 27, 0.3);
+    border-color: var(--mate-terra);
+}
+
+.product-img-container {
+    width: 100%;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background: linear-gradient(135deg, var(--mate-beige) 0%, #E8DDCC 100%);
+    border-bottom: 2px solid var(--mate-brown);
+}
+
+.product-image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.07);
+}
+
+.product-info {
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+.product-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--mate-wood);
+    line-height: 1.4;
+    font-family: 'Playfair Display', serif;
+}
+
+.product-mini-desc {
+    font-size: 14px;
+    color: var(--color-gray-dark);
+    line-height: 1.5;
+}
+
+.product-price {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--mate-terra);
+    margin: 8px 0;
+}
+
+/* 🆕 ESTILOS PARA BOTONES - SIN CAMBIAR EL DISEÑO GENERAL */
+.product-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.product-btn-main {
+    flex: 1;
+    background: linear-gradient(135deg, var(--mate-olive), var(--mate-leaf));
+    color: var(--color-white);
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product-btn-main:hover {
+    background: linear-gradient(135deg, var(--mate-leaf), var(--mate-olive));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(58, 90, 36, 0.3);
+}
+
+.product-btn {
+    flex: 1;
+    background: linear-gradient(135deg, var(--color-yellow-dark), var(--color-yellow));
+    color: var(--color-black);
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.product-btn:hover {
+    background: var(--color-yellow-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(230, 184, 0, 0.3);
+}
+
+/* ==========================================
+   🧉 SECCIÓN TRADICIÓN MATE
+========================================== */
+.tradition-section {
+    background: var(--mate-cream);
+    padding: 40px 20px;
+    margin: 40px 0;
+    border-radius: var(--radius-lg);
+    border: 3px solid var(--mate-brown);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.tradition-section h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--mate-wood);
+}
+
+.tradition-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-gray-dark);
+    font-style: italic;
+}
+
+/* ==========================================
+   🏷️ MARCAS Y ACCESORIOS
+========================================== */
+.brands-section {
+    padding: 50px 0;
+    border-top: 2px solid var(--mate-brown);
+    background-color: var(--mate-cream);
+}
+
+.brands-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.brands-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--mate-wood);
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
+}
+
+.brands-grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.brand-item {
+    background: var(--mate-beige);
+    padding: 18px 35px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    border: var(--border-rustic);
+    transition: var(--transition);
+    color: var(--mate-wood);
+    box-shadow: var(--shadow-sm);
+}
+
+.brand-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--mate-terra);
+}
+
+/* ==========================================
+   🦶 FOOTER
+========================================== */
+.footer {
+    background: linear-gradient(180deg, #2C1E14 0%, #1A120B 100%);
+    color: var(--color-white);
+    text-align: center;
+    padding: 25px 0;
+    font-size: 13px;
+    border-top: 3px solid var(--mate-brown);
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   📱 RESPONSIVE
+========================================== */
+@media (max-width: 992px) {
+    .header-top-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+    }
+    .header-left, .header-center, .header-right {
+        justify-content: center;
+    }
+    .search-box {
+        max-width: 100%;
+    }
+    .logo-img.logo-big { width: 220px !important; }
+    .content-container { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 576px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .product-img-container { height: 220px; }
+    .header-right { gap: 20px; }
+    .header-btn i { font-size: 22px; }
+    .banner-content h1 { font-size: 22px; }
+    .product-buttons { flex-direction: column; }
+}
+
+/* ==========================================
+   🛒 ESTILOS PARA CARRITO Y NOTIFICACIONES
+========================================== */
+.notificacion {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    color: #fff;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    z-index: 9999;
+    max-width: 320px;
+}
+.notificacion.exito { background-color: #16a34a; }
+.notificacion.info { background-color: #2563eb; }
+.notificacion.error { background-color: #dc2626; }
+.notificacion.mostrar { transform: translateX(0); }

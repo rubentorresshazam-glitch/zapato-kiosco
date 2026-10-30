@@ -1,0 +1,212 @@
+/* ======================================
+   ESTILOS EXCLUSIVOS: FACTURACIÓN FORMATO COMPROBANTE
+====================================== */
+
+.facturacion-contenedor {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.facturacion-encabezado-pagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.facturacion-encabezado-pagina h2 {
+    color: var(--blanco-texto);
+    margin: 0;
+}
+
+.facturacion-encabezado-pagina p {
+    color: #B0B3BC;
+    margin: 0.3rem 0 0 0;
+}
+
+/* BLOQUE FACTURA - FORMATO PAPEL */
+.bloque-factura {
+    background: #ffffff;
+    color: #1a1a1a;
+    padding: 2.5rem;
+    border-radius: var(--radio);
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    font-family: Arial, sans-serif;
+}
+
+/* Encabezado factura */
+.factura-encabezado {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.datos-empresa h2 {
+    color: #1a1a1a;
+    margin: 0 0 0.8rem 0;
+    font-size: 1.8rem;
+}
+
+.datos-empresa p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.datos-factura {
+    text-align: right;
+}
+
+.datos-factura h3 {
+    color: var(--amarillo-principal);
+    margin: 0 0 0.8rem 0;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+.datos-factura p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+}
+
+/* Datos cliente */
+.datos-cliente {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 6px;
+}
+
+.datos-cliente h4 {
+    margin: 0 0 0.8rem 0;
+    color: #444;
+    font-size: 1.1rem;
+}
+
+.datos-cliente p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+}
+
+/* Tabla productos */
+.tabla-factura {
+    margin-bottom: 2rem;
+}
+
+.tabla-factura table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-factura th {
+    background: #f0f0f0;
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    font-weight: 600;
+}
+
+.tabla-factura td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+}
+
+.tabla-factura .texto-centro {
+    text-align: center;
+    color: #888;
+}
+
+/* Totales */
+.totales-factura {
+    margin-left: auto;
+    width: 300px;
+}
+
+.fila-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.fila-total.final {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-top: 0.5rem;
+    padding-top: 0.8rem;
+    border-top: 2px solid #333;
+}
+
+/* Pie factura */
+.pie-factura {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Botones */
+.btn-primario {
+    background-color: var(--amarillo-principal);
+    color: var(--negro-principal);
+    font-weight: 600;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primario:hover {
+    background-color: var(--amarillo-intenso);
+}
+
+/* ESTILO DE IMPRESIÓN - SOLO SE VE LA FACTURA */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .bloque-factura, .bloque-factura * {
+        visibility: visible;
+    }
+    .bloque-factura {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+        padding: 1.5cm;
+    }
+    .facturacion-encabezado-pagina,
+    .admin-sidebar {
+        display: none !important;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .factura-encabezado {
+        flex-direction: column;
+    }
+    .datos-factura {
+        text-align: left;
+    }
+    .totales-factura {
+        width: 100%;
+    }
+    .bloque-factura {
+        padding: 1.5rem;
+    }
+}
