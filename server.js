@@ -12,7 +12,7 @@ const app = express();
 // ==============================================
 const PUERTO = process.env.PORT || 3000;
 const MP_ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN || 'PONÉ_TU_TOKEN_AQUI';
-const DOMINIO = process.env.DOMINIO || 'http://localhost:3000';
+const DOMINIO = process.env.DOMINIO || `http://localhost:${PUERTO}`;
 const client = new MercadoPagoConfig({ accessToken: MP_ACCESS_TOKEN });
 
 // ==============================================
@@ -20,7 +20,7 @@ const client = new MercadoPagoConfig({ accessToken: MP_ACCESS_TOKEN });
 // ==============================================
 const carpetaBD = path.join(__dirname, 'base_datos');
 if (!fs.existsSync(carpetaBD)) fs.mkdirSync(carpetaBD, { recursive: true });
-const dbPath = path.join(carpetaBD, 'zapato_kiosco.db');
+const dbPath = path.join(__dirname, 'base_datos', 'zapato_kiosco.db');
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) console.error('❌ Error BD:', err.message);
   else crearTablas();
@@ -78,15 +78,22 @@ function crearTablas() {
 }
 
 // ==============================================
-// ⚙️ MIDDLEWARE
+// ⚙️ MIDDLEWARE — ARCHIVOS DESDE client/
 // ==============================================
 app.use(express.json({ limit: '10mb' }));
-app.use(express.static(__dirname));
+
+// 🔑 Aquí está la corrección: servir desde carpeta client/
+app.use(express.static(path.join(__dirname, 'client')));
+
+// Cuando entren a la raíz → mostrar index.html de client/
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'index.html'));
+});
 
 // ==============================================
 // 🖼️ SUBIDA DE IMÁGENES
 // ==============================================
-const carpetaImagenes = path.join(__dirname, 'assets', 'productos');
+const carpetaImagenes = path.join(__dirname, 'client', 'assets', 'productos');
 if (!fs.existsSync(carpetaImagenes)) fs.mkdirSync(carpetaImagenes, { recursive: true });
 
 const almacenamiento = multer.diskStorage({
@@ -107,6 +114,7 @@ const subirImagen = multer({
   }
 });
 
+// Servir imágenes subidas
 app.use('/productos-img', express.static(carpetaImagenes));
 
 app.post('/api/subir-imagen', subirImagen.single('imagen'), (req, res) => {
@@ -195,7 +203,7 @@ app.delete('/api/productos/:id', (req, res) => {
 });
 
 // ==============================================
-// 💳 MERCADO PAGO — REDIRIGE A TU CONFIRMACIÓN
+// 💳 MERCADO PAGO
 // ==============================================
 app.post('/api/crear-pago', async (req, res) => {
   try {
@@ -290,6 +298,7 @@ app.listen(PUERTO, () => {
   console.log('=========================================');
   console.log(`📍 Puerto: ${PUERTO}`);
   console.log(`🗄️  Base de datos: Conectada`);
+  console.log(`📂 Archivos servidos desde: client/`);
   console.log(`🔄 Flujo: Carrito → checkout → MP → confirmacion.html`);
   console.log('=========================================\n');
 });
