@@ -6,6 +6,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "express": "^5.3.0",
     "mercadopago": "^3.6.1",
     "multer": "^2.5.0",

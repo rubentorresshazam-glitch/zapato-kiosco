@@ -3,6 +3,7 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
+const cookieParser = require('cookie-parser'); // ✅ Para recordar sesión
 const { MercadoPagoConfig, Preference } = require('mercadopago');
 
 const app = express();
@@ -13,6 +14,7 @@ const app = express();
 const PUERTO = process.env.PORT || 3000;
 const MP_ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN || 'PONÉ_TU_TOKEN_AQUI';
 const DOMINIO = process.env.DOMINIO || `http://localhost:${PUERTO}`;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "tu-contraseña-aqui"; // ✅ Tu clave
 const client = new MercadoPagoConfig({ accessToken: MP_ACCESS_TOKEN });
 
 // ==============================================
@@ -78,16 +80,46 @@ function crearTablas() {
 }
 
 // ==============================================
-// ⚙️ MIDDLEWARE — ARCHIVOS DESDE client/
+// ⚙️ MIDDLEWARE
 // ==============================================
+app.use(cookieParser()); // ✅ Para leer la sesión guardada
 app.use(express.json({ limit: '10mb' }));
-
-// 🔑 Aquí está la corrección: servir desde carpeta client/
 app.use(express.static(path.join(__dirname, 'client')));
 
-// Cuando entren a la raíz → mostrar index.html de client/
+// Página principal
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'index.html'));
+});
+
+// ==============================================
+// 🔐 SISTEMA DE ACCESO — CONTRASEÑA UNA SOLA VEZ
+// ==============================================
+
+// Verificar contraseña → sesión 30 días
+app.post('/api/admin/verificar', (req, res) => {
+  const { password } = req.body;
+  if (password === ADMIN_PASSWORD) {
+    res.cookie('es_admin', 'si', {
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 días sin pedirla de nuevo ✅
+      httpOnly: false,
+      sameSite: 'lax'
+    });
+    res.json({ ok: true });
+  } else {
+    res.json({ ok: false, mensaje: 'Contraseña incorrecta' });
+  }
+});
+
+// Saber si ya ingresó antes
+app.get('/api/admin/estado', (req, res) => {
+  const esAdmin = req.cookies && req.cookies.es_admin === 'si';
+  res.json({ esAdmin });
+});
+
+// Cerrar sesión
+app.post('/api/admin/salir', (req, res) => {
+  res.clearCookie('es_admin');
+  res.json({ ok: true });
 });
 
 // ==============================================
@@ -114,7 +146,6 @@ const subirImagen = multer({
   }
 });
 
-// Servir imágenes subidas
 app.use('/productos-img', express.static(carpetaImagenes));
 
 app.post('/api/subir-imagen', subirImagen.single('imagen'), (req, res) => {
@@ -298,7 +329,8 @@ app.listen(PUERTO, () => {
   console.log('=========================================');
   console.log(`📍 Puerto: ${PUERTO}`);
   console.log(`🗄️  Base de datos: Conectada`);
-  console.log(`📂 Archivos servidos desde: client/`);
+  console.log(`📂 Archivos desde: client/`);
+  console.log(`🔐 Acceso admin: activo (30 días recordado)`);
   console.log(`🔄 Flujo: Carrito → checkout → MP → confirmacion.html`);
   console.log('=========================================\n');
 });
