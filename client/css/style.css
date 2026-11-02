@@ -1262,3 +1262,104 @@ button {
         min-height: 280px;
     }
 }
+
+/* 🔐 Acceso del dueño */
+.icono-candado {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-right: 5px;
+  transition: color 0.2s;
+}
+.icono-candado:hover {
+  color: #ffcc00;
+}
+
+#boton-panel-admin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-panel-admin {
+  background: linear-gradient(135deg, #1a1a1a, #333);
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+}
+.btn-panel-admin:hover {
+  background: #ffd700;
+  color: #000;
+}
+
+.btn-salir-admin {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Modal de contraseña */
+.modal-admin {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+.modal-contenido {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 340px;
+  width: 90%;
+}
+.modal-contenido h3 {
+  margin: 0 0 5px;
+}
+.modal-contenido p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.modal-contenido input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.botones-modal {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.botones-modal button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.botones-modal button:first-child {
+  background: #00a650;
+  color: white;
+}
+.botones-modal button:last-child {
+  background: #eee;
+  color: #333;
+}

@@ -49,9 +49,23 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <!-- ✅ ELIMINADO: enlace "Mi cuenta" / Iniciar sesión -->
-                    <!-- ✅ CARRITO: ruta corregida, SIN carpeta mi-cuenta -->
-                    <a href="/client/mi-cuenta/carrito.html" class="header-btn cart-btn">
+                    <!-- 🔐 ACCESO DEL DUEÑO -->
+                    <div id="contenedor-admin">
+                        <button id="icono-ingreso" class="icono-candado" style="display: none;" title="Acceso del dueño">
+                            <i class="fa-solid fa-lock"></i>
+                        </button>
+                        <div id="boton-panel-admin" style="display: none;">
+                            <a href="/admin/" class="btn-panel-admin">
+                                <i class="fa-solid fa-gear"></i> Panel Admin
+                            </a>
+                            <button id="btn-salir-admin" class="btn-salir-admin">
+                                <i class="fa-solid fa-right-from-bracket"></i> Salir
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CARRITO -->
+                    <a href="mi-cuenta/carrito.html" class="header-btn cart-btn">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <div class="cart-count" id="headerCartCount">0</div>
                     </a>
@@ -107,120 +121,120 @@
     <main>
         <!-- CATEGORÍAS SECTION -->
         <section class="categories">
-           <div class="categories-grid">
-    <a href="pages/celulares.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/celulares.png" alt="Celulares y Smartphones" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Celulares</h3>
-        </div>
-    </a>
-    <a href="pages/telefonia.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/telefonia.png" alt="Teléfonos Fijos y Telefonía" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Telefonía y Accesorios</h3>
-        </div>
-    </a>
-    <a href="pages/auriculares.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/auriculares.png" alt="Auriculares y Audio" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Auriculares</h3>
-        </div>
-    </a>
-    <a href="pages/cables.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/cables.png" alt="Cables y Cargadores" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Cables Varios</h3>
-        </div>
-    </a>
-    <a href="pages/pendrive.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/pendrive.png" alt="Pendrives y memorias" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Pendrive y Memorias</h3>
-        </div>
-    </a>
-    <a href="pages/pesca.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/pesca.png" alt="Artículos de Pesca" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Pesca</h3>
-        </div>
-    </a>
-    <a href="pages/tabaqueria.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/tabaqueria.png" alt="Tabaquería y Accesorios" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Tabaquería</h3>
-        </div>
-    </a>
-    <a href="pages/relojes.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/relojes.png" alt="Relojes y Accesorios" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Relojería</h3>
-        </div>
-    </a>
-    <a href="pages/camping.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/camping.png" alt="Artículos de Camping" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Camping</h3>
-        </div>
-    </a>
-    <a href="pages/termos-y-mates.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/termo-y-mate.png" alt="Termos y Mates" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Termos y Mates</h3>
-        </div>
-    </a>
-    <a href="pages/gafas.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/gafas.png" alt="Gafas y Lentes" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Gafas</h3>
-        </div>
-    </a>
-    <a href="pages/sahumerios.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/sahumerios.png" alt="Sahumerios y Aromas" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Sahumerios</h3>
-        </div>
-    </a>
-    <a href="pages/aromatizantes.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/aromatizantes.png" alt="Aromatizantes" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Aromatizantes</h3>
-        </div>
-    </a>
-    <a href="pages/automotor.html" class="category-card">
-        <div class="category-image-container">
-            <img src="./assets/img/categories/automotor.png" alt="Artículos para el Automotor" class="category-full-image">
-        </div>
-        <div class="category-overlay">
-            <h3>Automotor</h3>
-        </div>
-    </a>
-</div>
+            <div class="categories-grid">
+                <a href="pages/celulares.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/celulares.png" alt="Celulares y Smartphones" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Celulares</h3>
+                    </div>
+                </a>
+                <a href="pages/telefonia.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/telefonia.png" alt="Teléfonos Fijos y Telefonía" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Telefonía y Accesorios</h3>
+                    </div>
+                </a>
+                <a href="pages/auriculares.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/auriculares.png" alt="Auriculares y Audio" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Auriculares</h3>
+                    </div>
+                </a>
+                <a href="pages/cables.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/cables.png" alt="Cables y Cargadores" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Cables Varios</h3>
+                    </div>
+                </a>
+                <a href="pages/pendrive.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/pendrive.png" alt="Pendrives y memorias" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Pendrive y Memorias</h3>
+                    </div>
+                </a>
+                <a href="pages/pesca.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/pesca.png" alt="Artículos de Pesca" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Pesca</h3>
+                    </div>
+                </a>
+                <a href="pages/tabaqueria.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/tabaqueria.png" alt="Tabaquería y Accesorios" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Tabaquería</h3>
+                    </div>
+                </a>
+                <a href="pages/relojes.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/relojes.png" alt="Relojes y Accesorios" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Relojería</h3>
+                    </div>
+                </a>
+                <a href="pages/camping.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/camping.png" alt="Artículos de Camping" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Camping</h3>
+                    </div>
+                </a>
+                <a href="pages/termos-y-mates.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/termo-y-mate.png" alt="Termos y Mates" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Termos y Mates</h3>
+                    </div>
+                </a>
+                <a href="pages/gafas.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/gafas.png" alt="Gafas y Lentes" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Gafas</h3>
+                    </div>
+                </a>
+                <a href="pages/sahumerios.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/sahumerios.png" alt="Sahumerios y Aromas" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Sahumerios</h3>
+                    </div>
+                </a>
+                <a href="pages/aromatizantes.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/aromatizantes.png" alt="Aromatizantes" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Aromatizantes</h3>
+                    </div>
+                </a>
+                <a href="pages/automotor.html" class="category-card">
+                    <div class="category-image-container">
+                        <img src="./assets/img/categories/automotor.png" alt="Artículos para el Automotor" class="category-full-image">
+                    </div>
+                    <div class="category-overlay">
+                        <h3>Automotor</h3>
+                    </div>
+                </a>
+            </div>
         </section>
 
         <!-- BENEFICIOS SECTION -->
@@ -251,18 +265,22 @@
                     <h3>Garantía</h3>
                     <p>Productos con garantía oficial</p>
                 </div>
-            </div><div class="featured-content">
-                 <div class="products-grid">
-                     <!-- Los productos se cargan solos desde la base de datos -->
-               </div>
-             </div>
-     </section>
+            </div>
+            <div class="featured-content">
+                <div class="products-grid">
+                    <!-- Los productos se cargan solos desde la base de datos -->
+                </div>
+            </div>
+        </section>
 
         <!-- OFERTAS DESTACADAS -->
         <section class="featured-offers">
             <div class="featured-container">
-       
-<!-- MAPA DE UBICACIÓN -->
+                <!-- Aquí van las ofertas -->
+            </div>
+        </section>
+
+        <!-- MAPA DE UBICACIÓN -->
         <aside class="promo-banner">
             <div class="promo-content mapa-contenido">
                 <div class="mapa-texto">
@@ -275,7 +293,7 @@
                         <i class="fa-solid fa-location-dot"></i>
                     </a>
                 </div>
-                <div class="mapa-iframe">
+                                <div class="mapa-iframe">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28124.45123456789!2d-68.950000!3d-39.100000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960d9a0f12345678%3A0xabcdef1234567890!2sAvellaneda%2C%20R%C3%ADo%20Negro!5e0!3m2!1ses!2sar!4v1720923000000!5m2!1ses!2sar" 
                         width="100%" 
@@ -288,17 +306,23 @@
                 </div>
             </div>
         </aside>
+    </main>
 
-    <!-- PANEL CARRITO -->
-    <div id="panel-carrito">
-        <!-- Contenido del carrito -->
+    <!-- 🔐 MODAL DE CONTRASEÑA DEL DUEÑO -->
+    <div id="modal-contraseña" class="modal-admin" style="display: none;">
+        <div class="modal-contenido">
+            <h3>🔐 Acceso del Dueño</h3>
+            <p>Escribí la contraseña para gestionar la tienda</p>
+            <input type="password" id="input-clave" placeholder="Tu contraseña...">
+            <div class="botones-modal">
+                <button id="btn-entrar-clave">Ingresar</button>
+                <button id="btn-cancelar-clave">Cancelar</button>
+            </div>
+        </div>
     </div>
 
-    <!-- CHECKOUT - DATOS DEL COMPRADOR INVITADO -->
-    <div id="checkout">
-        <!-- Formulario de compra SIN pedir cuenta ni contraseña -->
-    </div>
-
-    <script src="js/funciones-globales.js" defer></script> 
+    <!-- SCRIPTS -->
+    <script src="js/funciones-globales.js" defer></script>
+    <script src="js/admin-acceso.js" defer></script>
 </body>
 </html>

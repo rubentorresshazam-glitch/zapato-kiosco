@@ -108,6 +108,7 @@ app.post('/api/admin/verificar', (req, res) => {
   } else {
     res.json({ ok: false, mensaje: 'Contraseña incorrecta' });
   }
+  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "gaston35";
 });
 
 // Saber si ya ingresó antes
