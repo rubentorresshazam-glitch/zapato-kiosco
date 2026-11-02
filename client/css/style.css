@@ -1363,3 +1363,23 @@ button {
   background: #eee;
   color: #333;
 }
+/* Botón Conectar con la App */
+.btn-app {
+  background: linear-gradient(135deg, #00a650, #00c853);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+.btn-app:hover {
+  background: #008f42;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,166,80,0.3);
+}

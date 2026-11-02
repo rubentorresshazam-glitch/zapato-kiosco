@@ -58,6 +58,10 @@
                             <a href="/admin/" class="btn-panel-admin">
                                 <i class="fa-solid fa-gear"></i> Panel Admin
                             </a>
+                            <!-- ✅ BOTÓN CONECTAR CON LA APP -->
+                            <a href="/admin/" class="btn-app" id="btn-conectar-app">
+                                <i class="fa-solid fa-mobile-screen-button"></i> Conectar con la App
+                            </a>
                             <button id="btn-salir-admin" class="btn-salir-admin">
                                 <i class="fa-solid fa-right-from-bracket"></i> Salir
                             </button>
@@ -293,15 +297,15 @@
                         <i class="fa-solid fa-location-dot"></i>
                     </a>
                 </div>
-                                <div class="mapa-iframe">
+                <div class="mapa-iframe">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28124.45123456789!2d-68.950000!3d-39.100000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960d9a0f12345678%3A0xabcdef1234567890!2sAvellaneda%2C%20R%C3%ADo%20Negro!5e0!3m2!1ses!2sar!4v1720923000000!5m2!1ses!2sar" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0; border-radius: 12px;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28124.45123456789!2d-68.950000!3d-39.100000!2m
+                                            width="100%" 
+                    height="100%" 
+                    style="border:0; border-radius: 12px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
@@ -324,5 +328,19 @@
     <!-- SCRIPTS -->
     <script src="js/funciones-globales.js" defer></script>
     <script src="js/admin-acceso.js" defer></script>
+    
+    <!-- ✅ Código para el botón Conectar con la App -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btnConectarApp = document.getElementById('btn-conectar-app');
+        if (btnConectarApp) {
+            btnConectarApp.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Abre el panel de administración en pestaña nueva
+                window.open('/admin/', '_blank');
+            });
+        }
+    });
+    </script>
 </body>
 </html>
