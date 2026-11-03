@@ -31,7 +31,7 @@
         </div>
     </section>
 
-    <!-- HEADER -->
+        <!-- HEADER -->
     <header class="header">
         <div class="header-top">
             <div class="header-top-container">
@@ -49,23 +49,17 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <!-- 🔐 ACCESO DEL DUEÑO -->
-                    <div id="contenedor-admin">
-                        <button id="icono-ingreso" class="icono-candado" style="display: none;" title="Acceso del dueño">
-                            <i class="fa-solid fa-lock"></i>
+                    <!-- 🔐 SOLO VOS — Aparece cuando estás conectado -->
+                    <div id="contenedor-admin" style="display: none;">
+                        <a href="/admin/" class="btn-panel-admin">
+                            <i class="fa-solid fa-gear"></i> Panel Admin
+                        </a>
+                        <a href="/admin/" class="btn-app" id="btn-conectar-app">
+                            <i class="fa-solid fa-mobile-screen-button"></i> Conectar con la App
+                        </a>
+                        <button id="btn-salir-admin" class="btn-salir-admin">
+                            <i class="fa-solid fa-right-from-bracket"></i> Salir
                         </button>
-                        <div id="boton-panel-admin" style="display: none;">
-                            <a href="/admin/" class="btn-panel-admin">
-                                <i class="fa-solid fa-gear"></i> Panel Admin
-                            </a>
-                            <!-- ✅ BOTÓN CONECTAR CON LA APP -->
-                            <a href="/admin/" class="btn-app" id="btn-conectar-app">
-                                <i class="fa-solid fa-mobile-screen-button"></i> Conectar con la App
-                            </a>
-                            <button id="btn-salir-admin" class="btn-salir-admin">
-                                <i class="fa-solid fa-right-from-bracket"></i> Salir
-                            </button>
-                        </div>
                     </div>
 
                     <!-- CARRITO -->
@@ -79,6 +73,22 @@
                 </div>
             </div>
         </div>
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="nav-item">
+                    <i class="fa-solid fa-bars"></i>
+                    <span>Todas las categorías</span>
+                </div>
+                <a href="index.html" class="nav-item active">Inicio</a>
+                <a href="pages/ofertas.html" class="nav-item">Ofertas</a>
+                <a href="pages/novedades.html" class="nav-item">Novedades</a>
+                <a href="pages/mas-vendidos.html" class="nav-item">Más vendidos</a>
+                <a href="pages/contacto.html" class="nav-item">Contacto</a>
+            </div>
+        </nav>
+    </header>
 
         <!-- NAVBAR -->
         <nav class="navbar">
@@ -329,18 +339,39 @@
     <script src="js/funciones-globales.js" defer></script>
     <script src="js/admin-acceso.js" defer></script>
     
-    <!-- ✅ Código para el botón Conectar con la App -->
+        <!-- SCRIPTS -->
+    <script src="js/funciones-globales.js" defer></script>
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const btnConectarApp = document.getElementById('btn-conectar-app');
-        if (btnConectarApp) {
-            btnConectarApp.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Abre el panel de administración en pestaña nueva
-                window.open('/admin/', '_blank');
-            });
+    document.addEventListener('DOMContentLoaded', async () => {
+        const contenedorAdmin = document.getElementById('contenedor-admin');
+        if (!contenedorAdmin) return;
+
+        // 🔍 Verificar si ya estás logueado como dueño
+        try {
+            const res = await fetch('/api/admin/estado');
+            const { esAdmin } = await res.json();
+
+            // ✅ Solo VOS ves los botones cuando estás logueado
+            if (esAdmin) {
+                contenedorAdmin.style.display = 'flex';
+            }
+            // ❌ Los clientes NO ven nada
+        } catch (e) {
+            console.log('No hay acceso de admin — vista normal');
+        }
+
+        // 🚪 Botón Salir
+        const btnSalir = document.getElementById('btn-salir-admin');
+        if (btnSalir) {
+            btnSalir.onclick = async () => {
+                if (confirm('¿Cerrar sesión?')) {
+                    await fetch('/api/admin/salir', { method: 'POST' });
+                    window.location.reload();
+                }
+            };
         }
     });
     </script>
 </body>
 </html>
+
