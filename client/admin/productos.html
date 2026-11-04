@@ -20,12 +20,30 @@
             </div>
         </div>
         <nav class="sidebar-menu">
-            <a href="index.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Inicio</span></a>
-            <a href="productos.html" class="menu-item active"><i class="fa-solid fa-box"></i> <span>Productos</span></a>
-            <a href="pedidos.html" class="menu-item"><i class="fa-solid fa-shopping-cart"></i> <span>Pedidos</span></a>
-            <a href="facturacion.html" class="menu-item"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Facturación</span></a>
-            <a href="estadisticas.html" class="menu-item"><i class="fa-solid fa-chart-line"></i> <span>Estadísticas</span></a>
-            <a href="../index.html" class="menu-item salir"><i class="fa-solid fa-arrow-left"></i> <span>Volver a la tienda</span></a>
+            <a href="index.html" class="menu-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="productos.html" class="menu-item active">
+                <i class="fa-solid fa-box"></i>
+                <span>Productos</span>
+            </a>
+            <a href="pedidos.html" class="menu-item">
+                <i class="fa-solid fa-shopping-cart"></i>
+                <span>Pedidos</span>
+            </a>
+            <a href="facturacion.html" class="menu-item">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span>Facturación</span>
+            </a>
+            <a href="estadisticas.html" class="menu-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Estadísticas</span>
+            </a>
+            <a href="../index.html" class="menu-item salir">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Volver a la tienda</span>
+            </a>
         </nav>
     </aside>
 
@@ -37,13 +55,13 @@
             <h2 id="titulo-form">Agregar Nuevo Producto</h2>
             <form id="formProducto">
                 <input type="hidden" id="productoId">
-                
-                <div class="fila-form grupo-form">
+
+                <div class="grupo-form">
                     <label>Nombre del Producto *</label>
                     <input type="text" id="nombre" required placeholder="Ej: Cable USB-C Reforzado">
                 </div>
 
-                <div class="fila-form grupo-form">
+                <div class="grupo-form">
                     <label>Categoría</label>
                     <select id="categoria">
                         <option value="">Seleccionar categoría</option>
@@ -87,23 +105,23 @@
                     </div>
                 </div>
 
-                <div class="fila-form grupo-form">
+                <div class="grupo-form">
                     <label>Descripción Corta</label>
                     <textarea id="descripcion_corta" rows="2" placeholder="Breve descripción que aparece en la tarjeta..."></textarea>
                 </div>
 
-                <div class="fila-form grupo-form">
+                <div class="grupo-form">
                     <label>Descripción Completa</label>
                     <textarea id="descripcion_larga" rows="4" placeholder="Detalles completos del producto..."></textarea>
                 </div>
 
-                <div class="fila-form grupo-form">
+                <div class="grupo-form">
                     <label>Imágenes del Producto <small>(puedes subir varias)</small></label>
                     <input type="file" id="imagenes" accept="image/*" multiple>
                     <div id="previsualizacion-imagenes" class="vista-previa-contenedor"></div>
                 </div>
 
-                <div class="fila-form grupo-form">
+                <div class="grupo-form">
                     <label>Activo</label>
                     <input type="checkbox" id="activo" checked>
                 </div>
