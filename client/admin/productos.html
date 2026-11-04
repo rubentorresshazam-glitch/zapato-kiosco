@@ -32,92 +32,91 @@
     <main class="admin-main">
         <h1>Gestión de Productos</h1>
 
-        <!-- Formulario — Responsivo para CELULAR -->
-        <div class="formulario-producto">
+        <!-- Formulario de Producto -->
+        <div class="formulario-producto" id="formularioWrapper">
             <h2 id="titulo-form">Agregar Nuevo Producto</h2>
             <form id="formProducto">
                 <input type="hidden" id="productoId">
                 
-                <div class="fila-form">
+                <div class="fila-form grupo-form">
                     <label>Nombre del Producto *</label>
                     <input type="text" id="nombre" required placeholder="Ej: Cable USB-C Reforzado">
                 </div>
 
-                <div class="fila-form">
+                <div class="fila-form grupo-form">
                     <label>Categoría</label>
-                   <select id="categoria">
-                       <option value="">Seleccionar categoría</option>
-                       <option value="Aromatizantes">Aromatizantes</option>
-                       <option value="Relojes">Relojes</option>
+                    <select id="categoria">
+                        <option value="">Seleccionar categoría</option>
+                        <option value="Aromatizantes">Aromatizantes</option>
+                        <option value="Relojes">Relojes</option>
                         <option value="Pesca">Pesca</option>
-                          <option value="Celulares">Celulares</option>
-                               <option value="Camping">Camping</option>
-                              <option value="Pendrive">Pendrive</option>
-                             <option value="Auriculares">Auriculares</option>
-                            <option value="Automotor">Automotor</option>
-                          <option value="Cables">Cables</option>
-                       <option value="Gafas">Gafas</option>
+                        <option value="Celulares">Celulares</option>
+                        <option value="Camping">Camping</option>
+                        <option value="Pendrive">Pendrive</option>
+                        <option value="Auriculares">Auriculares</option>
+                        <option value="Automotor">Automotor</option>
+                        <option value="Cables">Cables</option>
+                        <option value="Gafas">Gafas</option>
                         <option value="Ofertas">Ofertas</option>
-                         <option value="Termos y Mates">Termos y Mates</option>
-                     <option value="Telefonía">Telefonía</option>
-                      <option value="Sahumerios">Sahumerios</option>
-                       <option value="Tabaquería">Tabaquería</option>
-                      </select>
+                        <option value="Termos y Mates">Termos y Mates</option>
+                        <option value="Telefonía">Telefonía</option>
+                        <option value="Sahumerios">Sahumerios</option>
+                        <option value="Tabaquería">Tabaquería</option>
+                    </select>
                 </div>
 
                 <div class="fila-form-doble">
-                    <div>
+                    <div class="grupo-form">
                         <label>Precio *</label>
                         <input type="number" id="precio" required placeholder="0" step="10">
                     </div>
-                    <div>
+                    <div class="grupo-form">
                         <label>Stock</label>
                         <input type="number" id="stock" placeholder="0">
                     </div>
                 </div>
 
                 <div class="fila-form-doble">
-                    <div>
+                    <div class="grupo-form">
                         <label>¿En oferta?</label>
                         <input type="checkbox" id="en_oferta">
                     </div>
-                    <div>
+                    <div class="grupo-form">
                         <label>Precio de Oferta</label>
                         <input type="number" id="precio_oferta" placeholder="0" step="10">
                     </div>
                 </div>
 
-                <div class="fila-form">
+                <div class="fila-form grupo-form">
                     <label>Descripción Corta</label>
                     <textarea id="descripcion_corta" rows="2" placeholder="Breve descripción que aparece en la tarjeta..."></textarea>
                 </div>
 
-                <div class="fila-form">
+                <div class="fila-form grupo-form">
                     <label>Descripción Completa</label>
                     <textarea id="descripcion_larga" rows="4" placeholder="Detalles completos del producto..."></textarea>
                 </div>
 
-                <!-- 📤 SUBIDA DE IMÁGENES — Conectada con el JS -->
-                <div class="fila-form">
+                <div class="fila-form grupo-form">
                     <label>Imágenes del Producto <small>(puedes subir varias)</small></label>
                     <input type="file" id="imagenes" accept="image/*" multiple>
-                    <div id="previsualizacion-imagenes" class="vista-previa-imagenes"></div>
+                    <div id="previsualizacion-imagenes" class="vista-previa-contenedor"></div>
                 </div>
 
-                <div class="fila-form">
+                <div class="fila-form grupo-form">
                     <label>Activo</label>
                     <input type="checkbox" id="activo" checked>
                 </div>
 
-                <div class="fila-form">
-                    <button type="submit" class="btn-primario" style="width:100%; font-size:1.1rem; padding:0.8rem;">
+                <div class="botones-form">
+                    <button type="submit" class="btn-primario">
                         <i class="fa-solid fa-save"></i> Guardar Producto
                     </button>
                 </div>
             </form>
         </div>
 
-        <!-- Lista de productos en TABLA — Con el id correcto -->
+        <!-- Lista de productos -->
         <div class="lista-productos">
             <h2>Productos Cargados</h2>
             <table class="tabla-productos">
@@ -133,9 +132,8 @@
                     </tr>
                 </thead>
                 <tbody id="listaProductos">
-                    <!-- Los productos se cargan acá automáticamente -->
                     <tr>
-                        <td colspan="7" style="text-align:center; padding:2rem; color:#888;">
+                        <td colspan="7" class="texto-centro">
                             Cargando productos...
                         </td>
                     </tr>

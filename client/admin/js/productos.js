@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function cargarListaProductos() {
   const lista = document.getElementById('listaProductos');
   
-  // ✅ Verificar que el contenedor exista
   if (!lista) {
     console.error('❌ No se encontró el contenedor #listaProductos en el HTML');
     return;
@@ -45,7 +44,7 @@ async function cargarListaProductos() {
     if (!productos || productos.length === 0) {
       lista.innerHTML = `
         <tr>
-          <td colspan="8" style="text-align:center; padding:2.5rem; color:#888;">
+          <td colspan="7" class="texto-centro">
             <i class="fa-solid fa-box-open" style="font-size:2rem; color:#ddd; margin-bottom:1rem;"></i>
             <p>Todavía no hay productos cargados</p>
             <p style="font-size:0.9rem;">Completá el formulario de abajo para agregar el primero</p>
@@ -73,7 +72,7 @@ async function cargarListaProductos() {
       }
       
       const precioOferta = p.precio_oferta && p.precio_oferta > 0 ? 
-        `<span style="color:#28a745;">$${Number(p.precio_oferta).toLocaleString('es-AR')}</span>` : 
+        `<span class="precio-oferta">$${Number(p.precio_oferta).toLocaleString('es-AR')}</span>` : 
         '<span style="color:#999;">—</span>';
       
       return `
@@ -82,8 +81,8 @@ async function cargarListaProductos() {
           <td>
             <div style="display:flex; align-items:center; gap:0.5rem;">
               ${tieneImagenes ? 
-                `<img src="${primeraImagen}" alt="${p.nombre}" style="width:40px; height:40px; object-fit:cover; border-radius:4px;" onerror="this.style.display='none'">` : 
-                '<div style="width:40px; height:40px; background:#eee; border-radius:4px; display:flex; align-items:center; justify-content:center; color:#aaa;"><i class="fa-solid fa-image"></i></div>'
+                `<img src="${primeraImagen}" alt="${p.nombre}" class="img-mini" onerror="this.style.display='none'">` : 
+                '<div class="img-mini" style="background:#2a2d37; display:flex; align-items:center; justify-content:center; color:#666;"><i class="fa-solid fa-image"></i></div>'
               }
               <span>${p.nombre}</span>
             </div>
@@ -91,18 +90,19 @@ async function cargarListaProductos() {
           <td>${p.categoria || 'Sin categoría'}</td>
           <td>$${Number(p.precio).toLocaleString('es-AR')}</td>
           <td>${precioOferta}</td>
-          <td>${p.en_oferta == 1 ? '<span style="color:#ff9900; font-weight:bold;">🔥 En oferta</span>' : '—'}</td>
           <td>${p.activo == 1 ? 
             '<span style="color:green; font-weight:bold;"><i class="fa-solid fa-check-circle"></i> Activo</span>' : 
             '<span style="color:#999;">Inactivo</span>'
           }</td>
-          <td style="white-space:nowrap;">
-            <button class="btn-ver" title="Editar" onclick="editarProducto(${p.id})" style="padding:0.4rem 0.6rem; margin:0 0.1rem; border:none; background:#ffcc00; border-radius:4px; cursor:pointer;">
-              <i class="fa-solid fa-pen"></i>
-            </button>
-            <button class="btn-eliminar" title="Eliminar" onclick="eliminarProducto(${p.id})" style="padding:0.4rem 0.6rem; margin:0 0.1rem; border:none; background:#d32f2f; color:white; border-radius:4px; cursor:pointer;">
-              <i class="fa-solid fa-trash"></i>
-            </button>
+          <td>
+            <div class="acciones">
+              <button class="btn-editar" title="Editar" onclick="editarProducto(${p.id})">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button class="btn-eliminar" title="Eliminar" onclick="eliminarProducto(${p.id})">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
           </td>
         </tr>
       `;
@@ -112,7 +112,7 @@ async function cargarListaProductos() {
     console.error('❌ Error cargando productos:', error);
     lista.innerHTML = `
       <tr>
-        <td colspan="8" style="text-align:center; padding:2rem; color:#d63030;">
+        <td colspan="7" class="texto-centro">
           <i class="fa-solid fa-triangle-exclamation" style="font-size:1.5rem;"></i>
           <p>No se pudieron cargar los productos</p>
           <p style="font-size:0.9rem;">Verificá que el servidor esté encendido</p>
@@ -133,10 +133,10 @@ async function guardarProducto(e) {
   let imagenesGuardadas = [];
   
   // Si hay imágenes ya guardadas (edición), las mantenemos
-  const imagenesExistentes = document.getElementById('imagenes_guardadas')?.value;
-  if (imagenesExistentes) {
+  let imagenesExistentes = document.getElementById('imagenes_guardadas');
+  if (imagenesExistentes && imagenesExistentes.value) {
     try {
-      imagenesGuardadas = JSON.parse(imagenesExistentes);
+      imagenesGuardadas = JSON.parse(imagenesExistentes.value);
       if (!Array.isArray(imagenesGuardadas)) imagenesGuardadas = [];
     } catch {
       imagenesGuardadas = [];
@@ -212,8 +212,7 @@ async function guardarProducto(e) {
     document.getElementById('productoId').value = '';
     const contenedor = document.getElementById('previsualizacion-imagenes');
     if (contenedor) contenedor.innerHTML = '';
-    const campoGuardadas = document.getElementById('imagenes_guardadas');
-    if (campoGuardadas) campoGuardadas.value = '';
+    if (imagenesExistentes) imagenesExistentes.value = '';
     
     // Volver a cargar la lista
     await cargarListaProductos();
@@ -264,7 +263,6 @@ async function editarProducto(id) {
       campoImagenes = document.createElement('input');
       campoImagenes.type = 'hidden';
       campoImagenes.id = 'imagenes_guardadas';
-      campoImagenes.name = 'imagenes_guardadas';
       document.getElementById('formProducto').appendChild(campoImagenes);
     }
     campoImagenes.value = JSON.stringify(imagenes);
@@ -275,8 +273,8 @@ async function editarProducto(id) {
       if (imagenes.length > 0) {
         contenedor.innerHTML = '<p style="font-weight:bold; margin-bottom:0.5rem;">Imágenes cargadas:</p>' +
           imagenes.map(url => `
-            <div style="display:inline-block; margin:0.3rem; position:relative;">
-              <img src="${url}" style="width:80px; height:80px; object-fit:cover; border-radius:4px; border:2px solid #ddd;" onerror="this.parentElement.style.display='none'">
+            <div style="display:inline-block; margin:0.3rem;">
+              <img src="${url}" style="width:80px; height:80px; object-fit:cover; border-radius:4px; border:2px solid #ddd;" onerror="this.style.display='none'">
             </div>
           `).join('');
       } else {
@@ -335,7 +333,7 @@ function previsualizarImagenes() {
     lector.onload = function(e) {
       contenedor.innerHTML += `
         <div style="display:inline-block; margin:0.3rem;">
-          <img src="${e.target.result}" style="width:80px; height:80px; object-fit:cover; border-radius:4px; border:2px solid #28a745;">
+          <img src="${e.target.result}" style="width:80px; height:80px; object-fit:cover; border-radius:4px; border:2px solid #ffcc00;">
         </div>
       `;
     };
