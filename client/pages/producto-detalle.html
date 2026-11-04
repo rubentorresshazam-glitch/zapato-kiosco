@@ -8,7 +8,7 @@
     <!-- Fuentes e Iconos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Estilos -->
@@ -17,49 +17,58 @@
 </head>
 <body>
 
-<!-- Barra superior -->
-<section class="topbar">
-    <div class="topbar-container">
-        <div class="topbar-item"><i class="fa-solid fa-truck-fast"></i> Envíos a todo el país</div>
-        <div class="topbar-item"><i class="fa-solid fa-shield-halved"></i> Compra segura</div>
-    </div>
-</section>
+<!-- Barra superior principal -->
+<nav class="nav-principal">
+    <div class="nav-contenedor">
+        <!-- Logo con IMAGEN -->
+        <a href="../index.html" class="logo">
+            <img src="../assets/img/logos/logo-zapato.png" alt="Zapato Kiosco" class="logo-img">
+        </a>
 
-<!-- Encabezado -->
-<header class="header">
-    <div class="header-container">
-        <div class="header-left">
-            <a href="../index.html" class="logo-link">
-                <img src="../assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
-            </a>
+        <div class="buscador">
+            <input type="text" placeholder="Buscar zapatillas, marcas y más...">
+            <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
-        <nav class="header-center">
-            <a href="../index.html" class="nav-link">Inicio</a>
-            <a href="../index.html#productos" class="nav-link">Productos</a>
-            <a href="../ofertas.html" class="nav-link">Ofertas</a>
-            <a href="../contacto.html" class="nav-link">Contacto</a>
-        </nav>
-
-        <div class="header-right">
-            <a href="../carrito.html" class="icono-carrito">
+        <div class="nav-acciones">
+            <a href="#" class="accion-link"><i class="fa-solid fa-user"></i> Mi cuenta</a>
+            <a href="../carrito.html" class="accion-link carrito-icono">
                 <i class="fa-solid fa-cart-shopping"></i>
-                <span id="contador-carrito" class="contador">0</span>
+                <span id="contador-carrito" class="badge">0</span>
             </a>
         </div>
     </div>
-</header>
+</nav>
+
+<!-- Subnavegación -->
+<div class="subnav">
+    <div class="subnav-contenedor">
+        <button class="categorias-btn"><i class="fa-solid fa-bars"></i> Todas las categorías</button>
+        <a href="../index.html" class="subnav-link"><i class="fa-solid fa-home"></i> Inicio</a>
+        <a href="../ofertas.html" class="subnav-link destacado"><i class="fa-solid fa-fire"></i> Ofertas</a>
+        <a href="#" class="subnav-link"><i class="fa-solid fa-star"></i> Novedades</a>
+        <a href="#" class="subnav-link"><i class="fa-solid fa-medal"></i> Más vendidos</a>
+        <a href="../contacto.html" class="subnav-link"><i class="fa-solid fa-headset"></i> Contacto</a>
+        <div class="envio-banner">
+            <i class="fa-solid fa-truck-fast"></i> Envíos a todo el país
+        </div>
+    </div>
+</div>
 
 <!-- Migas de pan -->
-<div class="contenedor-principal">
-    <div class="miga-de-pan">
-        <a href="../index.html">Inicio</a>
-        <span>/</span>
-        <span id="miga-nombre">Cargando producto...</span>
+<div class="contenedor">
+    <div class="migas">
+        <a href="../index.html"><i class="fa-solid fa-home"></i> Inicio</a>
+        <span>›</span>
+        <a href="#">Calzados</a>
+        <span>›</span>
+        <a href="#">Zapatillas</a>
+        <span>›</span>
+        <span id="miga-nombre">Cargando...</span>
     </div>
 
     <!-- Contenido principal -->
-    <main id="contenido-producto" class="contenido-producto">
+    <main id="contenido-producto" class="producto-contenedor">
         <div class="cargando">
             <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
             <p>Cargando producto...</p>
@@ -67,10 +76,54 @@
     </main>
 </div>
 
+<!-- Pestañas de información -->
+<section class="pestanas-seccion">
+    <div class="contenedor">
+        <div class="pestanas">
+            <button class="pestana-activa" data-tab="descripcion"><i class="fa-solid fa-file-text"></i> Descripción</button>
+            <button data-tab="especificaciones"><i class="fa-solid fa-list-check"></i> Especificaciones</button>
+            <button data-tab="envios"><i class="fa-solid fa-truck"></i> Envíos y devoluciones</button>
+            <button data-tab="opiniones"><i class="fa-solid fa-star"></i> Opiniones (0)</button>
+        </div>
+        <div class="pestanas-contenido">
+            <div id="descripcion" class="pestana-contenido activa">
+                <h3>Descripción del producto</h3>
+                <p id="texto-descripcion">Cargando descripción...</p>
+                <ul id="lista-caracteristicas"></ul>
+            </div>
+            <div id="especificaciones" class="pestana-contenido">
+                <h3>Especificaciones</h3>
+                <p>Información técnica próximamente.</p>
+            </div>
+            <div id="envios" class="pestana-contenido">
+                <h3>Envíos y devoluciones</h3>
+                <p>Envío gratis a todo el país. Podés devolver el producto si no te convence.</p>
+            </div>
+            <div id="opiniones" class="pestana-contenido">
+                <h3>Opiniones</h3>
+                <p>Únete y deja tu opinión.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Productos relacionados -->
+<section class="relacionados">
+    <div class="contenedor">
+        <div class="relacionados-titulo">
+            <h2><i class="fa-solid fa-star"></i> Productos relacionados</h2>
+            <a href="#" class="ver-todos">Ver todos →</a>
+        </div>
+        <div class="relacionados-grid" id="productos-relacionados">
+            <p style="color:#888;">Cargando productos relacionados...</p>
+        </div>
+    </div>
+</section>
+
 <!-- Pie de página -->
 <footer class="footer">
-    <div class="footer-container">
-        <p class="footer-text">© 2026 Zapato Kiosco - Todos los derechos reservados</p>
+    <div class="contenedor">
+        <p>© 2026 Zapato Kiosco - Todos los derechos reservados</p>
     </div>
 </footer>
 
