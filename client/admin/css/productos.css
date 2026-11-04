@@ -65,14 +65,14 @@
     transform: translateY(0);
 }
 
-/* Formulario — ✅ Visible por defecto + mostrar/ocultar */
+/* Formulario — Visible y alineado */
 .formulario-producto {
     background-color: var(--gris-tarjetas);
     padding: 1.5rem;
     border-radius: var(--radio);
     border: 1px solid var(--gris-medio);
     margin-bottom: 2rem;
-    display: block; /* ✅ Antes estaba en none */
+    display: block;
     animation: aparecer 0.3s ease;
 }
 
@@ -114,6 +114,7 @@
     color: var(--blanco-texto);
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: 1rem;
 }
 
 .grupo-form input:focus,
@@ -128,6 +129,21 @@
     min-height: 80px;
 }
 
+/* Filas dobles (Precio + Stock / Oferta + Precio Oferta) */
+.fila-form-doble {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+    .fila-form-doble {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Vista previa de imágenes */
 .vista-previa-contenedor {
     margin-top: 0.5rem;
     display: flex;
@@ -143,6 +159,7 @@
     border: 2px dashed var(--gris-medio);
 }
 
+/* Botones del formulario */
 .botones-form {
     display: flex;
     gap: 0.8rem;
