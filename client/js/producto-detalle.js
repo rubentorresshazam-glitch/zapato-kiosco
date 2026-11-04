@@ -1,5 +1,5 @@
 // ==========================================
-// 📄 DETALLE DE PRODUCTO — Completo y listo
+// 📄 DETALLE DE PRODUCTO — Imágenes + Descripción al 100%
 // ==========================================
 
 const API_URL = '/api';
@@ -16,87 +16,119 @@ document.addEventListener('DOMContentLoaded', async () => {
     await cargarProducto(id);
 });
 
-// Cargar producto desde la base de datos
+// ==========================================
+// 📦 CARGAR PRODUCTO DESDE LA BASE DE DATOS
+// ==========================================
 async function cargarProducto(idProducto) {
     try {
+        console.log('🔍 Buscando producto ID:', idProducto);
+        
         const respuesta = await fetch(`${API_URL}/productos`);
         if (!respuesta.ok) throw new Error('No se pudo conectar con el servidor');
 
         const productos = await respuesta.json();
-        const producto = productos.find(p => p.id == idProducto);
+        console.log('✅ Productos recibidos:', productos.length);
+
+        const producto = productos.find(p => String(p.id) === String(idProducto));
 
         if (!producto) {
             mostrarError('Producto no encontrado');
             return;
         }
 
+        console.log('✅ Producto encontrado:', producto);
         mostrarProducto(producto);
 
     } catch (error) {
-        console.error('Error:', error);
+        console.error('❌ Error:', error);
         mostrarError('No se pudo cargar el producto');
     }
 }
 
-// Mostrar en pantalla
+// ==========================================
+// 🖼️ MOSTRAR TODO EN PANTALLA
+// ==========================================
 function mostrarProducto(p) {
     document.title = `${p.nombre} | Zapato Kiosco`;
 
-    // Imágenes
+    // ========== IMÁGENES ==========
     let imagenes = [];
-    try {
-        if (p.imagenes && p.imagenes !== '[]' && p.imagenes !== '') {
+    
+    // Intentar leer imágenes en distintos formatos
+    if (p.imagenes && p.imagenes !== '' && p.imagenes !== '[]') {
+        try {
             imagenes = JSON.parse(p.imagenes);
-            if (!Array.isArray(imagenes)) imagenes = [];
+            if (!Array.isArray(imagenes)) {
+                imagenes = [imagenes];
+            }
+        } catch (e) {
+            // Si no es JSON, tratar como ruta única
+            imagenes = [p.imagenes];
         }
-    } catch {
-        imagenes = [];
+    }
+    // Respaldo: campo imagen_url
+    if (imagenes.length === 0 && p.imagen_url) {
+        imagenes = Array.isArray(p.imagen_url) ? p.imagen_url : [p.imagen_url];
     }
 
-    const imgPrincipal = imagenes.length > 0 
-        ? imagenes[0] 
-        : 'assets/img/logos/favicon.png';
+    // Limpiar rutas duplicadas
+    imagenes = imagenes.map(img => {
+        if (!img) return null;
+        // Si ya empieza con http o / dejarlo igual
+        if (img.startsWith('http') || img.startsWith('/')) return img;
+        // Si empieza con assets/ agregar barra
+        if (img.startsWith('assets/')) return '/' + img;
+        return img;
+    }).filter(img => img); // Sacar nulos
 
-    const galeria = imagenes.length > 1
-        ? imagenes.map((url, i) => `
+    // Imagen por defecto
+    const imgPorDefecto = '/assets/img/logos/favicon.png';
+    const imgPrincipal = imagenes.length > 0 ? imagenes[0] : imgPorDefecto;
+
+    // Galería de miniaturas
+    let galeria = '';
+    if (imagenes.length > 1) {
+        galeria = imagenes.map((url, i) => `
             <img src="${url}" alt="" class="miniatura ${i === 0 ? 'activa' : ''}" 
                  onclick="cambiarImagen('${url}', this)">
-          `).join('')
-        : '';
+        `).join('');
+    }
 
-    // Precios
-    const tieneOferta = p.precio_oferta && p.precio_oferta > 0;
-    const precioFinal = tieneOferta ? p.precio_oferta : p.precio;
+    // ========== PRECIOS ==========
+    const tieneOferta = p.precio_oferta && Number(p.precio_oferta) > 0;
+    const precioFinal = tieneOferta ? Number(p.precio_oferta) : Number(p.precio);
 
-    // Guardar para carrito
+    // ========== GUARDAR PARA CARRITO ==========
     window.productoActual = {
         id: p.id,
         nombre: p.nombre,
         precio: precioFinal,
         imagen: imgPrincipal,
-        categoria: p.categoria
+        categoria: p.categoria || ''
     };
 
-    // Renderizar
+    // ========== RENDERIZAR TODO ==========
     const contenedor = document.querySelector('.detalle-contenedor');
+    if (!contenedor) return;
+
     contenedor.innerHTML = `
         <div class="columna-imagenes">
             <div class="imagen-principal-contenedor">
                 <img src="${imgPrincipal}" alt="${p.nombre}" id="imagenPrincipal" class="imagen-principal"
-                     onerror="this.src='assets/img/logos/favicon.png'">
+                     onerror="this.src='${imgPorDefecto}'">
             </div>
             ${imagenes.length > 1 ? `<div class="galeria-miniaturas">${galeria}</div>` : ''}
         </div>
 
         <div class="columna-info">
-            <h1 class="nombre-producto">${p.nombre}</h1>
+            <h1 class="nombre-producto">${p.nombre || 'Sin nombre'}</h1>
             <p class="categoria-producto">${p.categoria || 'Sin categoría'}</p>
 
             <div class="contenedor-precios">
                 ${tieneOferta
                     ? `<span class="precio-viejo">$${Number(p.precio).toLocaleString('es-AR')}</span>
-                       <span class="precio-oferta">$${Number(p.precio_oferta).toLocaleString('es-AR')}</span>`
-                    : `<span class="precio-actual">$${Number(p.precio).toLocaleString('es-AR')}</span>`
+                       <span class="precio-oferta">$${precioFinal.toLocaleString('es-AR')}</span>`
+                    : `<span class="precio-actual">$${precioFinal.toLocaleString('es-AR')}</span>`
                 }
             </div>
 
@@ -128,11 +160,14 @@ function mostrarProducto(p) {
         </div>
     `;
 
+    // Reconectar eventos
     configurarCantidad();
     conectarBotonCarrito();
 }
 
-// Control de cantidad
+// ==========================================
+// 🔢 CONTROL DE CANTIDAD
+// ==========================================
 function configurarCantidad() {
     const btnMenos = document.getElementById('btnMenos');
     const btnMas = document.getElementById('btnMas');
@@ -141,7 +176,8 @@ function configurarCantidad() {
     if (!btnMenos || !btnMas || !input) return;
 
     btnMenos.addEventListener('click', () => {
-        if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+        const valor = parseInt(input.value);
+        if (valor > 1) input.value = valor - 1;
     });
     btnMas.addEventListener('click', () => {
         input.value = parseInt(input.value) + 1;
@@ -151,7 +187,9 @@ function configurarCantidad() {
     });
 }
 
-// Agregar al carrito
+// ==========================================
+// 🛒 AGREGAR AL CARRITO
+// ==========================================
 function conectarBotonCarrito() {
     const btn = document.getElementById('btnAgregarCarrito');
     if (!btn || !window.productoActual) return;
@@ -165,14 +203,20 @@ function conectarBotonCarrito() {
         } else {
             let carrito = JSON.parse(localStorage.getItem('carritoZapatoKiosco')) || [];
             const existe = carrito.find(i => i.id === item.id);
-            existe ? existe.cantidad += cantidad : carrito.push(item);
+            if (existe) {
+                existe.cantidad += cantidad;
+            } else {
+                carrito.push(item);
+            }
             localStorage.setItem('carritoZapatoKiosco', JSON.stringify(carrito));
             alert('✅ Agregado al carrito');
         }
     });
 }
 
-// Cambiar imagen desde galería
+// ==========================================
+// 🖼️ CAMBIAR IMAGEN DESDE GALERÍA
+// ==========================================
 function cambiarImagen(url, elemento) {
     const principal = document.getElementById('imagenPrincipal');
     if (principal) principal.src = url;
@@ -180,7 +224,9 @@ function cambiarImagen(url, elemento) {
     elemento.classList.add('activa');
 }
 
-// Mostrar error
+// ==========================================
+// ❌ MOSTRAR ERROR
+// ==========================================
 function mostrarError(mensaje) {
     const contenedor = document.querySelector('.detalle-contenedor');
     if (contenedor) {
@@ -188,10 +234,11 @@ function mostrarError(mensaje) {
             <div style="grid-column: 1/-1; text-align:center; padding:3rem; color:#d63030;">
                 <i class="fa-solid fa-triangle-exclamation" style="font-size:2.5rem;"></i>
                 <h3>${mensaje}</h3>
-                <a href="index.html" style="display:inline-block; margin-top:1rem; padding:0.7rem 1.5rem; background:#FFCC00; color:black; border-radius:8px; text-decoration:none; font-weight:600;">
+                <a href="../index.html" style="display:inline-block; margin-top:1rem; padding:0.7rem 1.5rem; background:#FFCC00; color:black; border-radius:8px; text-decoration:none; font-weight:600;">
                     Volver a la Tienda
                 </a>
             </div>
         `;
     }
+    console.error('❌', mensaje);
 }
