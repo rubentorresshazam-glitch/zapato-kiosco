@@ -28,12 +28,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 // 📋 CARGAR LISTA DE PRODUCTOS
 // ==========================================
 async function cargarListaProductos() {
+  const lista = document.getElementById('listaProductos');
+  
+  // ✅ Verificar que el contenedor exista
+  if (!lista) {
+    console.error('❌ No se encontró el contenedor #listaProductos en el HTML');
+    return;
+  }
+
   try {
     const respuesta = await fetch(`${API_URL}/productos`);
     if (!respuesta.ok) throw new Error('No se pudieron cargar los productos');
     
     const productos = await respuesta.json();
-    const lista = document.getElementById('listaProductos');
     
     if (!productos || productos.length === 0) {
       lista.innerHTML = `
@@ -50,7 +57,21 @@ async function cargarListaProductos() {
     
     // Renderizar tabla
     lista.innerHTML = productos.map(p => {
-      const tieneImagenes = p.imagenes && p.imagenes !== '[]' && p.imagenes !== '';
+      let tieneImagenes = false;
+      let primeraImagen = '';
+      
+      try {
+        if (p.imagenes && p.imagenes !== '[]' && p.imagenes !== '') {
+          const arr = JSON.parse(p.imagenes);
+          if (Array.isArray(arr) && arr.length > 0) {
+            tieneImagenes = true;
+            primeraImagen = arr[0];
+          }
+        }
+      } catch (e) {
+        tieneImagenes = false;
+      }
+      
       const precioOferta = p.precio_oferta && p.precio_oferta > 0 ? 
         `<span style="color:#28a745;">$${Number(p.precio_oferta).toLocaleString('es-AR')}</span>` : 
         '<span style="color:#999;">—</span>';
@@ -61,7 +82,7 @@ async function cargarListaProductos() {
           <td>
             <div style="display:flex; align-items:center; gap:0.5rem;">
               ${tieneImagenes ? 
-                `<img src="${JSON.parse(p.imagenes)[0]}" alt="${p.nombre}" style="width:40px; height:40px; object-fit:cover; border-radius:4px;">` : 
+                `<img src="${primeraImagen}" alt="${p.nombre}" style="width:40px; height:40px; object-fit:cover; border-radius:4px;" onerror="this.style.display='none'">` : 
                 '<div style="width:40px; height:40px; background:#eee; border-radius:4px; display:flex; align-items:center; justify-content:center; color:#aaa;"><i class="fa-solid fa-image"></i></div>'
               }
               <span>${p.nombre}</span>
@@ -76,10 +97,10 @@ async function cargarListaProductos() {
             '<span style="color:#999;">Inactivo</span>'
           }</td>
           <td style="white-space:nowrap;">
-            <button class="btn-ver" title="Editar" onclick="editarProducto(${p.id})" style="padding:0.4rem 0.6rem; margin:0 0.1rem;">
+            <button class="btn-ver" title="Editar" onclick="editarProducto(${p.id})" style="padding:0.4rem 0.6rem; margin:0 0.1rem; border:none; background:#ffcc00; border-radius:4px; cursor:pointer;">
               <i class="fa-solid fa-pen"></i>
             </button>
-            <button class="btn-eliminar" title="Eliminar" onclick="eliminarProducto(${p.id})" style="padding:0.4rem 0.6rem; margin:0 0.1rem;">
+            <button class="btn-eliminar" title="Eliminar" onclick="eliminarProducto(${p.id})" style="padding:0.4rem 0.6rem; margin:0 0.1rem; border:none; background:#d32f2f; color:white; border-radius:4px; cursor:pointer;">
               <i class="fa-solid fa-trash"></i>
             </button>
           </td>
@@ -89,10 +110,10 @@ async function cargarListaProductos() {
     
   } catch (error) {
     console.error('❌ Error cargando productos:', error);
-    document.getElementById('listaProductos').innerHTML = `
+    lista.innerHTML = `
       <tr>
         <td colspan="8" style="text-align:center; padding:2rem; color:#d63030;">
-          <i class="fa-solid fa-triangle-exclamation"></i>
+          <i class="fa-solid fa-triangle-exclamation" style="font-size:1.5rem;"></i>
           <p>No se pudieron cargar los productos</p>
           <p style="font-size:0.9rem;">Verificá que el servidor esté encendido</p>
         </td>
@@ -116,7 +137,10 @@ async function guardarProducto(e) {
   if (imagenesExistentes) {
     try {
       imagenesGuardadas = JSON.parse(imagenesExistentes);
-    } catch {}
+      if (!Array.isArray(imagenesGuardadas)) imagenesGuardadas = [];
+    } catch {
+      imagenesGuardadas = [];
+    }
   }
   
   // Subir nuevas imágenes si las hay
@@ -134,7 +158,7 @@ async function guardarProducto(e) {
         
         if (respuesta.ok) {
           const datos = await respuesta.json();
-          imagenesGuardadas.push(datos.url);
+          if (datos.url) imagenesGuardadas.push(datos.url);
         }
       } catch (err) {
         console.warn('No se pudo subir imagen:', err);
@@ -188,6 +212,8 @@ async function guardarProducto(e) {
     document.getElementById('productoId').value = '';
     const contenedor = document.getElementById('previsualizacion-imagenes');
     if (contenedor) contenedor.innerHTML = '';
+    const campoGuardadas = document.getElementById('imagenes_guardadas');
+    if (campoGuardadas) campoGuardadas.value = '';
     
     // Volver a cargar la lista
     await cargarListaProductos();
@@ -226,8 +252,9 @@ async function editarProducto(id) {
     // Cargar imágenes existentes
     let imagenes = [];
     try {
-      if (producto.imagenes && producto.imagenes !== '[]') {
-        imagenes = JSON.parse(producto.imagenes);
+      if (producto.imagenes && producto.imagenes !== '[]' && producto.imagenes !== '') {
+        const parsed = JSON.parse(producto.imagenes);
+        if (Array.isArray(parsed)) imagenes = parsed;
       }
     } catch {}
     
@@ -244,13 +271,17 @@ async function editarProducto(id) {
     
     // Mostrar previsualización
     const contenedor = document.getElementById('previsualizacion-imagenes');
-    if (contenedor && imagenes.length > 0) {
-      contenedor.innerHTML = '<p style="font-weight:bold; margin-bottom:0.5rem;">Imágenes cargadas:</p>' +
-        imagenes.map(url => `
-          <div style="display:inline-block; margin:0.3rem; position:relative;">
-            <img src="${url}" style="width:80px; height:80px; object-fit:cover; border-radius:4px; border:2px solid #ddd;">
-          </div>
-        `).join('');
+    if (contenedor) {
+      if (imagenes.length > 0) {
+        contenedor.innerHTML = '<p style="font-weight:bold; margin-bottom:0.5rem;">Imágenes cargadas:</p>' +
+          imagenes.map(url => `
+            <div style="display:inline-block; margin:0.3rem; position:relative;">
+              <img src="${url}" style="width:80px; height:80px; object-fit:cover; border-radius:4px; border:2px solid #ddd;" onerror="this.parentElement.style.display='none'">
+            </div>
+          `).join('');
+      } else {
+        contenedor.innerHTML = '';
+      }
     }
     
     // Subir al formulario
@@ -288,7 +319,7 @@ async function eliminarProducto(id) {
 function previsualizarImagenes() {
   const input = document.getElementById('imagenes');
   const contenedor = document.getElementById('previsualizacion-imagenes');
-  if (!contenedor) return;
+  if (!contenedor || !input) return;
   
   contenedor.innerHTML = '';
   
