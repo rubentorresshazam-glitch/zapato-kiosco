@@ -3,82 +3,56 @@ const API_URL = '/api';
 document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
-    if (!id) {
-        console.log('❌ No hay ID en la URL');
-        return;
-    }
-
-    console.log('🔍 Buscando producto ID:', id);
+    if (!id) return;
 
     try {
         const res = await fetch(`${API_URL}/productos`);
-        if (!res.ok) throw new Error('Error al conectar');
-        
         const todos = await res.json();
-        console.log('✅ Productos recibidos:', todos.length);
-        
         const prod = todos.find(p => String(p.id) === String(id));
+        
         if (!prod) {
-            console.log('❌ Producto no encontrado');
             document.querySelector('.detalle-contenedor').innerHTML = `
-                <div style="text-align:center; padding:3rem;">
-                    <p style="color:red; font-size:1.2rem;">Producto no encontrado</p>
+                <div style="grid-column:1/-1;text-align:center;padding:3rem;color:red;">
+                    <h3>Producto no encontrado</h3>
                     <a href="../index.html" style="color:#FFCC00;">Volver a la tienda</a>
-                </div>
-            `;
+                </div>`;
             return;
         }
 
-        console.log('✅ Producto cargado:', prod);
         mostrar(prod);
+        actualizarContadorCarrito();
 
     } catch (e) {
-        console.error('❌ Error:', e);
+        console.error('Error:', e);
     }
 });
 
 function mostrar(p) {
-    // ========== IMAGEN — leer correctamente ==========
-    let rutaImg = '../assets/img/logos/favicon.png'; // Imagen por defecto
-
-    // Opción 1: campo imagen_url
+    // IMAGEN
+    let rutaImg = '../assets/img/logos/favicon.png';
     if (p.imagen_url && p.imagen_url !== '') {
         rutaImg = p.imagen_url.startsWith('http') || p.imagen_url.startsWith('/')
-            ? p.imagen_url
-            : '../' + p.imagen_url;
-    }
-    // Opción 2: campo imagenes (JSON o texto)
-    else if (p.imagenes && p.imagenes !== '' && p.imagenes !== '[]') {
-        let primera = '';
-        try {
-            const arr = JSON.parse(p.imagenes);
-            primera = Array.isArray(arr) ? arr[0] : arr;
-        } catch {
-            primera = p.imagenes;
-        }
-        if (primera) {
-            rutaImg = primera.startsWith('http') || primera.startsWith('/')
-                ? primera
-                : '../' + primera;
-        }
+            ? p.imagen_url : '../' + p.imagen_url;
+    } else if (p.imagenes && p.imagenes !== '[]' && p.imagenes !== '') {
+        let primera = p.imagenes;
+        try { const arr = JSON.parse(p.imagenes); primera = Array.isArray(arr) ? arr[0] : arr; } catch {}
+        if (primera) rutaImg = primera.startsWith('http') || primera.startsWith('/') ? primera : '../' + primera;
     }
 
-    console.log('🖼️ Ruta imagen final:', rutaImg);
-
-    // ========== PRECIOS ==========
+    // PRECIOS
     const tieneOferta = p.precio_oferta > 0;
     const precioFinal = tieneOferta ? p.precio_oferta : p.precio;
 
-    // ========== Guardar para carrito ==========
+    // DATOS PARA CARRITO
     window.productoActual = {
         id: p.id,
-        nombre: p.nombre,
+        nombre: p.nombre || 'Producto',
         precio: precioFinal,
         imagen: rutaImg,
-        categoria: p.categoria
+        categoria: p.categoria || ''
     };
 
-    // ========== DIBUJAR TODO ==========
+    // RENDER
     document.querySelector('.detalle-contenedor').innerHTML = `
         <div class="columna-imagenes">
             <div class="imagen-principal-contenedor">
@@ -92,11 +66,8 @@ function mostrar(p) {
             <p class="categoria-producto">${p.categoria || 'Sin categoría'}</p>
 
             <div class="contenedor-precios">
-                ${tieneOferta 
-                    ? `<span class="precio-viejo">$${Number(p.precio).toLocaleString('es-AR')}</span>
-                       <span class="precio-oferta">$${Number(precioFinal).toLocaleString('es-AR')}</span>`
-                    : `<span class="precio-actual">$${Number(precioFinal).toLocaleString('es-AR')}</span>`
-                }
+                ${tieneOferta ? `<span class="precio-viejo">$${Number(p.precio).toLocaleString('es-AR')}</span>` : ''}
+                <span class="${tieneOferta ? 'precio-oferta' : 'precio-actual'}">$${Number(precioFinal).toLocaleString('es-AR')}</span>
             </div>
 
             ${p.en_oferta == 1 ? '<span class="etiqueta-oferta">🔥 En oferta</span>' : ''}
@@ -107,43 +78,49 @@ function mostrar(p) {
             <div class="bloque-cantidad">
                 <label>Cantidad:</label>
                 <div class="control-cantidad">
-                    <button type="button" id="btnMenos">−</button>
+                    <button id="btnMenos">−</button>
                     <input type="number" id="cantidad" value="1" min="1">
-                    <button type="button" id="btnMas">+</button>
+                    <button id="btnMas">+</button>
                 </div>
             </div>
 
-            <button id="btnAgregar" class="btn-agregar-carrito">
-                <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
-            </button>
+            <div class="botones-accion" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;">
+                <button id="btnAgregarCarrito" class="btn-agregar-carrito" style="flex:1;min-width:180px;">
+                    <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
+                </button>
+                <button id="btnComprarAhora" class="btn-comprar-ahora" style="flex:1;min-width:180px;background:#000;color:#fff;">
+                    <i class="fa-solid fa-bolt"></i> Comprar Ahora
+                </button>
+            </div>
 
-            <div class="disponibilidad">
-                ${p.activo == 1
-                    ? '<span class="disponible"><i class="fa-solid fa-check-circle"></i> Disponible</span>'
-                    : '<span class="no-disponible"><i class="fa-solid fa-xmark-circle"></i> No disponible</span>'
-                }
+            <div class="disponibilidad" style="margin-top:1rem;">
+                ${p.activo == 1 
+                    ? '<span class="disponible">✅ Disponible</span>' 
+                    : '<span class="no-disponible">❌ No disponible</span>'}
             </div>
         </div>
     `;
 
-    // Actualizar miga de pan
+    // Miga de pan
     const miga = document.getElementById('miga-nombre');
     if (miga) miga.textContent = p.nombre || 'Producto';
 
-    // Conectar botones
-    document.getElementById('btnMenos').addEventListener('click', () => {
+    // BOTÓN MENOS
+    document.getElementById('btnMenos').onclick = () => {
         const v = parseInt(document.getElementById('cantidad').value);
         if (v > 1) document.getElementById('cantidad').value = v - 1;
-    });
+    };
 
-    document.getElementById('btnMas').addEventListener('click', () => {
+    // BOTÓN MÁS
+    document.getElementById('btnMas').onclick = () => {
         document.getElementById('cantidad').value = parseInt(document.getElementById('cantidad').value) + 1;
-    });
+    };
 
-    document.getElementById('btnAgregar').addEventListener('click', () => {
+    // AGREGAR AL CARRITO
+    document.getElementById('btnAgregarCarrito').onclick = () => {
         const cant = parseInt(document.getElementById('cantidad').value);
         const item = { ...window.productoActual, cantidad: cant };
-
+        
         if (typeof agregarAlCarrito === 'function') {
             agregarAlCarrito(item);
         } else {
@@ -151,7 +128,31 @@ function mostrar(p) {
             const existe = carrito.find(i => i.id === item.id);
             existe ? existe.cantidad += cant : carrito.push(item);
             localStorage.setItem('carritoZapatoKiosco', JSON.stringify(carrito));
-            alert('✅ Agregado al carrito');
         }
-    });
+        alert('✅ Agregado al carrito');
+        actualizarContadorCarrito();
+    };
+
+    // COMPRAR AHORA
+    document.getElementById('btnComprarAhora').onclick = () => {
+        const cant = parseInt(document.getElementById('cantidad').value);
+        const item = { ...window.productoActual, cantidad: cant };
+        
+        if (typeof agregarAlCarrito === 'function') {
+            agregarAlCarrito(item);
+        } else {
+            let carrito = JSON.parse(localStorage.getItem('carritoZapatoKiosco') || '[]');
+            const existe = carrito.find(i => i.id === item.id);
+            existe ? existe.cantidad += cant : carrito.push(item);
+            localStorage.setItem('carritoZapatoKiosco', JSON.stringify(carrito));
+        }
+        window.location.href = '../carrito.html';
+    };
+}
+
+function actualizarContadorCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('carritoZapatoKiosco') || '[]');
+    const total = carrito.reduce((sum, i) => sum + i.cantidad, 0);
+    const contador = document.getElementById('contador-carrito');
+    if (contador) contador.textContent = total;
 }
