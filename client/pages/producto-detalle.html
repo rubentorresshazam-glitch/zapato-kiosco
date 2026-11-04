@@ -1,12 +1,94 @@
-<!-- FOOTER -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto | Zapato Kiosco</title>
+
+    <!-- Fuentes e Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detalle-producto.css">
+</head>
+<body>
+
+<!-- Barra superior -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item"><i class="fa-solid fa-truck-fast"></i> Envíos a todo el país</div>
+        <div class="topbar-item"><i class="fa-solid fa-shield-halved"></i> Compra segura</div>
+    </div>
+</section>
+
+<!-- Encabezado -->
+<header class="header">
+    <div class="header-container">
+        <div class="header-left">
+            <a href="index.html" class="logo-link">
+                <img src="./assets/img/logos/logo-zapato.png" alt="Logo Zapato Kiosco" class="logo-img">
+            </a>
+        </div>
+
+        <nav class="header-center">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="index.html#productos" class="nav-link">Productos</a>
+            <a href="ofertas.html" class="nav-link">Ofertas</a>
+            <a href="contacto.html" class="nav-link">Contacto</a>
+        </nav>
+
+        <div class="header-right">
+            <a href="carrito.html" class="icono-carrito">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="contador-carrito" class="contador">0</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- Migas de pan -->
+<div class="contenedor">
+    <div class="miga-de-pan">
+        <a href="index.html">Inicio</a>
+        <span>/</span>
+        <span id="miga-nombre">Cargando...</span>
+    </div>
+
+    <!-- Contenido principal -->
+    <main class="detalle-contenedor">
+        <div style="text-align: center; padding: 3rem; color: #888;">
+            <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+            <p>Cargando producto...</p>
+        </div>
+    </main>
+</div>
+
+<!-- Pie de página -->
 <footer class="footer">
     <div class="footer-container">
         <p class="footer-text">© 2026 Zapato Kiosco - Todos los derechos reservados</p>
     </div>
 </footer>
 
-<!-- Scripts -->
-<script src="../js/funciones-globales.js" defer></script>
-<script src="../js/producto-detalle.js" defer></script>
+<!-- Scripts en orden -->
+<script src="js/funciones-globales.js"></script>
+<script src="js/producto-detalle.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const esperar = setInterval(() => {
+            if (window.productoActual?.nombre) {
+                const miga = document.getElementById('miga-nombre');
+                if (miga) miga.textContent = window.productoActual.nombre;
+                clearInterval(esperar);
+            }
+        }, 100);
+    });
+</script>
+
 </body>
 </html>

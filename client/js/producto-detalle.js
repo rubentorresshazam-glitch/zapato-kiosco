@@ -1,12 +1,10 @@
 // ==========================================
-// 📄 DETALLE DE PRODUCTO — CONECTADO A BD + LISTO PARA RENDER
+// 📄 DETALLE DE PRODUCTO — Completo y listo
 // ==========================================
 
-// ✅ Ruta relativa = funciona en local y en Render automáticamente
-const API_URL = `${window.location.origin}/api`;
+const API_URL = '/api';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Obtener ID desde la URL
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
 
@@ -16,259 +14,183 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     await cargarProducto(id);
-    configurarCantidad();
 });
 
-// ==========================================
-// 📦 Cargar producto desde la base de datos
-// ==========================================
+// Cargar producto desde la base de datos
 async function cargarProducto(idProducto) {
     try {
-        console.log('🔍 Cargando producto ID:', idProducto);
-        
-        const respuesta = await fetch(`${API_URL}/productos/${idProducto}`);
-        
-        if (!respuesta.ok) {
-            if (respuesta.status === 404) {
-                throw new Error('Producto no encontrado');
-            }
-            throw new Error('Error al cargar');
+        const respuesta = await fetch(`${API_URL}/productos`);
+        if (!respuesta.ok) throw new Error('No se pudo conectar con el servidor');
+
+        const productos = await respuesta.json();
+        const producto = productos.find(p => p.id == idProducto);
+
+        if (!producto) {
+            mostrarError('Producto no encontrado');
+            return;
         }
 
-        const producto = await respuesta.json();
-        console.log('✅ Producto cargado:', producto);
         mostrarProducto(producto);
 
     } catch (error) {
-        console.error('❌ Error al cargar:', error);
-        mostrarError(error.message || 'No se pudo cargar el producto');
+        console.error('Error:', error);
+        mostrarError('No se pudo cargar el producto');
     }
 }
 
-// ==========================================
-// 🎨 Mostrar todos los datos en la página
-// ==========================================
+// Mostrar en pantalla
 function mostrarProducto(p) {
-    // Título de la página
-    const tituloPag = document.getElementById('titulo-pagina');
-    if (tituloPag) tituloPag.textContent = `${p.nombre} | Zapato Kiosco`;
+    document.title = `${p.nombre} | Zapato Kiosco`;
 
-    // Migas de pan
-    const migaNombre = document.getElementById('nombre-producto-miga');
-    const enlaceCat = document.getElementById('enlace-categoria');
-    
-    if (migaNombre) migaNombre.textContent = p.nombre;
-    if (enlaceCat && p.categoria) {
-        enlaceCat.textContent = p.categoria;
-        enlaceCat.href = obtenerEnlaceCategoria(p.categoria);
-    }
-
-    // Nombre y descripción
-    const elemNombre = document.getElementById('nombre-producto');
-    const elemDesc = document.getElementById('descripcion-larga');
-    
-    if (elemNombre) elemNombre.textContent = p.nombre;
-    
-    const textoDescripcion = p.descripcion_larga || p.descripcion || p.descripcion_corta || 'Sin descripción disponible';
-    if (elemDesc) elemDesc.textContent = textoDescripcion;
-
-    // Precios — detectar oferta
-    const precioActual = p.en_oferta && p.precio_oferta ? p.precio_oferta : p.precio;
-    
-    const elemPrecioActual = document.getElementById('precio-actual');
-    const elemPrecioAntes = document.getElementById('precio-antes');
-    const elemDescuento = document.getElementById('etiqueta-descuento');
-    
-    if (elemPrecioActual) elemPrecioActual.textContent = `$${formatearNumero(precioActual)}`;
-
-    if (p.en_oferta && p.precio_oferta && p.precio_oferta < p.precio) {
-        if (elemPrecioAntes) {
-            elemPrecioAntes.textContent = `$${formatearNumero(p.precio)}`;
-            elemPrecioAntes.style.display = 'block';
+    // Imágenes
+    let imagenes = [];
+    try {
+        if (p.imagenes && p.imagenes !== '[]' && p.imagenes !== '') {
+            imagenes = JSON.parse(p.imagenes);
+            if (!Array.isArray(imagenes)) imagenes = [];
         }
-        const descuento = Math.round((1 - p.precio_oferta / p.precio) * 100);
-        if (elemDescuento) {
-            elemDescuento.textContent = `-${descuento}%`;
-            elemDescuento.style.display = 'inline-block';
-        }
-    } else {
-        if (elemPrecioAntes) elemPrecioAntes.style.display = 'none';
-        if (elemDescuento) elemDescuento.style.display = 'none';
+    } catch {
+        imagenes = [];
     }
 
-    // Imagen principal — galería o imagen única
-    const imgPrincipal = document.getElementById('imagen-principal');
-    let imagenActiva = '../assets/img/logos/favicon.png'; // Imagen por defecto
-    
-    if (p.imagen_url && p.imagen_url !== '') {
-        imagenActiva = p.imagen_url;
-    } else if (p.imagenes && Array.isArray(p.imagenes) && p.imagenes.length > 0) {
-        imagenActiva = p.imagenes[0];
-    }
-    
-    if (imgPrincipal) {
-        imgPrincipal.src = imagenActiva;
-        imgPrincipal.alt = p.nombre;
-    }
+    const imgPrincipal = imagenes.length > 0 
+        ? imagenes[0] 
+        : 'assets/img/logos/favicon.png';
 
-    // Miniaturas de la galería
-    const contenedorMini = document.getElementById('contenedor-miniaturas');
-    if (contenedorMini) {
-        contenedorMini.innerHTML = '';
-        
-        let listaImagenes = [];
-        if (p.imagen_url && p.imagen_url !== '') listaImagenes.push(p.imagen_url);
-        if (p.imagenes && Array.isArray(p.imagenes)) {
-            p.imagenes.forEach(img => {
-                if (img && !listaImagenes.includes(img)) listaImagenes.push(img);
-            });
-        }
-        
-        listaImagenes.forEach((imgSrc, indice) => {
-            const mini = document.createElement('img');
-            mini.src = imgSrc;
-            mini.alt = `Vista ${indice + 1}`;
-            if (indice === 0) mini.classList.add('activa');
-            mini.onclick = () => {
-                if (imgPrincipal) imgPrincipal.src = imgSrc;
-                document.querySelectorAll('#contenedor-miniaturas img').forEach(m => m.classList.remove('activa'));
-                mini.classList.add('activa');
-            };
-            contenedorMini.appendChild(mini);
-        });
-    }
+    const galeria = imagenes.length > 1
+        ? imagenes.map((url, i) => `
+            <img src="${url}" alt="" class="miniatura ${i === 0 ? 'activa' : ''}" 
+                 onclick="cambiarImagen('${url}', this)">
+          `).join('')
+        : '';
 
-    // Estado de stock
-    const disp = document.getElementById('disponibilidad');
-    const btnAgregar = document.getElementById('btn-agregar');
-    const btnComprar = document.getElementById('btn-comprar');
-    
-    const hayStock = p.stock === undefined || p.stock === null || p.stock > 0;
-    
-    if (disp) {
-        if (hayStock) {
-            disp.innerHTML = '<i class="fa-solid fa-circle-check"></i> <span>Disponible</span>';
-            disp.classList.remove('sin-stock');
-        } else {
-            disp.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> <span>Sin stock</span>';
-            disp.classList.add('sin-stock');
-        }
-    }
-    
-    if (btnAgregar) btnAgregar.disabled = !hayStock;
-    if (btnComprar) btnComprar.disabled = !hayStock;
+    // Precios
+    const tieneOferta = p.precio_oferta && p.precio_oferta > 0;
+    const precioFinal = tieneOferta ? p.precio_oferta : p.precio;
 
-    // Datos del producto para los botones
-    const datosProducto = {
+    // Guardar para carrito
+    window.productoActual = {
         id: p.id,
         nombre: p.nombre,
-        precio: precioActual,
-        imagen: imagenActiva,
+        precio: precioFinal,
+        imagen: imgPrincipal,
         categoria: p.categoria
     };
 
-    // Conectar botones
-    if (btnAgregar) {
-        btnAgregar.onclick = () => agregarAlCarrito(datosProducto);
-    }
-    if (btnComprar) {
-        btnComprar.onclick = () => comprarAhora(datosProducto);
-    }
+    // Renderizar
+    const contenedor = document.querySelector('.detalle-contenedor');
+    contenedor.innerHTML = `
+        <div class="columna-imagenes">
+            <div class="imagen-principal-contenedor">
+                <img src="${imgPrincipal}" alt="${p.nombre}" id="imagenPrincipal" class="imagen-principal"
+                     onerror="this.src='assets/img/logos/favicon.png'">
+            </div>
+            ${imagenes.length > 1 ? `<div class="galeria-miniaturas">${galeria}</div>` : ''}
+        </div>
+
+        <div class="columna-info">
+            <h1 class="nombre-producto">${p.nombre}</h1>
+            <p class="categoria-producto">${p.categoria || 'Sin categoría'}</p>
+
+            <div class="contenedor-precios">
+                ${tieneOferta
+                    ? `<span class="precio-viejo">$${Number(p.precio).toLocaleString('es-AR')}</span>
+                       <span class="precio-oferta">$${Number(p.precio_oferta).toLocaleString('es-AR')}</span>`
+                    : `<span class="precio-actual">$${Number(p.precio).toLocaleString('es-AR')}</span>`
+                }
+            </div>
+
+            ${p.en_oferta == 1 ? '<span class="etiqueta-oferta">🔥 En oferta</span>' : ''}
+
+            ${p.descripcion_corta ? `<p class="descripcion-corta">${p.descripcion_corta}</p>` : ''}
+            
+            ${p.descripcion_larga ? `<div class="descripcion-larga">${p.descripcion_larga}</div>` : ''}
+
+            <div class="bloque-cantidad">
+                <label>Cantidad:</label>
+                <div class="control-cantidad">
+                    <button type="button" id="btnMenos">−</button>
+                    <input type="number" id="cantidad" value="1" min="1" max="99">
+                    <button type="button" id="btnMas">+</button>
+                </div>
+            </div>
+
+            <button id="btnAgregarCarrito" class="btn-agregar-carrito">
+                <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
+            </button>
+
+            <div class="disponibilidad">
+                ${p.activo == 1
+                    ? '<span class="disponible"><i class="fa-solid fa-check-circle"></i> Disponible</span>'
+                    : '<span class="no-disponible"><i class="fa-solid fa-xmark-circle"></i> No disponible</span>'
+                }
+            </div>
+        </div>
+    `;
+
+    configurarCantidad();
+    conectarBotonCarrito();
 }
 
-// ==========================================
-// ➕ Control de cantidad
-// ==========================================
+// Control de cantidad
 function configurarCantidad() {
+    const btnMenos = document.getElementById('btnMenos');
+    const btnMas = document.getElementById('btnMas');
     const input = document.getElementById('cantidad');
-    const btnMenos = document.getElementById('btn-menos');
-    const btnMas = document.getElementById('btn-mas');
-    
-    if (btnMenos && input) {
-        btnMenos.onclick = () => {
-            input.value = Math.max(1, parseInt(input.value) - 1);
-        };
-    }
-    if (btnMas && input) {
-        btnMas.onclick = () => {
-            input.value = parseInt(input.value) + 1;
-        };
-    }
+
+    if (!btnMenos || !btnMas || !input) return;
+
+    btnMenos.addEventListener('click', () => {
+        if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+    });
+    btnMas.addEventListener('click', () => {
+        input.value = parseInt(input.value) + 1;
+    });
+    input.addEventListener('change', () => {
+        if (parseInt(input.value) < 1) input.value = 1;
+    });
 }
 
-// ==========================================
-// 🛒 Agregar al carrito — USA TU FUNCIÓN GLOBAL
-// ==========================================
-function agregarAlCarrito(producto) {
-    const input = document.getElementById('cantidad');
-    const cantidad = input ? parseInt(input.value) || 1 : 1;
+// Agregar al carrito
+function conectarBotonCarrito() {
+    const btn = document.getElementById('btnAgregarCarrito');
+    if (!btn || !window.productoActual) return;
 
-    // ✅ Usar la función global de funciones-globales.js
-    if (typeof window.agregarAlCarrito === 'function') {
-        window.agregarAlCarrito({
-            ...producto,
-            cantidad: cantidad
-        });
-    } else {
-        // Fallback si no está cargado el archivo global
-        console.warn('Función global no encontrada, usando respaldo');
-        const carrito = JSON.parse(localStorage.getItem('carritoZapatoKiosco') || '[]');
-        const existe = carrito.find(i => i.id === producto.id);
-        if (existe) {
-            existe.cantidad += cantidad;
+    btn.addEventListener('click', () => {
+        const cantidad = parseInt(document.getElementById('cantidad')?.value || 1);
+        const item = { ...window.productoActual, cantidad };
+
+        if (typeof agregarAlCarrito === 'function') {
+            agregarAlCarrito(item);
         } else {
-            carrito.push({ ...producto, cantidad });
+            let carrito = JSON.parse(localStorage.getItem('carritoZapatoKiosco')) || [];
+            const existe = carrito.find(i => i.id === item.id);
+            existe ? existe.cantidad += cantidad : carrito.push(item);
+            localStorage.setItem('carritoZapatoKiosco', JSON.stringify(carrito));
+            alert('✅ Agregado al carrito');
         }
-        localStorage.setItem('carritoZapatoKiosco', JSON.stringify(carrito));
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        alert(`✅ Agregado: ${producto.nombre} ×${cantidad}`);
-    }
+    });
 }
 
-// ==========================================
-// 💳 Comprar ahora → directo al checkout
-// ==========================================
-function comprarAhora(producto) {
-    const input = document.getElementById('cantidad');
-    const cantidad = input ? parseInt(input.value) || 1 : 1;
-    
-    agregarAlCarrito({ ...producto, cantidad });
-    window.location.href = '../mi-cuenta/checkout.html';
+// Cambiar imagen desde galería
+function cambiarImagen(url, elemento) {
+    const principal = document.getElementById('imagenPrincipal');
+    if (principal) principal.src = url;
+    document.querySelectorAll('.miniatura').forEach(img => img.classList.remove('activa'));
+    elemento.classList.add('activa');
 }
 
-// ==========================================
-// 🔧 Utilidades
-// ==========================================
-function formatearNumero(n) {
-    return Number(n).toLocaleString('es-AR');
-}
-
-function obtenerEnlaceCategoria(nombreCat) {
-    const enlaces = {
-        'Automotor': 'automotor.html',
-        'Aromatizantes': 'aromatizantes.html',
-        'Telefonía y Accesorios': 'telefonia.html',
-        'Cables y Cargadores': 'cables.html',
-        'Artículos de Pesca': 'pesca.html',
-        'Relojes': 'relojes.html',
-        'Gafas y Lentes': 'gafas.html',
-        'Celulares y Smartphones': 'celulares.html',
-        'Pendrives y Almacenamiento': 'pendrives.html',
-        'Artículos de Camping': 'camping.html',
-        'Termos y Mates': 'termos-y-mates.html',
-        'Sahumerios': 'sahumerios.html'
-    };
-    return enlaces[nombreCat] || '../index.html';
-}
-
+// Mostrar error
 function mostrarError(mensaje) {
     const contenedor = document.querySelector('.detalle-contenedor');
     if (contenedor) {
         contenedor.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
-                <i class="fa-solid fa-triangle-exclamation" style="font-size: 48px; color: #d63030;"></i>
-                <h2 style="margin: 20px 0;">${mensaje}</h2>
-                <a href="../index.html" style="display: inline-block; padding: 12px 24px; background: #FFCC00; color: #000; border-radius: 8px; font-weight: 600; text-decoration: none; margin-top: 15px;">Volver al inicio</a>
+            <div style="grid-column: 1/-1; text-align:center; padding:3rem; color:#d63030;">
+                <i class="fa-solid fa-triangle-exclamation" style="font-size:2.5rem;"></i>
+                <h3>${mensaje}</h3>
+                <a href="index.html" style="display:inline-block; margin-top:1rem; padding:0.7rem 1.5rem; background:#FFCC00; color:black; border-radius:8px; text-decoration:none; font-weight:600;">
+                    Volver a la Tienda
+                </a>
             </div>
         `;
     }
