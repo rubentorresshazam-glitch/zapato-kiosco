@@ -30,8 +30,7 @@
             </div>
         </div>
     </section>
-
-        <!-- HEADER -->
+    <!-- HEADER -->
     <header class="header">
         <div class="header-top">
             <div class="header-top-container">
@@ -49,17 +48,22 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <!-- 🔐 SOLO VOS — Aparece cuando estás conectado -->
-                    <div id="contenedor-admin" style="display: none;">
-                        <a href="/admin/" class="btn-panel-admin">
-                            <i class="fa-solid fa-gear"></i> Panel Admin
-                        </a>
-                        <a href="/admin/" class="btn-app" id="btn-conectar-app">
-                            <i class="fa-solid fa-mobile-screen-button"></i> Conectar con la App
-                        </a>
-                        <button id="btn-salir-admin" class="btn-salir-admin">
-                            <i class="fa-solid fa-right-from-bracket"></i> Salir
+                    <!-- 🔐 ACCESO DEL DUEÑO -->
+                    <div id="acceso-dueño">
+                        <!-- Antes de entrar -->
+                        <button id="btn-ingresar-admin" class="btn-ingresar">
+                            <i class="fa-solid fa-user-shield"></i> Panel Administrador
                         </button>
+
+                        <!-- Después de entrar → oculto al inicio -->
+                        <div id="botones-admin" style="display: none;">
+                            <a href="/admin/" class="btn-app">
+                                <i class="fa-solid fa-mobile-screen-button"></i> Conectar con la App
+                            </a>
+                            <button id="btn-salir" class="btn-salir-admin">
+                                <i class="fa-solid fa-right-from-bracket"></i> Salir
+                            </button>
+                        </div>
                     </div>
 
                     <!-- CARRITO -->
@@ -73,6 +77,22 @@
                 </div>
             </div>
         </div>
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="nav-item">
+                    <i class="fa-solid fa-bars"></i>
+                    <span>Todas las categorías</span>
+                </div>
+                <a href="index.html" class="nav-item active">Inicio</a>
+                <a href="pages/ofertas.html" class="nav-item">Ofertas</a>
+                <a href="pages/novedades.html" class="nav-item">Novedades</a>
+                <a href="pages/mas-vendidos.html" class="nav-item">Más vendidos</a>
+                <a href="pages/contacto.html" class="nav-item">Contacto</a>
+            </div>
+        </nav>
+    </header>
 
         <!-- NAVBAR -->
         <nav class="navbar">
@@ -322,56 +342,105 @@
         </aside>
     </main>
 
-    <!-- 🔐 MODAL DE CONTRASEÑA DEL DUEÑO -->
-    <div id="modal-contraseña" class="modal-admin" style="display: none;">
-        <div class="modal-contenido">
-            <h3>🔐 Acceso del Dueño</h3>
-            <p>Escribí la contraseña para gestionar la tienda</p>
-            <input type="password" id="input-clave" placeholder="Tu contraseña...">
-            <div class="botones-modal">
-                <button id="btn-entrar-clave">Ingresar</button>
-                <button id="btn-cancelar-clave">Cancelar</button>
+      <!-- 🔑 NOTIFICACIÓN DE CONTRASEÑA -->
+    <div id="modal-clave" class="modal-notificacion" style="display: none;">
+        <div class="modal-caja">
+            <div class="modal-icono">🔐</div>
+            <h3>Acceso Exclusivo del Dueño</h3>
+            <p class="modal-texto">Solo el dueño puede ingresar. Escribí la contraseña para continuar:</p>
+            <input type="password" id="clave-ingreso" placeholder="Escribí tu contraseña aquí...">
+            <div class="modal-botones">
+                <button id="btn-cancelar" class="btn-cancelar">Cancelar</button>
+                <button id="btn-confirmar" class="btn-confirmar">Ingresar</button>
             </div>
         </div>
     </div>
+
 
     <!-- SCRIPTS -->
     <script src="js/funciones-globales.js" defer></script>
     <script src="js/admin-acceso.js" defer></script>
     
-        <!-- SCRIPTS -->
     <script src="js/funciones-globales.js" defer></script>
     <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-        const contenedorAdmin = document.getElementById('contenedor-admin');
-        if (!contenedorAdmin) return;
+    document.addEventListener('DOMContentLoaded', () => {
+        const btnIngresar = document.getElementById('btn-ingresar-admin');
+        const botonesAdmin = document.getElementById('botones-admin');
+        const modal = document.getElementById('modal-clave');
+        const claveInput = document.getElementById('clave-ingreso');
+        const btnConfirmar = document.getElementById('btn-confirmar');
+        const btnCancelar = document.getElementById('btn-cancelar');
+        const btnSalir = document.getElementById('btn-salir');
 
-        // 🔍 Verificar si ya estás logueado como dueño
-        try {
-            const res = await fetch('/api/admin/estado');
-            const { esAdmin } = await res.json();
-
-            // ✅ Solo VOS ves los botones cuando estás logueado
-            if (esAdmin) {
-                contenedorAdmin.style.display = 'flex';
-            }
-            // ❌ Los clientes NO ven nada
-        } catch (e) {
-            console.log('No hay acceso de admin — vista normal');
+        // Verificar si ya entró antes
+        const yaConectado = localStorage.getItem('adminConectado') === 'si';
+        if (yaConectado) {
+            btnIngresar.style.display = 'none';
+            botonesAdmin.style.display = 'flex';
         }
 
-        // 🚪 Botón Salir
-        const btnSalir = document.getElementById('btn-salir-admin');
-        if (btnSalir) {
-            btnSalir.onclick = async () => {
-                if (confirm('¿Cerrar sesión?')) {
-                    await fetch('/api/admin/salir', { method: 'POST' });
-                    window.location.reload();
+        // Abrir notificación
+        btnIngresar.addEventListener('click', () => {
+            modal.style.display = 'flex';
+            claveInput.value = '';
+            claveInput.focus();
+        });
+
+        // Cerrar notificación
+        btnCancelar.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Confirmar contraseña
+        btnConfirmar.addEventListener('click', async () => {
+            const clave = claveInput.value.trim();
+            if (!clave) return alert('Escribí la contraseña');
+
+            try {
+                const res = await fetch('/api/admin/verificar-clave', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ clave })
+                });
+                const datos = await res.json();
+
+                if (datos.ok) {
+                    localStorage.setItem('adminConectado', 'si');
+                    modal.style.display = 'none';
+                    btnIngresar.style.display = 'none';
+                    botonesAdmin.style.display = 'flex';
+                } else {
+                    alert('Contraseña incorrecta');
                 }
-            };
-        }
+            } catch {
+                // Si no hay conexión, permite en local con contraseña directa
+                if (clave === 'PONÉ_TU_CONTRASEÑA_AQUI') {
+                    localStorage.setItem('adminConectado', 'si');
+                    modal.style.display = 'none';
+                    btnIngresar.style.display = 'none';
+                    botonesAdmin.style.display = 'flex';
+                } else {
+                    alert('Contraseña incorrecta');
+                }
+            }
+        });
+
+        // Salir
+        btnSalir.addEventListener('click', () => {
+            if (confirm('¿Cerrar sesión?')) {
+                localStorage.removeItem('adminConectado');
+                btnIngresar.style.display = 'inline-flex';
+                botonesAdmin.style.display = 'none';
+            }
+        });
+
+        // Enter para confirmar
+        claveInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') btnConfirmar.click();
+        });
     });
     </script>
+
 </body>
 </html>
 
