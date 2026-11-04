@@ -51,17 +51,17 @@
 </header>
 
 <!-- Migas de pan -->
-<div class="contenedor">
+<div class="contenedor-principal">
     <div class="miga-de-pan">
         <a href="../index.html">Inicio</a>
         <span>/</span>
-        <span id="miga-nombre">Cargando...</span>
+        <span id="miga-nombre">Cargando producto...</span>
     </div>
 
     <!-- Contenido principal -->
-    <main class="detalle-contenedor">
-        <div style="text-align: center; padding: 3rem; color: #888;">
-            <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+    <main id="contenido-producto" class="contenido-producto">
+        <div class="cargando">
+            <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
             <p>Cargando producto...</p>
         </div>
     </main>
@@ -77,18 +77,6 @@
 <!-- Scripts -->
 <script src="../js/funciones-globales.js"></script>
 <script src="../js/producto-detalle.js"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const esperar = setInterval(() => {
-            if (window.productoActual?.nombre) {
-                const miga = document.getElementById('miga-nombre');
-                if (miga) miga.textContent = window.productoActual.nombre;
-                clearInterval(esperar);
-            }
-        }, 100);
-    });
-</script>
 
 </body>
 </html>
