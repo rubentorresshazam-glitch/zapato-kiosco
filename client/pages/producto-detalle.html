@@ -8,7 +8,7 @@
     <!-- Fuentes e Iconos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Estilos -->
@@ -17,57 +17,65 @@
 </head>
 <body>
 
-<!-- Barra superior principal -->
-<nav class="nav-principal">
-    <div class="nav-contenedor">
-        <!-- Logo con IMAGEN -->
-        <a href="../index.html" class="logo">
-            <img src="../assets/img/logos/logo-zapato.png" alt="Zapato Kiosco" class="logo-img">
-        </a>
+<!-- Franja superior amarilla -->
+<section class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-item"><i class="fa-solid fa-truck-fast"></i> Envíos a todo el país</div>
+        <div class="topbar-item"><i class="fa-solid fa-shield-halved"></i> Compra segura</div>
+    </div>
+</section>
 
-        <div class="buscador">
-            <input type="text" placeholder="Buscar zapatillas, marcas y más...">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
+<!-- Cabecera principal IGUAL QUE INDEX -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-top-container">
 
-        <div class="nav-acciones">
-            <a href="#" class="accion-link"><i class="fa-solid fa-user"></i> Mi cuenta</a>
-            <a href="../carrito.html" class="accion-link carrito-icono">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="contador-carrito" class="badge">0</span>
-            </a>
+            <!-- Logo a la izquierda -->
+            <div class="header-left">
+                <a href="../index.html">
+                    <img src="../assets/img/logos/logo-zapato.png" alt="Zapato Kiosco" class="logo-img">
+                </a>
+            </div>
+
+            <!-- Buscador en el centro -->
+            <div class="header-center">
+                <form class="search-bar" action="#" method="get">
+                    <input type="text" class="search-input" name="buscar" placeholder="Buscar zapatillas, marcas y más...">
+                    <button type="submit" class="search-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Lado derecho: CARRITO + MENÚ → SIN "Mi cuenta" -->
+            <div class="header-right">
+                <a href="../carrito.html" class="header-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart-count" id="headerCartCount">0</div>
+                </a>
+                <button class="menu-btn" type="button" aria-label="Abrir menú" title="Menú">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
     </div>
-</nav>
 
-<!-- Subnavegación -->
-<div class="subnav">
-    <div class="subnav-contenedor">
-        <button class="categorias-btn"><i class="fa-solid fa-bars"></i> Todas las categorías</button>
-        <a href="../index.html" class="subnav-link"><i class="fa-solid fa-home"></i> Inicio</a>
-        <a href="../ofertas.html" class="subnav-link destacado"><i class="fa-solid fa-fire"></i> Ofertas</a>
-        <a href="#" class="subnav-link"><i class="fa-solid fa-star"></i> Novedades</a>
-        <a href="#" class="subnav-link"><i class="fa-solid fa-medal"></i> Más vendidos</a>
-        <a href="../contacto.html" class="subnav-link"><i class="fa-solid fa-headset"></i> Contacto</a>
-        <div class="envio-banner">
-            <i class="fa-solid fa-truck-fast"></i> Envíos a todo el país
+    <!-- NAVBAR IGUAL QUE INDEX -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-item">
+                <i class="fa-solid fa-bars"></i>
+                <span>Todas las categorías</span>
+            </div>
+            <a href="../index.html" class="nav-item">Inicio</a>
+            <a href="../ofertas.html" class="nav-item">Ofertas</a>
+            <a href="../novedades.html" class="nav-item">Novedades</a>
+            <a href="../mas-vendidos.html" class="nav-item">Más vendidos</a>
+            <a href="../contacto.html" class="nav-item">Contacto</a>
         </div>
-    </div>
-</div>
-
-<!-- Migas de pan -->
-<div class="contenedor">
-    <div class="migas">
-        <a href="../index.html"><i class="fa-solid fa-home"></i> Inicio</a>
-        <span>›</span>
-        <a href="#">Calzados</a>
-        <span>›</span>
-        <a href="#">Zapatillas</a>
-        <span>›</span>
-        <span id="miga-nombre">Cargando...</span>
-    </div>
-
-    <!-- Contenido principal -->
+    </nav>
+</header>
+    <!-- CONTENIDO PRINCIPAL — ESTRUCTURA LIMPIA, DATOS DESDE JS -->
     <main id="contenido-producto" class="producto-contenedor">
         <div class="cargando">
             <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
@@ -93,7 +101,7 @@
             </div>
             <div id="especificaciones" class="pestana-contenido">
                 <h3>Especificaciones</h3>
-                <p>Información técnica próximamente.</p>
+                <p id="texto-especificaciones">Información técnica próximamente.</p>
             </div>
             <div id="envios" class="pestana-contenido">
                 <h3>Envíos y devoluciones</h3>
@@ -130,7 +138,16 @@
 <!-- Scripts -->
 <script src="../js/funciones-globales.js"></script>
 <script src="../js/producto-detalle.js"></script>
+<script>
+    // Actualizar contador del carrito
+    function actualizarContador() {
+        const carrito = JSON.parse(localStorage.getItem('carritoZapatoKiosco') || '[]');
+        const total = carrito.reduce((s, item) => s + item.cantidad, 0);
+        const contador = document.getElementById('headerCartCount');
+        if (contador) contador.textContent = total;
+    }
+    document.addEventListener('DOMContentLoaded', actualizarContador);
+</script>
 
 </body>
 </html>
-
